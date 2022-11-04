@@ -1,0 +1,6 @@
+.home {
+ padding-top: 15px;
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+}
