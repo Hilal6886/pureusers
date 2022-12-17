@@ -67,11 +67,11 @@ const Footer = () => {
         <span className="linkTitle">
             CONTACT US
         </span>
-       <span className='phone'> +919149626415</span>
+       <span className='phone'> +91 77809 57235</span>
        <span className='email'> ratherhilal68@gmail.com</span>
     </div>
     <div className="footerDev flex">
-        <small>  © COPYRIGHTS RESERVED--- RATHER HILAL-- 2022 . All Rights Reserved</small>
+        <small>  © All Rights Reserved</small>
     </div>
   </div>
   </div>

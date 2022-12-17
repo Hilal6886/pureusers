@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar.jsx"
-import Footer from "../../components/Footer/Footer"
+// import Footer from "../../components/Footer/Footer"
 
 class Layout extends Component {
 render() {
@@ -8,7 +8,6 @@ render() {
        <div>
           <Navbar />
              { this.props.children }
-          <Footer />
        </div>
     );
 }
