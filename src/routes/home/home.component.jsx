@@ -1,8 +1,8 @@
 import { Component } from "react";
-import CardList from "../../components/card-list/card-list.component";
-import Header from "../../components/header/header.component";
-import "./home.styles.css";
-class Home extends Component {
+import Layout from "../../components/layout/layout.component"
+import Home from "../../components/Home/Home.jsx"
+import Main from "../../components/Main/Main.jsx"
+class HomeRoute extends Component {
   blogs = [
     {
       title: "Why you should visit ladakh",
@@ -33,25 +33,13 @@ class Home extends Component {
         "Kashmir is the northernmost geographical region of the Indian subcontinent",
     },
   ];
-  componentDidMount() {}
-
-  render() {
+  render(){
     return (
-      <div className="app">
-        <Header />
-        <h1 className="text-color">
-        </h1>
-        <div className="body-content">
-          <div className="home">
-            <CardList listItem={null} title={"Featured Tours"} />
-            <CardList listItem={null} title={"Destinations"} />
-            <CardList listItem={null} title={"Hotels"} />
-            <CardList listItem={this.blogs} title={"Blogs"} />
-          </div>
-        </div>
-        <footer></footer>
-      </div>
-    );
+      <Layout>
+       <Home/>
+      <Main/>
+    </Layout>
+    )
   }
 }
-export default Home;
+export default HomeRoute;

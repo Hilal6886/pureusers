@@ -1,0 +1,62 @@
+:root {
+  --primarycolor: hsl(26, 93%, 50%);
+  --Hovercolor: hsl(26, 90%, 42%);
+  --whitecolor: hsl(0, 0%,100%);
+  --blackcolor: hsl(0, 0%, 18%);
+  --textcolor: hsl(240, 1%, 48%);
+  --whitecolorDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greytext: rgb(190, 190, 190);
+  --inputcolor: hsl(330, 12%, 97%);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBg: rgb(225, 225, 235);
+}
+
+.abouts .secCont .tle {
+  color: var(--blackcolor);
+  line-height: 1.5rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.maincontentt {
+  gap: 1rem;
+}
+
+.singleIt {
+  text-align: center;
+}
+.icont{
+  font-size: 150px;
+  color: var(--primarycolor);
+}
+
+
+
+h3 {
+  font-weight: 700;
+  color: var(--blackcolor);
+  padding: 0.8rem;
+}
+
+p {
+  font-size: 13px;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+  color: var(--textcolor);
+}
+
+@media screen and (min-width:720px) {
+  .abouts .secCont{
+    gap: 4rem;
+    padding: 4rem 3rem;
+  }
+  .singleIt{
+    text-align: center;
+    line-break: auto;
+  }
+   .maincontentt{
+    grid-template-columns: repeat(3,1fr);
+  }
+}

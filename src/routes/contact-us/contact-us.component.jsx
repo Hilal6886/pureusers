@@ -1,6 +1,7 @@
 import { Component } from "react";
 import "./contact-us.styles.css";
 import InputBox from "../../components/input-box/input-box.component";
+import Layout from "../../components/layout/layout.component"
 class ContactUs extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +26,7 @@ class ContactUs extends Component {
       console.log("form submitted");
     };
     return (
+            <Layout>
       <div className="contact-us-container">
         <form
           id="contact-form"
@@ -62,6 +64,7 @@ class ContactUs extends Component {
           </button>
         </form>
       </div>
+      </Layout>
     );
   }
 }

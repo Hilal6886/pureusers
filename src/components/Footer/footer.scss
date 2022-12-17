@@ -1,0 +1,113 @@
+
+
+:root{
+    --primarycolor: hsl(26, 93%, 50%);
+    --Hovercolor: hsl(26, 90%, 42%);
+    --whitecolor: hsl(0, 0%,100%);
+    --blackcolor: hsl(0, 0%, 18%);
+    --textcolor: hsl(240, 1%, 48%);
+    --whitecolorDeam: hsl(0, 0%, 93%);
+    --greyBg: hsl(0, 0%, 96%);
+    --greytext: rgb(190, 190, 190);
+    --inputcolor: hsl(330, 12%, 97%);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBg: rgb(225, 225, 235);
+}
+.footer{
+    background: var(--greyBg);
+    padding: 2rem 0;
+}
+.secContaine{
+    gap: 1.5rem;
+    text-align: center;
+    
+
+}
+.footerlogo .logo{
+    gap: 1.5rem;
+    text-align: center;
+    
+}
+.socials{
+    gap: 1.5rem;
+    margin: auto;
+    justify-content: center;
+}
+.iconv{
+    font-size: 30px;
+    background: var(--primarycolor);
+    border-radius: 50%;
+    padding: 8px;
+    color: var(--whitecolor);
+}
+.footerLinks{
+    margin-top: 2rem;
+    display: grid;
+    row-gap: .2rem;
+    
+    
+
+}
+.linkTitle{
+    padding-bottom: .5rem;
+    color: var(--blackcolor);
+    font-weight: 700;
+    
+}
+li:hover{
+    transform: translateX(10px);
+
+
+}
+a:hover{
+    color: var(--primarycolor);
+}
+a .phone .email{
+    color: var(--textcolor);
+    font-size: 13px;
+    font-weight: 500;
+}
+.footerDev{
+    flex-direction: column;
+    position: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: var(--whitecolor);
+    background: var(--greyBg);
+    padding: .5rem 2rem;
+    margin-top: 2rem;
+    small{
+        color: var(--blackcolor);
+        background: var(--greyBg);
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (min-width: 448px) {
+    .secContaine{
+        grid-template-columns: repeat(2,1fr);
+        text-align: center;
+        align-items: flex-start;
+    }
+    .footerLinks{
+        
+        justify-content: center;
+
+    }
+
+}
+@media screen and (min-width: 640px) {
+    .secContaine{
+        grid-template-columns: repeat(5,1fr);
+       
+    }
+}
+@media screen and (min-width: 900px) {
+    .secContaine{
+        padding: 2rem;
+       
+       
+    }
+}
