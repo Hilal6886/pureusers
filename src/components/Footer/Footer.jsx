@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="logoDiv">
             <div  data-aos="fade-up"className="footerLogo">
                 <a href='/' className='logo'>
-                    Quantum Tour & Trevels
+                    Quantum Tour & Travels
                 </a>
             </div>
         </div>

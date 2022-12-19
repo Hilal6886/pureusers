@@ -88,7 +88,7 @@ const Main = () => {
              FEATURED TOURS
                     </h2>
                     <p>
-                        TRAVEL WITH QUANTUM TOUR AND TREVELS
+                        TRAVEL WITH QUANTUM TOUR AND TRAVELS
                     </p>
                 </div>
             <div data-aos="fade-up"className="continents grid">

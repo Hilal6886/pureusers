@@ -18,7 +18,7 @@ const Home = () => {
             <div className="homeCont container">
                 <div className="txtDev">
                     <span className="smalltext">
-                        Make Your Favorite Trip With Quantum Tour & Trevels
+                        Make Your Favorite Trip With Quantum Tour & Travels
                     </span>
                     <h1 className="homeTtle">
                         SEARCH YOUR DISTINATION

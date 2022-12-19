@@ -19,7 +19,7 @@ const Navbar = () => {
                 <div className="logoDev">
                     <a href="/home" className="logo">
                         <h1 className="flex">
-                        Quantum Tour And Trevels
+                        Quantum Tour And Travels
                         </h1>
 
                     </a>
