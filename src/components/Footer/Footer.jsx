@@ -68,7 +68,6 @@ const Footer = () => {
             CONTACT US
         </span>
        <span className='phone'> +91 77809 57235</span>
-       <span className='email'> ratherhilal68@gmail.com</span>
     </div>
     <div className="footerDev flex">
         <small>  © All Rights Reserved</small>

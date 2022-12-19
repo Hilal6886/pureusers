@@ -5,15 +5,16 @@ import {MdBathtub} from 'react-icons/md'
 import {FaWifi} from 'react-icons/fa'
 import {MdAirportShuttle} from 'react-icons/md'
 import {MdLocationOn} from 'react-icons/md'
-import img2 from '../../Assets/img2.jpg'
-import img5 from '../../Assets/img5.jpg'
-import img6 from '../../Assets/img6.jpg'
-import img8 from '../../Assets/img8.jpg'
-import img20 from '../../Assets/img20.jpg'
-import img21 from '../../Assets/img21.jpg'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
+const { getImageUrl } = require('../../services/media.service.js')
+const img2= getImageUrl('img2.jpg')
+const img5= getImageUrl('img5.jpg')
+const img6= getImageUrl('img6.jpg')
+const img20= getImageUrl('img20.jpg')
+const img8= getImageUrl('img8.jpg')
+const img21= getImageUrl('img21.jpg')
 const Offers = [
     {
         id:1,

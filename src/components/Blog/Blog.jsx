@@ -1,7 +1,8 @@
 import React from 'react';
 import './blog.css'
-import {GrLocation} from 'react-icons/gr'
-import img from '../../Assets/img.jpg'
+import {GrLocation} from 'react-icons/gr';
+const { getImageUrl } = require('../../services/media.service.js')
+const img= getImageUrl('img.jpg')
 
 const posts = [    
     {

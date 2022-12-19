@@ -1,14 +1,17 @@
 import React, {useEffect} from 'react';
 import './main.css'
 
-import img17 from '../../Assets/img17.jpg'
-import img1 from '../../Assets/img1.jpg'
-import img15 from '../../Assets/img15.jpg'
-import img18 from '../../Assets/img18.jpg'
-import img19 from '../../Assets/img19.jpg'
-import img16 from '../../Assets/img16.jpg'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+
+const { getImageUrl } = require('../../services/media.service.js')
+const img1= getImageUrl('img1.jpg')
+const img15= getImageUrl('img15.jpg')
+const img16= getImageUrl('img16.jpg')
+const img17= getImageUrl('img17.jpg')
+const img18= getImageUrl('img18.jpg')
+const img19= getImageUrl('img19.jpg')
+
 const Data = [
     {
         id:1,

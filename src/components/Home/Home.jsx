@@ -8,7 +8,8 @@ import {BsListTask } from 'react-icons/bs'
 import {TbApps} from 'react-icons/tb'
 import {TiSocialPinterestCircular} from 'react-icons/ti'
 
-import hilal from '../../Assets/hilal.mp4'
+const { getImageUrl } = require('../../services/media.service.js')
+const hilal = getImageUrl('hilal.mp4')
 const Home = () => {
     return (
      <section className='homes'>
