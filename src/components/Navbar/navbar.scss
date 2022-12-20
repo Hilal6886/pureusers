@@ -31,7 +31,7 @@
   justify-content: center;
 }
 
-.icon {
+.icone {
   color: var(--primarycolor);
   transform: translateY(3px);
   font-size: 2rem;
@@ -78,11 +78,13 @@
     outline: none;
     cursor: pointer;
     padding-top: 1rem;
-    text-align: center;
+    padding-bottom: 1rem;
+
   }
   .btn a {
     font-weight: 600;
     color: var(--whitecolor);
+    
   }
   .closeNavbar {
     position: absolute;
@@ -128,11 +130,14 @@
   }
   .btn {
     margin-left: 1rem;
-    margin-top: 0rem;
+    
+    margin-bottom: 2rem;
   }
   .btn a {
     color: var(--whitecolor);
     font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 @media screen and (min-width: 960) {
