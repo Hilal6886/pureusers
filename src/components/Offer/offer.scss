@@ -29,7 +29,7 @@
    font-weight: 500;
  }
     .ghft{
-        row-gap: 14px;
+        row-gap: 18px;
         position: relative;
             gap: 1rem;
         }
@@ -48,7 +48,7 @@
 }
 small{
     font-weight: 500;
-    color: var(--textcolor);
+    color: var(--whitecolor);
 }
 .destImage{
     position: relative;
@@ -101,7 +101,7 @@ h4{
     padding: 5px 10px;
     border-radius: 5px;
     background: var(--greyBg);
-    color: var(--textcolor);
+    color: var(--whitecolor);
     gap: .5rem;
 }
 .btnn{

@@ -57,12 +57,12 @@ const Navbar = () => {
                     </button>                
                  </ul>
                  <div onClick={removeNavbar} className="closeNavbar">
-                    <AiFillCloseCircle className="icon"/>
+                    <AiFillCloseCircle className="icone"/>
                  </div>
                 </div>
     
                  <div onClick={ShowNav}className="toggleNavbar">
-                    <TbGridDots className="icon"/>                    
+                    <TbGridDots className="icone"/>                    
                  </div>
 
         </header>
