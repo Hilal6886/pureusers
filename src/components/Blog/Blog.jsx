@@ -45,18 +45,18 @@ const posts = [
 
 const Blog = () => {
     return (
-     <section className='blog section'>
+     <section className='blog  section'>
         <div className="secContaine">
             <div className="secitro">
                 <h2 className='secTile'> 
-                Our Blog
+                OUR BLOGS
                 </h2>
                 <p>
                     An insight to the incredible experince in the world.
                 </p>
             </div>
-            <div className="mainCotainer grid">
-                { 
+            <div className="manCotainer grid">
+                {
                     posts.map(({id, imageUrl, title, description} )=>{
                         return (
                             <div className="snglePost grid" key={id} >
@@ -70,8 +70,9 @@ const Blog = () => {
                                     <p>{description}</p>
                                 </div>
                                 <a href='/' className='flex'>
+                               
                                 Read More
-                                <BsArrowRightShort className="icon"/>
+                                <BsArrowRightShort className="iconr"/>
                                 </a>
                             </div>
                         )
