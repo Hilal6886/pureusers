@@ -1,6 +1,6 @@
 import React from 'react';
 import './blog.css'
-import {GrLocation} from 'react-icons/gr';
+import {BsArrowRightShort} from 'react-icons/bs';
 const { getImageUrl } = require('../../services/media.service.js')
 const img= getImageUrl('img.jpg')
 
@@ -22,23 +22,41 @@ const posts = [
         title: "Visiting Kashmir",
         imageUrl: "https://firebasestorage.googleapis.com/v0/b/quantumtourandtravels.appspot.com/o/quantumtourandtravel%2Fblogs%2Fimages.jpg?alt=media&token=dfe0a5fa-d486-4afa-b6d0-00ebfe018409",
         description: "Kashmir is the northernmost geographical region of the Indian subcontinent",
-    }
+    },
+    {
+        id:"b4",
+        imageUrl: img,
+        title:'Dal Lakh',
+        description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
+    },
+    {
+        id:"b5",
+        imageUrl: img,
+        title:'Dal Lakh',
+        description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
+    },
+    {
+        id:"b6",
+        imageUrl: img,
+        title:'Dal Lakh',
+        description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
+    },
 ];
 
 const Blog = () => {
     return (
-     <section className='blog crescent section'>
+     <section className='blog section'>
         <div className="secContaine">
             <div className="secitro">
                 <h2 className='secTile'> 
-                Our blogs  ?
+                Our Blog
                 </h2>
                 <p>
                     An insight to the incredible experince in the world.
                 </p>
             </div>
             <div className="mainCotainer grid">
-                {
+                { 
                     posts.map(({id, imageUrl, title, description} )=>{
                         return (
                             <div className="snglePost grid" key={id} >
@@ -52,8 +70,8 @@ const Blog = () => {
                                     <p>{description}</p>
                                 </div>
                                 <a href='/' className='flex'>
-                                <GrLocation className="icon"/>
                                 Read More
+                                <BsArrowRightShort className="icon"/>
                                 </a>
                             </div>
                         )
