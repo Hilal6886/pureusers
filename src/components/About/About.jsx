@@ -1,5 +1,5 @@
 import React from 'react';
-import './about.css'
+import './about.scss'
 
 
 import {GiMountains} from 'react-icons/gi'

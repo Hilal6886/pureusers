@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
-import './offer.css'
+import './offer.scss'
 import {MdKingBed} from 'react-icons/md'
 import {MdBathtub} from 'react-icons/md'
 import {FaWifi} from 'react-icons/fa'
 import {MdAirportShuttle} from 'react-icons/md'
 import {MdLocationOn} from 'react-icons/md'
 import Aos from 'aos'
-import 'aos/dist/aos.css'
+import 'aos/dist/aos.scss'
 
 const { getImageUrl } = require('../../services/media.service.js')
 const img2= getImageUrl('img2.jpg')
