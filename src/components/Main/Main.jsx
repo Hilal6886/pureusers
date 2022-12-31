@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './main.scss'
 
 import Aos from 'aos'
-import 'aos/dist/aos.scss'
+import 'aos/dist/aos.css'
 
 const { getImageUrl } = require('../../services/media.service.js')
 const img1= getImageUrl('img1.jpg')
