@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./input-box.styles.css";
+import "./input-box.styles.scss";
 class InputBox extends Component {
   render() {
     return (

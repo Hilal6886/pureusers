@@ -1,7 +1,6 @@
 import { Component } from "react";
 import Layout from "../../components/layout/layout.component"
-import Home from "../../components/Home/Home.jsx"
-import Main from "../../components/Main/Main.jsx"
+import Services from "../../components/service-offered/Services.jsx"
 class HomeRoute extends Component {
   blogs = [
     {
@@ -36,8 +35,7 @@ class HomeRoute extends Component {
   render(){
     return (
       <Layout>
-       <Home/>
-      <Main/>
+       <Services/>
     </Layout>
     )
   }
