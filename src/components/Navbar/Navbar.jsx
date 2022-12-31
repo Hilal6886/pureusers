@@ -61,7 +61,7 @@ const Navbar = () => {
                  </div>
                 </div>
     
-                 <div onClick={ShowNav}className="toggleNavbar">
+                 <div onClick={ShowNav} className="toggleNavbar">
                     <TbGridDots className="icone"/>                    
                  </div>
 
