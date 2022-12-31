@@ -29,27 +29,27 @@ const Navbar = () => {
                  <ul className="navLists flex">
                  
                     <li className="navItem">
-                        <a href="/home" className="navLink">HOME</a>
+                        <a href="/home" className="navLink">Home</a>
                     </li>
 
                     <li className="navItem">
-                    <a href="/offers" className="navLink">OFFERS</a>
+                    <a href="/offers" className="navLink">Offers</a>
                     </li>
 
                     <li className="navItem">
-                    <a href="/services" className="navLink">SERVICES</a>
+                    <a href="/services" className="navLink">Services</a>
                     </li>
 
                     <li className="navItem">
-                        <a href="/about" className="navLink">ABOUT</a>
+                        <a href="/about" className="navLink">About</a>
                     </li>
 
                     <li className="navItem">
-                        <a href="/blogs" className="navLink">BLOGS</a>
+                        <a href="/blogs" className="navLink">Blogs</a>
                     </li>
 
                     <li className="navItem">
-                        <a href="/contact-us" className="navLink">CONTACT US</a>
+                        <a href="/contact-us" className="navLink">ContactUs</a>
                     </li>
 
                     <button className="btn">
@@ -61,7 +61,7 @@ const Navbar = () => {
                  </div>
                 </div>
     
-                 <div onClick={ShowNav}className="toggleNavbar">
+                 <div onClick={ShowNav} className="toggleNavbar">
                     <TbGridDots className="icone"/>                    
                  </div>
 
