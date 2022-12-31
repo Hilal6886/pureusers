@@ -13,13 +13,12 @@
 }
 
 .header {
-  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: var(--whitecolorDeam);
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
   z-index: 1000;
 }
 
@@ -111,7 +110,7 @@
     display: none;
   }
   .header {
-    padding: 1.5rem 2rem;
+    padding: 0.5rem 1rem;
   }
   .navBar .navLists {
     display: flex;
