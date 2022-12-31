@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './footer.css'
+import './footer.scss'
 import {ImFacebook} from 'react-icons/im'
 import {AiOutlineInstagram} from 'react-icons/ai'
 import {CiTwitter} from 'react-icons/ci'

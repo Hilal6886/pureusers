@@ -1,5 +1,5 @@
 import React from 'react';
-import './blog.css'
+import './blog.scss'
 import {BsArrowRightShort} from 'react-icons/bs';
 const { getImageUrl } = require('../../services/media.service.js')
 const img= getImageUrl('img.jpg')

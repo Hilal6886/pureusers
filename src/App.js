@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import HomeRoute from "./routes/home/home.component";
 import ServicesRoute from "./routes/service-offered/service-offered.component";
 import OfferRoute from "./routes/Offer/Offer-route.component.jsx"

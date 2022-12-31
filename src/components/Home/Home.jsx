@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.css'
+import './Home.scss'
 import {GrLocation} from 'react-icons/gr'
 import {FiFacebook} from 'react-icons/fi'
 import {AiOutlineInstagram} from 'react-icons/ai'

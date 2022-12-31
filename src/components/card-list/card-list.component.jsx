@@ -1,6 +1,6 @@
 import { Component } from "react";
 // import logo from './logo.svg';
-import "./card-list.styles.css";
+import "./card-list.styles.scss";
 import Card from "../card/card.component";
 class CardList extends Component {
   //   constructor() {

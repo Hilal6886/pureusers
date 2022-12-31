@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./contact-us.styles.css";
+import "./contact-us.styles.scss";
 import InputBox from "../../components/input-box/input-box.component";
 import Layout from "../../components/layout/layout.component"
 class ContactUs extends Component {

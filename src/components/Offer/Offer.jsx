@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './offer.css'
+import './offer.scss'
 import {MdKingBed} from 'react-icons/md'
 import {MdBathtub} from 'react-icons/md'
 import {FaWifi} from 'react-icons/fa'

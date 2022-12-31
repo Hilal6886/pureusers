@@ -1,5 +1,5 @@
 import React from 'react';
-import './services.css'
+import './services.scss'
 
 import {MdPayment} from 'react-icons/md'
 import {RiSecurePaymentFill} from 'react-icons/ri'
