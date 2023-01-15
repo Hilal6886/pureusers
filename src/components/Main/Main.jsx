@@ -21,11 +21,7 @@ const Data = [
         grade:'CULTURAL RELAX',
         fees: '$800',
         description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
-    },
-
-
-
-    
+    }, 
     {
         id:2,
         imgSrc: img15,
@@ -43,36 +39,36 @@ const Data = [
         location: 'Jammu and Kashmir',
         grade:'CULTURAL RELAX',
         fees: '$800',
-        description: 'Gulmarg is a town nestled in the Pir Panjal range of the Western Himalayas at an altitude of 8,690 feet above sea level. Literally translated as ‘Meadow of Flowers’ it is encased by glimmering snow peaked alps, verdant green pastures, colorful meadows, deep valleys and pine covered slopes.', 
+        description: 'Pahalgam, also known as the “Valley of Shepherds”, is located in the Anantnag territory of Jammu and Kashmir, at an elevation of 7200 feet', 
     },
 
     {
         id:4,
         imgSrc: img18,
         destTitle:'sonmarg',
-        location: 'jammu and Kashmir',
+        location: 'Jammu and Kashmir',
         grade:'CULTURAL RELAX',
         fees: '$800',
-        description: 'Gulmarg is a town nestled in the Pir Panjal range of the Western Himalayas at an altitude of 8,690 feet above sea level. Literally translated as ‘Meadow of Flowers’ it is encased by glimmering snow peaked alps, verdant green pastures, colorful meadows, deep valleys and pine covered slopes.', 
+        description: 'Sonmarg, which means "Meadow of Gold", is a picturesque hill station in the Kashmir Valley located in the Indian union territory of Jammu and Kashmir. Situated at an altitude of 2800 meters and adorned with a majestic glacier, meadow, dense forests, and snow-capped mountains makes Sonmarg an ideal holiday destination in Kashmir.', 
     },
     {
         id:5,
-        imgSrc: img19,
-        destTitle:'sonmarg',
-        location: 'jammu and Kashmir',
+        imgSrc: img16,
+        destTitle:'Ladakh',
+        location: 'Jammu and Kashmir',
         grade:'CULTURAL RELAX',
         fees: '$800',
         description: 'Gulmarg is a town nestled in the Pir Panjal range of the Western Himalayas at an altitude of 8,690 feet above sea level. Literally translated as ‘Meadow of Flowers’ it is encased by glimmering snow peaked alps, verdant green pastures, colorful meadows, deep valleys and pine covered slopes.', 
     },
     {
         id:6,
-        imgSrc: img16,
-        destTitle:'Ladakh',
-        location: 'jammu and Kashmir',
+        imgSrc: img19,
+        destTitle:'Sonmarg',
+        location: 'Jammu and Kashmir',
         grade:'CULTURAL RELAX',
         fees: '$800',
-        description: 'Gulmarg is a town nestled in the Pir Panjal range of the Western Himalayas at an altitude of 8,690 feet above sea level. Literally translated as ‘Meadow of Flowers’ it is encased by glimmering snow peaked alps, verdant green pastures, colorful meadows, deep valleys and pine covered slopes.', 
-    },
+        description: 'For nature lovers, Sonmarg offers the chance to unwind amidst its scenic vistas; adventure buffs who can indulge in trekking and camping activities for adrenaline rush; and honeymoon couples can spend time cozying up amidst its beauty.', 
+    }
 ];
 
 const Main = () => {
