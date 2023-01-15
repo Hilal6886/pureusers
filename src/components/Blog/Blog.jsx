@@ -8,7 +8,7 @@ const posts = [
     {
         id:"b1",
         imageUrl: img,
-        title:'Dal Lakh',
+        title:'Dal lake',
         description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
     },
     {
@@ -26,19 +26,19 @@ const posts = [
     {
         id:"b4",
         imageUrl: img,
-        title:'Dal Lakh',
+        title:'Dal lake',
         description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
     },
     {
         id:"b5",
         imageUrl: img,
-        title:'Dal Lakh',
+        title:'Dal lake',
         description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
     },
     {
         id:"b6",
         imageUrl: img,
-        title:'Dal Lakh',
+        title:'Dal lake',
         description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
     },
 ];

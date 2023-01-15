@@ -16,7 +16,7 @@ const Data = [
     {
         id:1,
         imgSrc: img1,
-        destTitle:'Dal Lakh',
+        destTitle:'Dal lake',
         location: 'Kashmir',
         grade:'CULTURAL RELAX',
         fees: '$800',
@@ -39,7 +39,7 @@ const Data = [
     {
         id:3,
         imgSrc: img17,
-        destTitle:'pehalagam',
+        destTitle:'Pahalgam',
         location: 'Jammu and Kashmir',
         grade:'CULTURAL RELAX',
         fees: '$800',

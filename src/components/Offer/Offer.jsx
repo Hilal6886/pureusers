@@ -19,7 +19,7 @@ const Offers = [
     {
         id:1,
         imgSrc: img2,
-        destTitle:'Dal Lakh',
+        destTitle:'Dal lake',
         location: 'Kashmir',
         price: '$800',
         
@@ -29,7 +29,7 @@ const Offers = [
     {
         id:2,
         imgSrc: img5,
-        destTitle:'Dal Lakh',
+        destTitle:'Dal lake',
         location: 'Kashmir',
          price: '$800',
 
@@ -37,7 +37,7 @@ const Offers = [
     {
         id:3,
         imgSrc: img6,
-        destTitle:'Dal Lakh',
+        destTitle:'Dal lake',
         location: 'Kashmir',
         price: '$800',
     },
