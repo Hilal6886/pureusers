@@ -1,5 +1,5 @@
 import React,{useRef,useState} from 'react'
-import './tourdetails.css'
+import './tourdetails.scss'
 import { Container,Row, Col, Form,ListGroup } from 'reactstrap'
 import {useParams} from 'react-router-dom'
 import tourData from '../../assets/data/tours';

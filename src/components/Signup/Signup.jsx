@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import {  Container,Row,Col,Form,FormGroup} from 'reactstrap'
 import {Link} from "react-router-dom"
-import './Signup.css'
+import './Signup.scss'
 import registerImg from '../../assets/images/register.png'
 import userIcon from '../../assets/images/user.png'
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -11,7 +11,7 @@ import { setDoc,doc } from 'firebase/firestore'
 
 import{storage} from "../../firebase"
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.scss';
 import { db } from '../../firebase';
 import {useNavigate} from "react-router-dom"
 

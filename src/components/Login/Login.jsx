@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap'
 import { Link, } from "react-router-dom"
-import './login.css'
+import './login.scss'
 import loginImg from '../../assets/images/login.png'
 import userIcon from '../../assets/images/user.png'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase'
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.scss';
 import { useNavigate } from "react-router-dom"
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from '../../firebase'
