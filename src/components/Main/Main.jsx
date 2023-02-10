@@ -1,85 +1,19 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './main.scss'
+import TourCard from '../../shared/TourCard';
+import tourDATA from '../../assets/data/tours';
 
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 
-const { getImageUrl } = require('../../services/media.service.js')
-const img1= getImageUrl('img1.jpg')
-const img15= getImageUrl('img15.jpg')
-const img16= getImageUrl('img16.jpg')
-const img17= getImageUrl('img17.jpg')
-const img18= getImageUrl('img18.jpg')
-const img19= getImageUrl('img19.jpg')
 
-const Data = [
-    {
-        id:1,
-        imgSrc: img1,
-        destTitle:'Dal lake',
-        location: 'Kashmir',
-        grade:'CULTURAL RELAX',
-        fees: '$800',
-        description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
-    }, 
-    {
-        id:2,
-        imgSrc: img15,
-        destTitle:'Gulmarg',
-        location: 'Kashmir',
-        grade:'CULTURAL RELAX',
-        fees: '$800',
-        description: 'Gulmarg is a town nestled in the Pir Panjal range of the Western Himalayas at an altitude of 8,690 feet above sea level. Literally translated as ‘Meadow of Flowers’ it is encased by glimmering snow peaked alps, verdant green pastures, colorful meadows, deep valleys and pine covered slopes.', 
-    },
 
-    {
-        id:3,
-        imgSrc: img17,
-        destTitle:'Pahalgam',
-        location: 'Jammu and Kashmir',
-        grade:'CULTURAL RELAX',
-        fees: '$800',
-        description: 'Pahalgam, also known as the “Valley of Shepherds”, is located in the Anantnag territory of Jammu and Kashmir, at an elevation of 7200 feet', 
-    },
 
-    {
-        id:4,
-        imgSrc: img18,
-        destTitle:'sonmarg',
-        location: 'Jammu and Kashmir',
-        grade:'CULTURAL RELAX',
-        fees: '$800',
-        description: 'Sonmarg, which means "Meadow of Gold", is a picturesque hill station in the Kashmir Valley located in the Indian union territory of Jammu and Kashmir. Situated at an altitude of 2800 meters and adorned with a majestic glacier, meadow, dense forests, and snow-capped mountains makes Sonmarg an ideal holiday destination in Kashmir.', 
-    },
-    {
-        id:5,
-        imgSrc: img16,
-        destTitle:'Ladakh',
-        location: 'Jammu and Kashmir',
-        grade:'CULTURAL RELAX',
-        fees: '$800',
-        description: 'Gulmarg is a town nestled in the Pir Panjal range of the Western Himalayas at an altitude of 8,690 feet above sea level. Literally translated as ‘Meadow of Flowers’ it is encased by glimmering snow peaked alps, verdant green pastures, colorful meadows, deep valleys and pine covered slopes.', 
-    },
-    {
-        id:6,
-        imgSrc: img19,
-        destTitle:'Sonmarg',
-        location: 'Jammu and Kashmir',
-        grade:'CULTURAL RELAX',
-        fees: '$800',
-        description: 'For nature lovers, Sonmarg offers the chance to unwind amidst its scenic vistas; adventure buffs who can indulge in trekking and camping activities for adrenaline rush; and honeymoon couples can spend time cozying up amidst its beauty.', 
-    }
-];
+import {Col} from "reactstrap"
 
-const Main = () => {
-    useEffect(()=>{
-        Aos.init({duration: 2000})
-        }, [])
-    return (
-        <section data-aos="fade-up"className="main ">
 
-<div  data-aos="fade-up" className='secContainer'>
-                <div  data-aos="fade-up"className='scIntro'>
+ const Main = () => {
+  return (
+    <section>
+            <div  data-aos="fade-up"className='scIntro'>
                     <h2  data-aos="fade-up"className='secTite'>
              FEATURED TOURS
                     </h2>
@@ -87,51 +21,17 @@ const Main = () => {
                         TRAVEL WITH QUANTUM TOUR AND TRAVELS
                     </p>
                 </div>
-            <div data-aos="fade-up"className="continents grid">
-                {
-                    Data.map(({id, imgSrc, destTitle, location, grade, fees, 
-                        description})=>{
-                            return(
-                                <div key={id} className="singlefr">
-                                    <div className="imageDev">
-                                        <img src={imgSrc} alt={destTitle}/>
-                                    </div>
-                                    <div className="cardInfo">
-                                        <h4 className="destTitle">{destTitle}</h4>
-                                        <span className="continent-flex">
-                                            
-                                            <span className="name">{location}</span>
-
-                                        </span>
-                                        <div className="fees flex">
-                                            <div  className="grade">
-                                                <span>{grade}<small>+1</small></span>
-                                            </div>
-                                            <div  className="price">
-                                                <h5>{fees}</h5>
-                                                 </div>
-                                                 </div>
-                                                 <div  className="desc">
-                                                    <p>{description}</p>
-                                                 </div>
-                                                 
-                                                 <button  className="btn flex">
-                                                    DETAILS 
-                                                </button>
-                                        
-                                    </div>
-                                    </div>
-                                
-                            )
-
-                    })
-                }
-                
-                    
-                </div>
-
-            </div>
-        </section>
-    )
+        <>
+        <div data-aos="fade-up"className="continents grid">
+      { tourDATA?.map(tour  => (
+        <Col lg='3' className='mb-4' key={tour.id}><TourCard tour={tour}/></Col>
+       ))}
+       </div>
+       </>
+    </section>
+  )
 }
+
+
+
 export default Main

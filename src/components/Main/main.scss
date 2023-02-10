@@ -29,6 +29,7 @@
   color: var(--blackcolor);
   line-height: 1.5rem;
   padding-bottom: 0.5rem;
+  margin-top: 2rem;
 }
 
 .scIntro p {
@@ -38,18 +39,20 @@
 }
 .continents {
   position: relative;
-  gap: 1.5rem;
+  
 }
  .singlefr {
   height: 100%;
   display: grid;
   padding: 0.5rem;
-  row-gap: 10px;
+
   border-radius: 10px;
   align-items: center;
   background: var(--cardBG);
   box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
   overflow: hidden;
+  margin-right: 1.5rem;
+  margin-left: 1.5em;
 }
  .singlefr:hover {
   background: var(--cardBG);
@@ -70,58 +73,6 @@
  
  img:hover {
   transform: scale(1.1);
-}
-.cardInfo {
-  padding: 1rem;
-}
-.destTitle {
-  color: var(--blackcolor);
-  font-size: 1, 25rem;
-}
- .continent {
-  gap: 0.5rem;
-}
-.icon {
-  color: var(--textcolor);
-  font-size: 18px;
-}
-.name {
-  color: var(--textcolor);
-  font-weight: 400;
-  font-size: 14px;
-}
-.fees {
-  width: 100%;
-  justify-content: space-between;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-top: 1.5px solid var(--greytext);
-  border-bottom: 1.5px solid var(--greytext);
-}
-.grade {
-  color: var(--textcolor);
-  max-width: 100px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
- small {
-  text-align: center;
-  background: var(--textcolor);
-  border-radius: 1.1rem;
-  color: var(--whitecolor);
-  padding: 1px 10px;
-  font-size: 10px;
-}
- .price {
-  font-size: 2rem;
-  color: var(--blackcolor);
-}
-.desc {
-  font-size: 13.5px;
-  color: var(--textcolor);
-  font-weight: 500;
 }
  .btn {
   margin-top: 1rem;
@@ -153,5 +104,17 @@
   }
   .singlefr {
     height: auto;
+  }
+}
+@media screen and (min-width: 1140px) {
+  .continents {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .singlefr {
+    height: auto;
+    
+      width: 350%;
+   
+    
   }
 }

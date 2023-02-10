@@ -1,7 +1,7 @@
 :root {
   --primarycolor: hsl(26, 93%, 50%);
   --Hovercolor: hsl(26, 90%, 42%);
-  --whitecolor: hsl(0, 0%,100%);
+  ---whitecolor: hsl(0, 0%,100%);
   --blackcolor: hsl(0, 0%, 18%);
   --textcolor: hsl(240, 1%, 48%);
   --whitecolorDeam: hsl(0, 0%, 93%);
@@ -28,6 +28,7 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
+
 }
 
 .icone {
@@ -58,7 +59,7 @@
     margin: auto;
     padding: 0.5rem 0;
   }
-  .navItem {
+  .NavItem {
     padding: 0.5rem 0;
   }
   .navLink {
@@ -67,22 +68,29 @@
     font-weight: 600;
   }
   .navLink:hover {
-    color: var(--primarycolor);
+    color: var(--Hovercolor);
   }
-  .btn {
+  .btnq  {
     margin-top: 1rem;
     background: var(--primarycolor);
-    border-radius: 2rem;
+    border-radius: 1rem;
     border: none;
     outline: none;
-    cursor: pointer;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+   
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 2.5rem;
+    
+    display: flex;
+   
+    
+    
 
   }
-  .btn a {
-    font-weight: 600;
+  .btnq a {
+    font-weight: 400;
     color: var(--whitecolor);
+    text-align: center;
     
   }
   .closeNavbar {
@@ -97,17 +105,46 @@
   .activeNavbar {
     top: 7rem;
   }
-  .toggleNavbar.icon {
+  .toggleNavbar img {
     font-size: 25px;
-    color: var(--primarycolor);
+    border-radius: 50px;
+    
+    width: 40px;
+   
   }
   .toggleNavbar.icon:hover {
     color: var(--Hovercolor);
   }
+  .profile_action.btnq{
+    
+    display: grid;
+    flex-direction: row;
+    background: var(--cardBg);
+  
+  }
 }
+
 @media screen and (min-width: 769px) {
-  .toggleNavbar, .closeNavbar {
+  .closeNavbar {
     display: none;
+  }
+  .toggleNavbar img{
+    
+    margin-bottom: 1rem;
+    width: 40px;
+    border-radius: 50px;
+  }
+  .toggleNavbar.profile_action{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 150px;
+    z-index: 10;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background: var(--cardBg);
+    line-height: 30px;
   }
   .header {
     padding: 0.5rem 1rem;
@@ -117,26 +154,38 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    height: fit-content;
+  
   }
-  .navItem .navLink {
+  .NavItem{
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .NavItem .navLink {
     color: var(--textcolor);
     padding: 0 0.45rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
+    
+    
   }
-  .navItem .navLink:hover {
+  .NavItem .navLink:hover {
     color: var(--primarycolor);
   }
-  .btn {
-    margin-left: 1rem;
+  .btnq {
     
-    margin-bottom: 2rem;
+    margin-right: 1rem;
+    padding: .4rem 1.5rem;
+    background: var(--primarycolor);
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
   }
-  .btn a {
-    color: var(--whitecolor);
+  .btnq a {
     font-weight: 500;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    color: var(--whitecolor);
+    text-align: center;
   }
 }
 @media screen and (min-width: 960) {

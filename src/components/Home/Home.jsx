@@ -8,9 +8,10 @@ import {BsListTask } from 'react-icons/bs'
 import {TbApps} from 'react-icons/tb'
 import {TiSocialPinterestCircular} from 'react-icons/ti'
 
+
 const { getImageUrl } = require('../../services/media.service.js')
 const hilal = getImageUrl('hilal.mp4')
-const Home = () => {
+const Home = (props) => {
     return (
      <section className='homes'>
         <div className="overlays"></div>
@@ -23,7 +24,6 @@ const Home = () => {
                     <h1 className="homeTtle">
                         SEARCH YOUR DISTINATION
                     </h1>
-                    
                     
                 </div>
                 
