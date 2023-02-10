@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {Link} from 'react-router-dom'
-import "./tour-card.css";
+import "./tour-card.scss";
 import calculateAvgRating from '../utils/avgRating';
 
 

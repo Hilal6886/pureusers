@@ -6,7 +6,7 @@ import {FaWifi} from 'react-icons/fa'
 import {MdAirportShuttle} from 'react-icons/md'
 import {MdLocationOn} from 'react-icons/md'
 import Aos from 'aos'
-import 'aos/dist/aos.scss'
+import 'aos/dist/aos.css'
 
 const { getImageUrl } = require('../../services/media.service.js')
 const img2= getImageUrl('img2.jpg')

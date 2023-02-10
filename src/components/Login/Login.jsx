@@ -7,7 +7,7 @@ import userIcon from '../../assets/images/user.png'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase'
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom"
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from '../../firebase'

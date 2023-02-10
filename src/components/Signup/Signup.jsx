@@ -11,7 +11,7 @@ import { setDoc,doc } from 'firebase/firestore'
 
 import{storage} from "../../firebase"
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../firebase';
 import {useNavigate} from "react-router-dom"
 

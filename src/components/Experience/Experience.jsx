@@ -1,7 +1,7 @@
 import React from 'react'
 import './experience.scss'
 import {Container,Col,Row} from "reactstrap"
-import experience from "../Experience/experience.png"
+import experience from "./experience.png"
 
 
 const Experience = () => {

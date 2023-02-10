@@ -7,7 +7,7 @@ import useAuth from '../custom-hooks/useAuth'
 import {signOut} from "firebase/auth"
 import { auth } from "../../firebase";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Navbar = () => {
