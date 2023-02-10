@@ -1,5 +1,5 @@
 import React from 'react'
-import './experience.css'
+import './experience.scss'
 import {Container,Col,Row} from "reactstrap"
 import experience from "../Experience/experience.png"
 

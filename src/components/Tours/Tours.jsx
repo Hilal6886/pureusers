@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import CommonSection from '../../shared/CommonSection'
-import './Tour.css'
+import './Tour.scss'
 import tourData from '../../assets/data/tours';
 import TourCard from '../../shared/TourCard'
 import { Col, Container, Row } from 'reactstrap'

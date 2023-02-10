@@ -1,5 +1,5 @@
 import React from 'react'
-import './gallary.css'
+import './gallary.scss'
 import {Container,Col,Row} from "reactstrap"
 import MasonryImagsGallery from '../image-gallery/MasonryImagsGallery';
 
