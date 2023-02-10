@@ -1,0 +1,51 @@
+:root {
+    --primarycolor: hsl(26, 93%, 50%);
+    --Hovercolor: hsl(26, 90%, 42%);
+    ---whitecolor: hsl(0, 0%,100%);
+    --blackcolor: hsl(0, 0%, 18%);
+    --textcolor: hsl(240, 1%, 48%);
+    --whitecolorDeam: hsl(0, 0%, 93%);
+    --greyBg: hsl(0, 0%, 96%);
+    --greytext: rgb(190, 190, 190);
+    --inputcolor: hsl(330, 12%, 97%);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBg: rgb(225, 225, 235);
+  }
+.experience_content{
+    font-size: 2.5rem;
+    margin-top: 4.5rem;
+    font-weight: 500;
+}
+
+.experience_content p{
+    font-size: 1.1rem;
+    columns: var(--textcolor);
+    margin-top: 1rem;
+
+}
+.counter_wrapper{
+    margin-top: 2.5rem;
+}
+.counter_box span{
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primarycolor);
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 10p 5px 10px 5px;
+}
+
+.counter_box h6{
+    font-size: 1.1rem;
+    margin-top: 0.7rem;
+    color: var(--textcolor);
+}
+ .experience_img img{
+    margin-top: 3.5rem;
+    width: 100%;
+ }
