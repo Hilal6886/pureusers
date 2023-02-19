@@ -41,6 +41,7 @@ const Detail = ({ setActive, user }) => {
   useEffect(() => {
     (async ()=>{
       const docs=await getRecentBlogs();
+      console.log("ffffffffffffffffffffffffffff: ",docs)
       setBlogs(docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     })()
   }, []);

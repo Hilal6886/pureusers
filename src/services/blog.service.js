@@ -28,7 +28,7 @@ export const getRecentBlogs= async (blogId)=>{
           orderBy("timestamp", "desc"),
           limit(5)
           );
-          const docSnapshot = await getDocs(recentBlogs);
+          const docSnapshot = await (await getDocs(recentBlogs)).docChanges;
           return docSnapshot.docs
     }catch(err){
         console.log("BLOG SERVICE getRecentBlogs: ",err)
@@ -39,7 +39,7 @@ export const getRecentBlogs= async (blogId)=>{
 export const getBlogs= async ()=>{
     try{
         const docRef = doc(db, "blogs");
-       return await getDoc(docRef);
+       return await (await getDocs(docRef)).docChanges;
     }catch(err){
         console.log("BLOG SERVICE getBlogs: ",err)
         return []
@@ -47,19 +47,18 @@ export const getBlogs= async ()=>{
 };
 export const getRelatedBlogs= async (tags)=>{
     try{
-        return await []
     const blogRef = collection(db, "blogs");
     const relatedBlogsQuery = query(
       blogRef,
       where("tags", "array-contains-any", tags.length?tags:['hi'], limit(3))
     );
-    const relatedBlogSnapshot = await getDocs(relatedBlogsQuery);
+    const relatedBlogSnapshot = await (await getDocs(relatedBlogsQuery)).docChanges;
     const relatedBlogs = [];
     relatedBlogSnapshot.forEach((doc) => {
       relatedBlogs.push({ id: doc.id, ...doc.data() });
     });
         const docRef = doc(db, "blogs");
-        return  (await getDoc(docRef))||[];
+        return (await getDocs(docRef)).docChanges;
     }catch(err){
         console.log("BLOG SERVICE getRelatedBlogs: ",err)
         return []
