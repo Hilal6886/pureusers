@@ -6,7 +6,7 @@ import Footer from "./components/Footer/Footer"
 import HomeRoute from "./routes/home/home.component";
 import ServicesRoute from "./routes/service-offered/service-offered.component";
 import OfferRoute from "./routes/Offer/Offer-route.component.jsx"
-import BlogRoute from "./routes/blog/blog-route.component.jsx"
+
 import AboutRoute from "./routes/about/about-route.component.jsx"
 import ContactRoute from "./routes/Contact/Contact-route.component.jsx";
 
@@ -19,13 +19,13 @@ import { initializeApp } from "firebase/app";
 import { Routes, Route, useNavigate,  } from "react-router-dom";
 import ProtectedRoute from './components/ProtectedRoute'
 import { auth } from "./firebase";
-import Detail from "./pages/Detail";
+
 import TagBlog from "./pages/TagBlog";
 import CategoryBlog from "./pages/CategoryBlog";
 import AddEditBlog from './pages/AddEditBlog';
 
-import CreateContainer from "./pages/CreateContainer";
-import Blog from "./components/Blog/Blog";
+
+
 import Blogs from "./pages/Blogs";
 import CBlog from "./pages/CBlog";
 
@@ -106,7 +106,7 @@ const App = () => {
           <TourDetailsRoute />
         </ProtectedRoute>} />
       <Route path="/ThankYou" element={<ThankYouRoute />} />
-      <Route path="/Container" element={<CreateContainer />} />
+ 
     
       <Route
           path="/auth"
