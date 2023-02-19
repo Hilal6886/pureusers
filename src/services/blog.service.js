@@ -11,17 +11,16 @@ import {
     where,
   } from "firebase/firestore";
   import { db } from "../firebase";
-
-const getBlog= async (blogId)=>{
+export const getBlog = async (blogId)=>{
     try{
         const docRef = doc(db, "blogs", blogId);
-       return await getDoc(docRef);
+       return (await getDoc(docRef)).data();
     }catch(err){
-        console.log("BLOG SERVICE: ",err)
+        console.log("BLOG SERVICE getBlog: ",err)
         return null
     }
-}
-const getRecentBlogs= async (blogId)=>{
+};
+export const getRecentBlogs= async (blogId)=>{
     try{
         const blogRef = collection(db, "blogs");
         const recentBlogs = query(
@@ -32,26 +31,27 @@ const getRecentBlogs= async (blogId)=>{
           const docSnapshot = await getDocs(recentBlogs);
           return docSnapshot.docs
     }catch(err){
-        console.log("BLOG SERVICE: ",err)
+        console.log("BLOG SERVICE getRecentBlogs: ",err)
         return []
     }
-}
+};
 
-const getBlogs= async ()=>{
+export const getBlogs= async ()=>{
     try{
         const docRef = doc(db, "blogs");
-        await getDoc(docRef);
+       return await getDoc(docRef);
     }catch(err){
-        console.log("BLOG SERVICE: ",err)
-        return null
+        console.log("BLOG SERVICE getBlogs: ",err)
+        return []
     }
-}
-const getRelatedBlogs= async (tags)=>{
+};
+export const getRelatedBlogs= async (tags)=>{
     try{
+        return await []
     const blogRef = collection(db, "blogs");
     const relatedBlogsQuery = query(
       blogRef,
-      where("tags", "array-contains-any", tags, limit(3))
+      where("tags", "array-contains-any", tags.length?tags:['hi'], limit(3))
     );
     const relatedBlogSnapshot = await getDocs(relatedBlogsQuery);
     const relatedBlogs = [];
@@ -59,26 +59,19 @@ const getRelatedBlogs= async (tags)=>{
       relatedBlogs.push({ id: doc.id, ...doc.data() });
     });
         const docRef = doc(db, "blogs");
-        await getDoc(docRef);
+        return  (await getDoc(docRef))||[];
     }catch(err){
-        console.log("BLOG SERVICE: ",err)
-        return null
+        console.log("BLOG SERVICE getRelatedBlogs: ",err)
+        return []
     }
-}
+};
 
-const updateBlog= async (blogId,blogData)=>{
+export const updateBlog= async (blogId,blogData)=>{
     try{
         await updateDoc(doc(db, "blogs", blogId), {...blogData, timestamp: serverTimestamp()});
+        return true
     }catch(err){
-        console.log("BLOG SERVICE: ",err)
+        console.log("BLOG SERVICE updateBlog: ",err)
         return null
     }
-}
-
-module.exports= {
-    getBlog,
-    getRecentBlogs,
-    getBlogs,
-    getRelatedBlogs,
-    updateBlog
-}
+};
