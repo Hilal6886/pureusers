@@ -65,10 +65,11 @@ const Detail = ({ setActive, user }) => {
     const blogRef = collection(db, "blogs");
     const docRef = doc(db, "blogs", id);
     const blogDetail = await getDoc(docRef);
-   
-  
-   
-   
+    const blogs = await getDocs(blogRef);
+    let tags = [];
+    blogs.docs.map((doc) => tags.push(...doc.get("tags")));
+    let uniqueTags = [...new Set(tags)];
+    setTags(uniqueTags);
     setBlog(blogDetail.data());
     const relatedBlogsQuery = query(
       blogRef,
@@ -113,7 +114,7 @@ const Detail = ({ setActive, user }) => {
           setLikes([...new Set(likes)]);
         } else {
           likes = likes.filter((id) => id !== userId);
-           setLikes(likes);
+          setLikes(likes);
         }
       }
       await updateDoc(doc(db, "blogs", id), {
@@ -144,11 +145,11 @@ const Detail = ({ setActive, user }) => {
               <span className="meta-info text-start">
                 By <p className="author">{blog?.author}</p> -&nbsp;
                 {blog?.timestamp.toDate().toDateString()}
-               
+                <Like handleLike={handleLike} likes={likes} userId={userId} />
               </span>
               <p className="text-start">{blog?.description}</p>
               <div className="text-start">
-             
+                <Tags tags={blog?.tags} />
               </div>
               <br />
               <div className="custombox">
