@@ -5,9 +5,9 @@ class ToursRoute extends Component {
 
   render(){
     return (
-      <Layout>
+      
        <Tours/>
-    </Layout>
+    
     )
   }
 }

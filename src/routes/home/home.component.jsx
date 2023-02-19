@@ -5,6 +5,7 @@ import Main from "../../components/Main/Main.jsx"
 import Experience from "../../components/Experience/Experience.jsx"
 import  Gallary from "../../components/Gallary/Gallary.jsx"
 import  Testimonial from "../../components/Testimonial/Testimonial.jsx"
+
 class HomeRoute extends Component {
   blogs = [
     {
@@ -38,13 +39,20 @@ class HomeRoute extends Component {
   ];
   render(){
     return (
-      <Layout>
+      <div>
+     
        <Home/>
       <Main/>
       <Experience/>
       <Gallary/>
       <Testimonial/>
-    </Layout>
+      </div>
+      
+     
+     
+      
+      
+    
     )
   }
 }

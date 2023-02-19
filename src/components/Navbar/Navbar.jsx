@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react';
+import { Link } from "react-router-dom";
 import './navbar.scss'
 
 import {AiFillCloseCircle} from 'react-icons/ai'
@@ -10,7 +11,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const Navbar = () => {
+const Navbar = ({user}) => {
+    const userId = user?.uid
+    console.log('userId',userId)
+    console.log('name',user?.displayName)
 
 
    const [active, setActive] = useState('navBar')
@@ -22,8 +26,8 @@ const Navbar = () => {
     }
     const {currentUser} =useAuth()
     const profileActionRef = useRef(null)
-    const toggleProfileAction = ()=> profileActionRef.
-    toggle('show_profileActions')
+    const toggleProfileAction = ()=> profileActionRef
+    .toggle('show_profileActions')
     const logout =()=>{
        
         signOut(auth).then(()=>{
@@ -70,14 +74,38 @@ const Navbar = () => {
                     <li className="NavItem">
                         <a href="/about" className="navLink">ABOUT</a>
                     </li>
-
+                    {/*} <Link to="/blogs"></Link>
                     <li className="NavItem">
                         <a href="/blogs" className="navLink">BLOG</a>
-                    </li>
+    </li>*/}
+                    <Link to="/blogs" style={{ textDecoration: "none" }}>
+                  <li
+                    className={`NavItem ${
+                      active === "blogs" ? "active" : ""
+                    }`}
+                    onClick={() => setActive("blogs")}
+                  >
+                    Blogs
+                  </li>
+                </Link>
 
                     <li className="NavItem">
                         <a href="/contact-us" className="navLink">CONTACT</a>
                     </li>
+                   {/* <li className="NavItem">
+                        <a href="/create" className="navLink">ADMIN</a>
+                </li>*/}
+                    <Link to="/create" style={{ textDecoration: "none" }}>
+                  <li
+                    className={`NavItem ${
+                      active === "create" ? "active" : ""
+                    }`}
+                    onClick={() => setActive("create")}
+                  >
+                    Admin
+                  </li>
+                  
+                </Link>
                     <div className="profile_action" ref={profileActionRef}
                     onClick={toggleProfileAction}>
                         {
@@ -88,13 +116,11 @@ const Navbar = () => {
                             <div>
                                
                     <button className="btnq">
-                    <a href="/Login">SIGN IN</a>
+                    <a href="/auth">Login</a>
                             
                     </button> 
                     
-                    <button className="btnq">
-                            <a href="/Signup">SIGN UP</a>
-                    </button> 
+                   
                             </div>
 
                       )  }
@@ -114,6 +140,10 @@ const Navbar = () => {
                  <img src={currentUser? currentUser.photoURL: userAvatar} alt='user profile'  onClick={toggleProfileAction}/>
                  
                  </div>
+                 <p style={{ marginTop: "12px", marginLeft: "5px" }}>
+                        {user?.displayName}
+                      </p>
+                      
                  <ToastContainer />
 
 

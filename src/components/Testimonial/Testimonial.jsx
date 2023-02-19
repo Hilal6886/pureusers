@@ -2,10 +2,13 @@ import React from 'react'
 import './testimonial.scss'
 import {Container,Col,Row} from "reactstrap";
 
-import Slider from 'react-slick'
+
 import maleTourist from '../Testimonial/male-tourist.png'
-import ava02 from '../Testimonial/ava-2.jpg'
-import ava03 from '../Testimonial/ava-3.jpg'
+import CBlog from '../../pages/CBlog';
+
+
+
+
 
 
 
@@ -13,7 +16,9 @@ const Testimonial = () => {
   
   return (
    <section className='newsletter'>
+    
     <Container>
+    <div className='tyu'>
         <Row>
             <Col lg ='6'>
                 
@@ -39,8 +44,17 @@ const Testimonial = () => {
             </Col>
             
         </Row>
-    </Container>
+        </div>
+        <section className='ngft'>
+     <div>
+        <CBlog/>
+    </div>
    </section>
+    </Container>
+   
+  
+   </section>
+   
   )
 }
 

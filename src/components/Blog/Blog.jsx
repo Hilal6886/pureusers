@@ -1,88 +1,127 @@
-import React from 'react';
-import './blog.scss'
-import {BsArrowRightShort} from 'react-icons/bs';
-const { getImageUrl } = require('../../services/media.service.js')
-const img= getImageUrl('img.jpg')
-
-const posts = [    
-    {
-        id:"b1",
-        imageUrl: img,
-        title:'Dal lake',
-        description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
-    },
-    {
-        id:"b2",
-        title: "Why you should visit ladakh",
-        imageUrl:"https://firebasestorage.googleapis.com/v0/b/quantumtourandtravels.appspot.com/o/quantumtourandtravel%2Fblogs%2FShyok_river_Ladakh.jpg.webp?alt=media&token=5f1a8588-eb44-4726-859a-0d29a7ad3454",
-        description: "Imposing mountains, thrilling roads, and  Cinematic views, that’s the beauty of Ladakh",
-    },
-    {
-        id:"b3",
-        title: "Visiting Kashmir",
-        imageUrl: "https://firebasestorage.googleapis.com/v0/b/quantumtourandtravels.appspot.com/o/quantumtourandtravel%2Fblogs%2Fimages.jpg?alt=media&token=dfe0a5fa-d486-4afa-b6d0-00ebfe018409",
-        description: "Kashmir is the northernmost geographical region of the Indian subcontinent",
-    },
-    {
-        id:"b4",
-        imageUrl: img,
-        title:'Dal lake',
-        description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
-    },
-    {
-        id:"b5",
-        imageUrl: img,
-        title:'Dal lake',
-        description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
-    },
-    {
-        id:"b6",
-        imageUrl: img,
-        title:'Dal lake',
-        description: 'Dal is a lake in Srinagar Dal Lake is a misnomer as Dal in Kashmiri means lake, the summer capital of Jammu and Kashmir. The urban lake, is integral to tourism and recreation in Kashmir and is named the “Jewel in the crown of Kashmir',
-    },
-];
-
-const Blog = () => {
+import {
+    collection,
+    endAt,
+    endBefore,
+    getDocs,
+    limit,
+    limitToLast,
+    orderBy,
+    query,
+    startAfter,
+  } from "firebase/firestore";
+  import React from "react";
+  import { useEffect } from "react";
+  import { useState } from "react";
+  import BlogSection from "../BlogSection";
+  import Pagination from "../Pagination";
+  import Spinner from "../Spinner";
+  import { db } from "../../firebase";
+  
+  const Blog = ({setActive}) => {
+    const [loading, setLoading] = useState(false);
+    const [blogs, setBlogs] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [lastVisible, setLastVisible] = useState(null);
+    const [noOfPages, setNoOfPages] = useState(null);
+    const [count, setCount] = useState(null);
+  
+    useEffect(() => {
+      getBlogsData();
+      getTotalBlogs();
+      setActive("blogs");
+      
+    }, []);
+  
+    if (loading) {
+      return <Spinner />;
+    }
+  
+    const getBlogsData = async () => {
+      setLoading(true);
+      const blogRef = collection(db, "blogs");
+      const first = query(blogRef, orderBy("title"), limit(4));
+      const docSnapshot = await getDocs(first);
+      setBlogs(docSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      setCount(docSnapshot.size);
+      setLastVisible(docSnapshot.docs[docSnapshot.docs.length - 1]);
+      setLoading(false);
+    };
+  
+    const getTotalBlogs = async () => {
+      const blogRef = collection(db, "blogs");
+      const docSnapshot = await getDocs(blogRef);
+      const totalBlogs = docSnapshot.size;
+      const totalPage = Math.ceil(totalBlogs / 4);
+      setNoOfPages(totalPage);
+    };
+  
+    const fetchMore = async () => {
+      setLoading(true);
+      const blogRef = collection(db, "blogs");
+      const nextBlogsQuery = query(
+        blogRef,
+        orderBy("title"),
+        startAfter(lastVisible),
+        limit(4)
+      );
+      const nextBlogsSnaphot = await getDocs(nextBlogsQuery);
+      setBlogs(
+        nextBlogsSnaphot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      );
+      setCount(nextBlogsSnaphot.size);
+      setLastVisible(nextBlogsSnaphot.docs[nextBlogsSnaphot.docs.length - 1]);
+      setLoading(false);
+    };
+    const fetchPrev = async () => {
+      setLoading(true);
+      const blogRef = collection(db, "blogs");
+      const end =
+        noOfPages !== currentPage ? endAt(lastVisible) : endBefore(lastVisible);
+      const limitData =
+        noOfPages !== currentPage
+          ? limit(4)
+          : count <= 4 && noOfPages % 2 === 0
+          ? limit(4)
+          : limitToLast(4);
+      const prevBlogsQuery = query(blogRef, orderBy("title"), end, limitData);
+      const prevBlogsSnaphot = await getDocs(prevBlogsQuery);
+      setBlogs(
+        prevBlogsSnaphot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      );
+      setCount(prevBlogsSnaphot.size);
+      setLastVisible(prevBlogsSnaphot.docs[prevBlogsSnaphot.docs.length - 1]);
+      setLoading(false);
+    };
+  
+    const handlePageChange = (value) => {
+      if (value === "Next") {
+        setCurrentPage((page) => page + 1);
+        fetchMore();
+      } else if (value === "Prev") {
+        setCurrentPage((page) => page - 1);
+        fetchPrev();
+      }
+    };
     return (
-     <section className='blog  section'>
-        <div className="secContaine">
-            <div className="secitro">
-                <h2 className='secTile'> 
-                OUR BLOGS
-                </h2>
-                <p>
-                    An insight to the incredible experince in the world.
-                </p>
-            </div>
-            <div className="manCotainer grid">
-                {
-                    posts.map(({id, imageUrl, title, description} )=>{
-                        return (
-                            <div className="snglePost grid" key={id} >
-                                <div className="imgDev">
-                                    <img src={imageUrl} alt={title} />
-                                </div>
-                                <div className="postDetails">
-                                    <h3>
-                                        {title}
-                                    </h3>
-                                    <p>{description}</p>
-                                </div>
-                                <a href='/' className='flex'>
-                               
-                                Read More
-                                <BsArrowRightShort className="iconr"/>
-                                </a>
-                            </div>
-                        )
-                    })
-                }
-               
-            </div>
+      <div>
+        <div className="container">
+          <div className="row">
+            <div className="blog-heading text-center py-2 mb-4">Daily Blogs</div>
+            {blogs?.map((blog) => (
+              <div className="col-md-6" key={blog.id}>
+                <BlogSection {...blog} />
+              </div>
+            ))}
+          </div>
+          <Pagination
+            currentPage={currentPage}
+            noOfPages={noOfPages}
+            handlePageChange={handlePageChange}
+          />
         </div>
-       
-     </section>
-    )
-}
-export default Blog
+      </div>
+    );
+  };
+  
+  export default Blog;
+  

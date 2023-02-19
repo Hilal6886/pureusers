@@ -5,10 +5,10 @@ import {
 } from "firebase/auth";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { auth } from "../../firebase";
+import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { app } from '../../firebase'
+import { app } from '../firebase'
 
 const initialState = {
   firstName: "",
@@ -19,15 +19,15 @@ const initialState = {
 };
 
 const Auth = ({ setActive, setUser }) => {
-  const firebaseAuth =getAuth(app)
+  const firebaseAuth = getAuth(app)
   const provider = new GoogleAuthProvider();
 
-  const login = async() => {
-    const response = await signInWithPopup(firebaseAuth , provider)
+  const login = async () => {
+    const response = await signInWithPopup(firebaseAuth, provider)
     console.log(response)
-    
-      toast.success('Sucessfully logged in')
-      navigate('/')
+
+    toast.success('Sucessfully logged in')
+    navigate('/')
   }
   const [state, setState] = useState(initialState);
   const [signUp, setSignUp] = useState(false);
@@ -65,7 +65,7 @@ const Auth = ({ setActive, setUser }) => {
           password
         );
         await updateProfile(user, { displayName: `${firstName} ${lastName}` });
-        setActive("Cblog");
+        setActive("home");
       } else {
         return toast.error("All fields are mandatory to fill");
       }
@@ -75,7 +75,7 @@ const Auth = ({ setActive, setUser }) => {
 
   return (
     <div className="container-fluid mb-4">
-      <div className="container">
+      <div className="containerr">
         <div className="col-12 text-center">
           <div className="text-center heading py-2">
             {!signUp ? "Sign-In" : "Sign-Up"}
@@ -149,10 +149,10 @@ const Auth = ({ setActive, setUser }) => {
                   {!signUp ? "Sign-in" : "Sign-up"}
                 </button>
               </div>
-             
-                <button class="login-with-google-btn" onClick={login} >
-                  Sign in with Google
-                  </button>
+
+              <button class="login-with-google-btn" onClick={login} >
+                Sign in with Google
+              </button>
             </form>
             <div>
               {!signUp ? (
@@ -185,10 +185,10 @@ const Auth = ({ setActive, setUser }) => {
                       >
                         Sign In
                       </span>
-                      
+
                     </p>
                   </div>
-                  
+
                 </>
               )}
             </div>
