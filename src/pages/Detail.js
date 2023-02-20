@@ -44,7 +44,7 @@ const Detail = ({ setActive, user }) => {
       const blogRef = collection(db, "blogs");
       const recentBlogs = query(
         blogRef,
-        orderBy("timestamp", "desc"),
+        orderBy( "desc"),
         limit(5)
       );
       const docSnapshot = await getDocs(recentBlogs);
@@ -186,7 +186,7 @@ const Detail = ({ setActive, user }) => {
             <div className="col-md-3">
               <div className="blog-heading text-start py-2 mb-4">Tags</div>
               <Tags tags={tags} />
-              <FeatureBlogs title={"Recent Blogs"} blogs={blogs} />
+       
             </div>
           </div>
         

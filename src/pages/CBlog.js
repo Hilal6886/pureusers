@@ -28,6 +28,7 @@ function useQuery() {
 }
 
 const CBlog = ({ setActive, user, active }) => {
+  
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [tags, setTags] = useState([]);
