@@ -9,12 +9,15 @@ const BlogSection = ({
   description,
   category,
   imgUrl,
-  userId,
+  
   author,
   timestamp,
   user,
   handleDelete,
 }) => {
+  const userId = user?.uid
+    console.log('userId',userId)
+    console.log('name',user?.displayName)
   return (
     <div>
       <div className="row pb-4" key={id}>
@@ -41,7 +44,7 @@ const BlogSection = ({
           <Link to={`/detail/${id}`}>
             <button className="btn btn-read">Read More</button>
           </Link>
-          {user && user.uid === userId && (
+          {userId && user.uid === userId && (
             <div style={{ float: "right" }}>
            
               <FontAwesome

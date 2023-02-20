@@ -1,4 +1,4 @@
-{/*import React from "react";
+import React from "react";
 import Card from "./Card";
 
 const RelatedBlog = ({ blogs, id }) => {
@@ -25,4 +25,4 @@ const RelatedBlog = ({ blogs, id }) => {
   );
 };
 
-export default RelatedBlog;*/}
+export default RelatedBlog;

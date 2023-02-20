@@ -28,6 +28,7 @@ import AddEditBlog from './pages/AddEditBlog';
 
 import Blogs from "./pages/Blogs";
 import CBlog from "./pages/CBlog";
+import Detail from './pages/Detail';
 
 
 
@@ -84,9 +85,12 @@ const App = () => {
       <Route path="/Testimonial" element={<HomeRoute />} />
       <Route
           path="CBlog"
-          element={ <CBlog setActive={setActive} active={active} user={user}/>  }
+          element={ <CBlog  active={active} user={user}/>  }
         />
-
+<Route
+          path="/detail/:id"
+          element={<Detail user={user} />}
+        />
       
       <Route path="/about" element={
         <ProtectedRoute>

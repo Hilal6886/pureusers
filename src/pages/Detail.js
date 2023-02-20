@@ -25,7 +25,10 @@ import { db } from "../firebase";
 import Spinner from "../components/Spinner";
 
 const Detail = ({ setActive, user }) => {
-  const userId = user?.uid;
+ 
+  const userId = user?.uid
+  console.log('userId',userId)
+  console.log('name',user?.displayName)
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [blog, setBlog] = useState(null);
@@ -51,14 +54,25 @@ const Detail = ({ setActive, user }) => {
     getRecentBlogs();
   }, []);
 
-  useEffect(() => {
+  useEffect(()=> {
+    const getBlogsData = async () => {
+      const blogRef = collection(db, "blogs");
+   
+    const blogs = await getDocs(blogRef);
+    setBlogs(blogs.docs.map((doc) => ({id: doc.id, ...doc.data})))
+
+    } 
+    getBlogsData();
+    
+  
+
+  },[])
+
+  useEffect(() => {  
     id && getBlogDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  if (loading) {
-    return <Spinner />;
-  }
 
   const getBlogDetail = async () => {
     setLoading(true);
@@ -66,25 +80,17 @@ const Detail = ({ setActive, user }) => {
     const docRef = doc(db, "blogs", id);
     const blogDetail = await getDoc(docRef);
     const blogs = await getDocs(blogRef);
-    let tags = [];
+    var tags = [];
     blogs.docs.map((doc) => tags.push(...doc.get("tags")));
-    let uniqueTags = [...new Set(tags)];
+    var uniqueTags = [...new Set(tags)];
     setTags(uniqueTags);
     setBlog(blogDetail.data());
-    const relatedBlogsQuery = query(
-      blogRef,
-      where("tags", "array-contains-any", blogDetail.data().tags, limit(3))
-    );
+   
     setComments(blogDetail.data().comments ? blogDetail.data().comments : []);
     setLikes(blogDetail.data().likes ? blogDetail.data().likes : []);
-    const relatedBlogSnapshot = await getDocs(relatedBlogsQuery);
-    const relatedBlogs = [];
-    relatedBlogSnapshot.forEach((doc) => {
-      relatedBlogs.push({ id: doc.id, ...doc.data() });
-    });
-    setRelatedBlogs(relatedBlogs);
-    setActive(null);
-    setLoading(false);
+   
+   
+   
   };
 
   const handleComment = async (e) => {
@@ -183,7 +189,7 @@ const Detail = ({ setActive, user }) => {
               <FeatureBlogs title={"Recent Blogs"} blogs={blogs} />
             </div>
           </div>
-          <RelatedBlog id={id} blogs={relatedBlogs} />
+        
         </div>
       </div>
     </div>
