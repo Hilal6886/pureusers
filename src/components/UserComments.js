@@ -1,6 +1,9 @@
 import React from "react";
+import useAuth from "./custom-hooks/useAuth";
+import userAvatar from '../assets/images/avatar.png'
 
 const UserComments = ({ name, body, createdAt, msg }) => {
+  const {currentUser} =useAuth()
   return (
     <div>
       <div className="row">
@@ -13,8 +16,7 @@ const UserComments = ({ name, body, createdAt, msg }) => {
                 <>
                   <div className="media-left">
                     <img
-                      src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                      alt="user"
+                     src={currentUser? currentUser.photoURL: userAvatar} alt='user profile'
                       className="rounded-circle"
                     />
                   </div>

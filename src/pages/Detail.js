@@ -1,16 +1,16 @@
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  limit,
-  query,
-  serverTimestamp,
-  Timestamp,
-  updateDoc,
-  orderBy,
-  where,
-} from "firebase/firestore";
+// import {
+//   collection,
+//   doc,
+//   getDoc,
+//   getDocs,
+//   limit,
+//   query,
+//   serverTimestamp,
+//   Timestamp,
+//   updateDoc,
+//   orderBy,
+//   where,
+// } from "firebase/firestore";
 import { isEmpty } from "lodash";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -23,28 +23,37 @@ import Tags from "../components/Tags";
 import UserComments from "../components/UserComments";
 import { db } from "../firebase";
 import Spinner from "../components/Spinner";
+import {
+  collection,
+  
+  getDocs,
+  limit,
+  query,
+  
+  orderBy,
+  
+} from "firebase/firestore";
+import { getBlog,  getRecentBlogs, getBlogs, getRelatedBlogs, updateBlog } from "../services/blog.service"
 
 const Detail = ({ setActive, user }) => {
- 
-  const userId = user?.uid
-  console.log('userId',userId)
-  console.log('name',user?.displayName)
+  const userId = user?.uid;
   const { id } = useParams();
-  const [loading, setLoading] = useState(false);
-  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [blog, setBlog] = useState({});
   const [blogs, setBlogs] = useState([]);
+
   const [tags, setTags] = useState([]);
   const [comments, setComments] = useState([]);
   let [likes, setLikes] = useState([]);
   const [userComment, setUserComment] = useState("");
-  const [relatedBlogs, setRelatedBlogs] = useState([]);
+  // const [relatedBlogs, setRelatedBlogs] = useState([]);
 
   useEffect(() => {
     const getRecentBlogs = async () => {
       const blogRef = collection(db, "blogs");
       const recentBlogs = query(
         blogRef,
-        orderBy( "desc"),
+        orderBy("timestamp", "desc"),
         limit(5)
       );
       const docSnapshot = await getDocs(recentBlogs);
@@ -54,60 +63,37 @@ const Detail = ({ setActive, user }) => {
     getRecentBlogs();
   }, []);
 
-  useEffect(()=> {
-    const getBlogsData = async () => {
-      const blogRef = collection(db, "blogs");
-   
-    const blogs = await getDocs(blogRef);
-    setBlogs(blogs.docs.map((doc) => ({id: doc.id, ...doc.data})))
+  const getBlogDetail = async () => {
+    const blogDetail = await getBlog(id)
+    blogDetail.timestamp=(blogDetail.timestamp).toDate().toDateString()
+    setBlog(blogDetail|| {});
+    setLikes(blogDetail.likes || []);
+    setComments(blogDetail.comments || []);
+    console.log("BBLOGGGGGGGGGGGGGGG",blogDetail)
+    // const relatedBlogs = await getRelatedBlogs(blogDetail.tags)
+    // setRelatedBlogs(relatedBlogs);
+    setLoading(false);
+  };
 
-    } 
-    getBlogsData();
-    
-  
-
-  },[])
-
-  useEffect(() => {  
+  useEffect(() => {
     id && getBlogDetail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-
-  const getBlogDetail = async () => {
-    setLoading(true);
-    const blogRef = collection(db, "blogs");
-    const docRef = doc(db, "blogs", id);
-    const blogDetail = await getDoc(docRef);
-    const blogs = await getDocs(blogRef);
-    var tags = [];
-    blogs.docs.map((doc) => tags.push(...doc.get("tags")));
-    var uniqueTags = [...new Set(tags)];
-    setTags(uniqueTags);
-    setBlog(blogDetail.data());
-   
-    setComments(blogDetail.data().comments ? blogDetail.data().comments : []);
-    setLikes(blogDetail.data().likes ? blogDetail.data().likes : []);
-   
-   
-   
-  };
+  if (loading) {
+    return <Spinner />;
+  }
 
   const handleComment = async (e) => {
     e.preventDefault();
     comments.push({
-      createdAt: Timestamp.fromDate(new Date()),
+      createdAt: new Date(),
       userId,
       name: user?.displayName,
       body: userComment,
     });
+    await updateBlog(id,{...blog,comments})
     toast.success("Comment posted successfully");
-    await updateDoc(doc(db, "blogs", id), {
-      ...blog,
-      comments,
-      timestamp: serverTimestamp(),
-    });
-    setComments(comments);
     setUserComment("");
   };
 
@@ -122,16 +108,15 @@ const Detail = ({ setActive, user }) => {
           likes = likes.filter((id) => id !== userId);
           setLikes(likes);
         }
-      }
-      await updateDoc(doc(db, "blogs", id), {
-        ...blog,
-        likes,
-        timestamp: serverTimestamp(),
-      });
+    await updateBlog(id,
+       {
+      ...blog,
+      likes }
+      )
     }
+  }
   };
 
-  console.log("relatedBlogs", relatedBlogs);
   return (
     <div className="single">
       <div
@@ -140,7 +125,7 @@ const Detail = ({ setActive, user }) => {
       >
         <div className="overlay"></div>
         <div className="blog-title">
-          <span>{blog?.timestamp.toDate().toDateString()}</span>
+          <span>{blog?.timestamp}</span>
           <h2>{blog?.title}</h2>
         </div>
       </div>
@@ -150,7 +135,7 @@ const Detail = ({ setActive, user }) => {
             <div className="col-md-8">
               <span className="meta-info text-start">
                 By <p className="author">{blog?.author}</p> -&nbsp;
-                {blog?.timestamp.toDate().toDateString()}
+                {blog?.timestamp}
                 <Like handleLike={handleLike} likes={likes} userId={userId} />
               </span>
               <p className="text-start">{blog?.description}</p>
@@ -186,10 +171,10 @@ const Detail = ({ setActive, user }) => {
             <div className="col-md-3">
               <div className="blog-heading text-start py-2 mb-4">Tags</div>
               <Tags tags={tags} />
-       
+              <FeatureBlogs title={"Recent Blogs"} blogs={blogs} />
+
             </div>
           </div>
-        
         </div>
       </div>
     </div>
@@ -197,3 +182,4 @@ const Detail = ({ setActive, user }) => {
 };
 
 export default Detail;
+

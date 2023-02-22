@@ -74,38 +74,21 @@ const Navbar = ({user}) => {
                     <li className="NavItem">
                         <a href="/about" className="navLink">ABOUT</a>
                     </li>
-                    {/*} <Link to="/blogs"></Link>
+                   
                     <li className="NavItem">
-                        <a href="/blogs" className="navLink">BLOG</a>
-    </li>*/}
-                    <Link to="/blogs" style={{ textDecoration: "none" }}>
-                  <li
-                    className={`NavItem ${
-                      active === "blogs" ? "active" : ""
-                    }`}
-                    onClick={() => setActive("blogs")}
-                  >
-                    Blogs
-                  </li>
-                </Link>
+                        <a href="/CBlog" className="navLink">BLOG</a>
+    </li>
+                  
 
                     <li className="NavItem">
                         <a href="/contact-us" className="navLink">CONTACT</a>
                     </li>
-                   {/* <li className="NavItem">
+                    <li className="NavItem">
                         <a href="/create" className="navLink">ADMIN</a>
-                </li>*/}
-                    <Link to="/create" style={{ textDecoration: "none" }}>
-                  <li
-                    className={`NavItem ${
-                      active === "create" ? "active" : ""
-                    }`}
-                    onClick={() => setActive("create")}
-                  >
-                    Admin
-                  </li>
+                </li>
                   
-                </Link>
+               
+               
                     <div className="profile_action" ref={profileActionRef}
                     onClick={toggleProfileAction}>
                         {
@@ -118,6 +101,7 @@ const Navbar = ({user}) => {
                     <button className="btnq">
                     <a href="/auth">Login</a>
                             
+
                     </button> 
                     
                    
@@ -140,9 +124,7 @@ const Navbar = ({user}) => {
                  <img src={currentUser? currentUser.photoURL: userAvatar} alt='user profile'  onClick={toggleProfileAction}/>
                  
                  </div>
-                 <p style={{ marginTop: "12px", marginLeft: "5px" }}>
-                        {user?.displayName}
-                      </p>
+                
                       
                  <ToastContainer />
 

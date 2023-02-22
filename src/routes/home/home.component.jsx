@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component,useState } from "react";
 import Layout from "../../components/layout/layout.component"
 import Home from "../../components/Home/Home.jsx"
 import Main from "../../components/Main/Main.jsx"
@@ -6,7 +6,10 @@ import Experience from "../../components/Experience/Experience.jsx"
 import  Gallary from "../../components/Gallary/Gallary.jsx"
 import  Testimonial from "../../components/Testimonial/Testimonial.jsx"
 
+
+
 class HomeRoute extends Component {
+  
   blogs = [
     {
       title: "Why you should visit ladakh",
@@ -37,7 +40,10 @@ class HomeRoute extends Component {
         "Kashmir is the northernmost geographical region of the Indian subcontinent",
     },
   ];
+  
   render(){
+    
+    
     return (
       <div>
      
@@ -46,6 +52,7 @@ class HomeRoute extends Component {
       <Experience/>
       <Gallary/>
       <Testimonial/>
+    
       </div>
       
      

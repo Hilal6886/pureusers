@@ -4,7 +4,7 @@ import {Container,Col,Row} from "reactstrap";
 
 
 import maleTourist from '../Testimonial/male-tourist.png'
-import CBlog from '../../pages/CBlog';
+
 
 
 
@@ -47,7 +47,7 @@ const Testimonial = () => {
         </div>
         <section className='ngft'>
      <div>
-        <CBlog/>
+      
     </div>
    </section>
     </Container>

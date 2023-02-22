@@ -6,10 +6,8 @@ import Footer from "./components/Footer/Footer"
 import HomeRoute from "./routes/home/home.component";
 import ServicesRoute from "./routes/service-offered/service-offered.component";
 import OfferRoute from "./routes/Offer/Offer-route.component.jsx"
-
 import AboutRoute from "./routes/about/about-route.component.jsx"
 import ContactRoute from "./routes/Contact/Contact-route.component.jsx";
-
 import ToursRoute from "./routes/Tours/Tours-route.component.jsx"
 import TourDetailsRoute from "./routes/TourDetails/TourDetails-route.component.jsx"
 import ThankYouRoute from "./routes/ThankYou/ThankYou-route.component.jsx"
@@ -19,13 +17,9 @@ import { initializeApp } from "firebase/app";
 import { Routes, Route, useNavigate,  } from "react-router-dom";
 import ProtectedRoute from './components/ProtectedRoute'
 import { auth } from "./firebase";
-
 import TagBlog from "./pages/TagBlog";
 import CategoryBlog from "./pages/CategoryBlog";
 import AddEditBlog from './pages/AddEditBlog';
-
-
-
 import Blogs from "./pages/Blogs";
 import CBlog from "./pages/CBlog";
 import Detail from './pages/Detail';
@@ -39,7 +33,7 @@ import Detail from './pages/Detail';
 const App = () => {
   initializeApp(firebaseConfig);
 
-  const [active, setActive] = useState("Home");
+  const [active, setActive] = useState("CBlog");
   const [user, setUser] = useState(null);
 
   const Navigate = useNavigate();
@@ -82,10 +76,15 @@ const App = () => {
       <Route path="/featured-tours" element={<HomeRoute />} />
       <Route path="/Experience" element={<HomeRoute />} />
       <Route path="/Gallary" element={<HomeRoute />} />
-      <Route path="/Testimonial" element={<HomeRoute />} />
+     
+      <Route path="/Testimonial" element={<HomeRoute user={user}/>} />
       <Route
           path="CBlog"
-          element={ <CBlog  active={active} user={user}/>  }
+          element={ <CBlog  setActive={setActive} user={user} active={active} />  }
+        />
+         <Route
+          path="/search"
+          element={<CBlog setActive={setActive} user={user} />}
         />
 <Route
           path="/detail/:id"
@@ -114,7 +113,7 @@ const App = () => {
     
       <Route
           path="/auth"
-          element={<Auth setActive={setActive} setUser={setUser} />}
+          element={<Auth  setUser={setUser} />}
         />
      
              <Route
