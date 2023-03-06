@@ -12,7 +12,7 @@ import ToursRoute from "./routes/Tours/Tours-route.component.jsx"
 import TourDetailsRoute from "./routes/TourDetails/TourDetails-route.component.jsx"
 import ThankYouRoute from "./routes/ThankYou/ThankYou-route.component.jsx"
 import firebaseConfig from "./config/firebase.jsx";
-import Auth from "./pages/Auth";
+
 import { initializeApp } from "firebase/app";
 import { Routes, Route, useNavigate,  } from "react-router-dom";
 import ProtectedRoute from './components/ProtectedRoute'
@@ -23,6 +23,13 @@ import AddEditBlog from './pages/AddEditBlog';
 import Blogs from "./pages/Blogs";
 import CBlog from "./pages/CBlog";
 import Detail from './pages/Detail';
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Reset from "./pages/Reset";
+import VarifyEmail from "./pages/VerifyEmail";
+import {AuthProvider} from './pages/AuthContext'
+import {onAuthStateChanged} from 'firebase/auth'
+
 
 
 
@@ -32,6 +39,7 @@ import Detail from './pages/Detail';
 
 const App = () => {
   initializeApp(firebaseConfig);
+  
 
   const [active, setActive] = useState("CBlog");
   const [user, setUser] = useState(null);
@@ -48,6 +56,14 @@ const App = () => {
       }
     });
   }, []);
+  const [currentUser, setCurrentUser] = useState(null)
+  const [timeActive, setTimeActive] = useState(false)
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+    })
+  }, [])
   return (
     <div className="App">
     <Navbar
@@ -58,7 +74,7 @@ const App = () => {
 
   
      
-    
+<AuthProvider value={{currentUser, timeActive, setTimeActive}}>
 
     <Routes>
 
@@ -78,6 +94,15 @@ const App = () => {
       <Route path="/Gallary" element={<HomeRoute />} />
      
       <Route path="/Testimonial" element={<HomeRoute user={user}/>} />
+      <Route path="/login" element={<Login />} />
+      
+      <Route path="/signup" element={
+            !currentUser?.emailVerified 
+            ? <Signup/>
+            : <Navigate to='/' replace/>
+          } />
+      <Route path="/reset" element={<Reset />} />
+      <Route path="/verify-email" element={<VarifyEmail />} />
       <Route
           path="CBlog"
           element={ <CBlog  setActive={setActive} user={user} active={active} />  }
@@ -111,10 +136,7 @@ const App = () => {
       <Route path="/ThankYou" element={<ThankYouRoute />} />
  
     
-      <Route
-          path="/auth"
-          element={<Auth  setUser={setUser} />}
-        />
+      
      
              <Route
           path="/create"
@@ -154,6 +176,7 @@ const App = () => {
 
 
     </Routes>
+    </AuthProvider>
     <Footer/>
     </div>
     

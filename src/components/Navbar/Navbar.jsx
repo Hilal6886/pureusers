@@ -9,14 +9,13 @@ import {signOut} from "firebase/auth"
 import { auth } from "../../firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAdmin from '../../utils/hooks';
 
 
 const Navbar = ({user}) => {
     const userId = user?.uid
     console.log('userId',userId)
     console.log('name',user?.displayName)
-
-
    const [active, setActive] = useState('navBar')
     const ShowNav = ()=>{
         setActive('navBar activeNavbar')
@@ -25,6 +24,7 @@ const Navbar = ({user}) => {
         setActive('navBar ')
     }
     const {currentUser} =useAuth()
+    const isAdmin = useAdmin();
     const profileActionRef = useRef(null)
     const toggleProfileAction = ()=> profileActionRef
     .toggle('show_profileActions')
@@ -70,10 +70,12 @@ const Navbar = ({user}) => {
                     <li className="NavItem">
                     <a href="/services" className="navLink">SERVICES</a>
                     </li>
+                   
 
                     <li className="NavItem">
                         <a href="/about" className="navLink">ABOUT</a>
                     </li>
+
                    
                     <li className="NavItem">
                         <a href="/CBlog" className="navLink">BLOG</a>
@@ -83,9 +85,12 @@ const Navbar = ({user}) => {
                     <li className="NavItem">
                         <a href="/contact-us" className="navLink">CONTACT</a>
                     </li>
+                    {isAdmin && 
                     <li className="NavItem">
                         <a href="/create" className="navLink">ADMIN</a>
                 </li>
+}
+                
                   
                
                
@@ -99,7 +104,12 @@ const Navbar = ({user}) => {
                             <div>
                                
                     <button className="btnq">
-                    <a href="/auth">Login</a>
+                    <a href="/login">Login</a>
+                            
+
+                    </button> 
+                    <button className="btnq">
+                    <a href="/singup">Sign up</a>
                             
 
                     </button> 

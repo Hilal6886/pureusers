@@ -3,7 +3,14 @@ import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 import { excerpt } from "../utility";
 
+
+import useAdmin from "../utils/hooks";
+
+
 const BlogSection = ({ id,title,description,category,imgUrl,userId,author,timestamp,user, handleDelete,}) => {
+  const isAdmin = useAdmin();
+  console.log("Admin", isAdmin);
+
   return (
     <div>
       <div className="row pb-4" key={id}>
@@ -30,25 +37,33 @@ const BlogSection = ({ id,title,description,category,imgUrl,userId,author,timest
           <Link to={`/detail/${id}`}>
             <button className="btn btn-read">Read More</button>
           </Link>
-          {user && user.uid === userId && (
-            <div style={{ float: "right" }}>
+          {isAdmin && (
+       
+       <div style={{ float: "right" }}>
            
-              <FontAwesome
-                name="trash"
-                style={{ margin: "15px", cursor: "pointer" }}
-                size="2x"
-                onClick={() => handleDelete(id)}
-              />
-              <Link to={`/update/${id}`}>
-                <FontAwesome
-                  name="edit"
-                  style={{ cursor: "pointer" }}
-                  size="2x"
-                />
-              </Link>
-            </div>
-          )}
-        </div>
+       <FontAwesome
+         name="trash"
+         style={{ margin: "15px", cursor: "pointer" }}
+         size="2x"
+         onClick={() => handleDelete(id)}
+       />
+       <Link to={`/update/${id}`}>
+         <FontAwesome
+           name="edit"
+           style={{ cursor: "pointer" }}
+           size="2x"
+         />
+       </Link>
+     </div>
+        
+      )}
+         
+
+       </div>
+          
+          
+       
+          
       </div>
     </div>
   );

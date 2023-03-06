@@ -23,6 +23,7 @@ import Tags from "../components/Tags";
 import UserComments from "../components/UserComments";
 import { db } from "../firebase";
 import Spinner from "../components/Spinner";
+
 import {
   collection,
   
@@ -36,6 +37,7 @@ import {
 import { getBlog,  getRecentBlogs, getBlogs, getRelatedBlogs, updateBlog } from "../services/blog.service"
 
 const Detail = ({ setActive, user }) => {
+  
   const userId = user?.uid;
   const { id } = useParams();
   const [loading, setLoading] = useState(true);

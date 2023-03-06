@@ -23,12 +23,15 @@ import { isEmpty, isNull } from "lodash";
 import { useLocation } from "react-router-dom";
 import Category from "../components/Category";
 
+import { makeAdmin } from "../utils/hooks";
+
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const CBlog = ({ setActive, user, active }) => {
-  console.log("user", user);
+const CBlog = ({ setActive, user, active, }) => {
+ 
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [tags, setTags] = useState([]);
@@ -40,6 +43,8 @@ const CBlog = ({ setActive, user, active }) => {
   const queryString = useQuery();
   const searchQuery = queryString.get("searchQuery");
   const location = useLocation();
+
+ 
 
   const getTrendingBlogs = async () => {
     const blogRef = collection(db, "blogs");
@@ -172,7 +177,10 @@ const CBlog = ({ setActive, user, active }) => {
         console.log(err);
       }
     }
-  };
+  };  
+
+ 
+  
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -222,7 +230,7 @@ const CBlog = ({ setActive, user, active }) => {
             {blogs?.map((blog) => (
               <BlogSection
                 key={blog.id}
-                user={user}
+                user={user }
                 handleDelete={handleDelete}
                 {...blog}
               />
