@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
-import { auth, db } from '../firebase'; // import the Firebase app instance
+import { auth, db } from '../firebase'; 
 
 export default function useAdmin() {
   const [user, setUser] = useState(null);
