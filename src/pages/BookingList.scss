@@ -1,0 +1,66 @@
+/* Booking List CSS */
+
+.booking-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+}
+
+
+.booking-table th,
+.booking-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.booking-table th {
+  background-color: #f2f2f2;
+}
+
+.booking-table td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 768px) {
+  .booking-table {
+    display: block;
+    overflow-x: auto;
+  }
+  .booking-table thead {
+    display: none;
+  }
+  .booking-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+  }
+  .booking-table tbody td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .booking-table {
+    display: block;
+    overflow-x: auto;
+  }
+  .booking-table thead {
+    display: none;
+  }
+  .booking-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+  }
+  .booking-table tbody td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+  }
+}

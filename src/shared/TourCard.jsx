@@ -1,66 +1,75 @@
-import React from 'react'
+import React ,{useState} from 'react';
+import { Link } from 'react-router-dom';
+import './tour-card.scss';
+import {
+  deleteDoc,
+  doc,
+ 
+} from "firebase/firestore";
+import { db } from "../firebase";
+import { toast } from "react-toastify";
+import useAdmin from "../utils/hooks";
+import FontAwesome from "react-fontawesome";
 
-import {Link} from 'react-router-dom'
-import "./tour-card.scss";
-import calculateAvgRating from '../utils/avgRating';
+const TourCard = ({ tour }) => {
+  const [loading, setLoading] = useState(true);
+  const isAdmin = useAdmin();
+  const { id, imgUrl, city, price, title } = tour;
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure wanted to delete that blog ?")) {
+      try {
+        setLoading(true);
+        await deleteDoc(doc(db, "offers", id));
+        toast.success("Offer deleted successfully");
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
-
-
-
- const TourCard = ({tour}) => {
-
-  const { id, title, city, photo, price, featured,   reviews     } = tour;
-  const {totalRating,avgRating} = calculateAvgRating(reviews)
-
-  
   return (
-    
-    <div  className="singlefr">
-    <div className="tour_img">
-<img src={photo} alt='tour-img'/>
-<span>Featured</span>
+    <div className="singlefr">
+      <div className="tour_img">
+        <img src={imgUrl} alt="tour-img" />
+        <span>Featured</span>
+      </div>
+      <div className="card_top d-fex align-items-center justify-content-between">
+        <span className="tour_location d-flex align-items center justify-content gap-1 ">
+          <i className="ri-map-pin-line"></i> {city}
+        </span>
+      </div>
+      <h5 className="tour_title">
+        <Link to={`/tour/${id}`}>{title}</Link>
+      </h5>
+      <div className="card_bottom d-flex align-items-center justify-content-between mt-3">
+        <h5>${price} <span> /per person</span></h5>
+        <button className="btnu booking_btn">
+          <Link to={`/tour/${id}`}> Book Now</Link>
+        </button>
+      </div>
+      {isAdmin && (
 
+<div style={{ float: "right" }}>
+
+<FontAwesome
+  name="trash"
+  style={{ margin: "15px", cursor: "pointer" }}
+  size="2x"
+  onClick={() => handleDelete(id)}
+/>
+<Link to={`/tous/${id}`}>
+  <FontAwesome
+    name="edit"
+    style={{ cursor: "pointer" }}
+    size="2x"
+  />
+</Link>
 </div>
-<div className="card_top d-fex align-items-center justify-content-between">
-<span className="tour_location d-flex align-items center justify-content gap-1 ">
-<i class="ri-map-pin-line"></i> {city}
-</span>
-<span className="tour_ratings d-flex align-items center justify-content gap-1 ">
-<i class="ri-star-line"></i>
- {avgRating === 0 ? null :
-  avgRating}
- {totalRating === 0 ? (
-  'Not Rated'
-  ) :(
- <span> ({reviews.length})</span> 
+
 )}
+    </div>
+  );
+};
 
-</span>
-
-</div>
-<h5 className="tour_title"> <Link to={`/tour/${id}`}>{title}</Link>   
-</h5>
-<div className="card_bottom d-flex align-items-center justify-content-between mt-3">
-<h5>${price} <span> /per person</span></h5>
-<button className='btn booking_btn'>
-<Link to={`/tour/${id}`}> Book Now</Link>
-
-</button>
-
-
-</div>
-  </div>
-
-)
-
-}
-
-
-
-
-
-
-
-    
-
-export default  TourCard;
+export default TourCard;

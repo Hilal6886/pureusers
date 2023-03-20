@@ -3,7 +3,7 @@ import './testimonial.scss'
 import {Container,Col,Row} from "reactstrap";
 
 
-import maleTourist from '../Testimonial/male-tourist.png'
+import maleTourist from '../Testimonial/My project (1).png'
 
 
 
@@ -29,9 +29,10 @@ const Testimonial = () => {
                  <input type="email" placeholder='Enter your Email'/>
                  <button className='btnk newsletter_btn'>Subscribe</button>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/>
-                 Quisquam voluptates voluptas minima quae harum doloremque assumenda similique expedita ducimus numquam neque,<br/>
-                 nesciunt aperiam beatae mollitia tenetur molestias ea possimus nam.</p>
+                <p>Quantum Tour and Travels is a premier travel agency dedicated to providing exceptional travel experiences to its clients. <br/>
+                With a team of experienced professionals and a wide network of travel partners,<br/>
+                
+                 </p>
                 </div>  
                 
             

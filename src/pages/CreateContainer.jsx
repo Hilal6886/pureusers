@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactTagInput from "@pathofdev/react-tag-input";
-import "@pathofdev/react-tag-input/build/index.css";
+
 
 import { db, storage } from "../firebase";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,30 +16,13 @@ import { toast } from "react-toastify";
 
 const initialState = {
   title: "",
-  tags: [],
-  trending: "no",
-  category: "",
-  description: "",
-  comments: [],
-  likes: []
+ location:"",
+ price:"",
 };
 
-const categoryOption = [
-  "Destination Guides",
-  "Adventure Travel",
-  "Budget travel","Cultural Experience","Solo Travel",
-  "Luxury Travel",
-  "Cruise Travel",
-  "Family Travel",
-  "Food and Drink",
-  "Nature and wildlife","Road Trips","Volunteer travel","Sustainable travel",
-  "Hiking and Trekking","Beach vacations","Wildlife safaris","Travel gear and tech",
-  "Language and cultural tips","Historical and Heritage sites","Health and wellness",
-  "Local Transportation","Medical Tourism","Photography",
- 
-];
 
-const AddEditBlog = ({ user, setActive }) => {
+
+const CreateContainer = ({ user, setActive }) => {
   const [form, setForm] = useState(initialState);
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
@@ -49,7 +31,7 @@ const AddEditBlog = ({ user, setActive }) => {
 
   const navigate = useNavigate();
 
-  const { title, tags, category, trending, description } = form;
+  const { title, location, price, } = form;
 
   useEffect(() => {
     const uploadFile = () => {
@@ -94,7 +76,7 @@ const AddEditBlog = ({ user, setActive }) => {
   }, [id]);
 
   const getBlogDetail = async () => {
-    const docRef = doc(db, "blogs", id);
+    const docRef = doc(db, "offers", id);
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
       setForm({ ...snapshot.data() });
@@ -106,42 +88,34 @@ const AddEditBlog = ({ user, setActive }) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleTags = (tags) => {
-    setForm({ ...form, tags });
-  };
+ 
 
-  const handleTrending = (e) => {
-    setForm({ ...form, trending: e.target.value });
-  };
-
-  const onCategoryChange = (e) => {
-    setForm({ ...form, category: e.target.value });
-  };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (category && tags && title && description && trending) {
+    if ( title && location && price) {
       if (!id) {
         try {
-          await addDoc(collection(db, "blogs"), {
+          await addDoc(collection(db, "offers"), {
             ...form,
             timestamp: serverTimestamp(),
             author: user.displayName,
             userId: user.uid,
           });
-          toast.success("Blog created successfully");
+          toast.success("Offer created successfully");
         } catch (err) {
           console.log(err);
         }
       } else {
         try {
-          await updateDoc(doc(db, "blogs", id), {
+          await updateDoc(doc(db, "offers", id), {
             ...form,
             timestamp: serverTimestamp(),
             author: user.displayName,
             userId: user.uid,
           });
-          toast.success("Blog updated successfully");
+          toast.success("Offer updated successfully");
         } catch (err) {
           console.log(err);
         }
@@ -150,7 +124,7 @@ const AddEditBlog = ({ user, setActive }) => {
       return toast.error("All fields are mandatory to fill");
     }
 
-    navigate("/cblog");
+    navigate("/offers");
   };
 
   return (
@@ -158,7 +132,7 @@ const AddEditBlog = ({ user, setActive }) => {
       <div className="container">
         <div className="col-12">
           <div className="text-center heading py-2">
-            {id ? "Update Blog" : "Create Blog"}
+            {id ? "Update Offer" : "Create offer"}
           </div>
         </div>
         <div className="row h-100 justify-content-center align-items-center">
@@ -174,63 +148,30 @@ const AddEditBlog = ({ user, setActive }) => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="col-12 py-3">
-                <ReactTagInput
-                  tags={tags}
-                  placeholder="Tags"
-                  onChange={handleTags}
-                />
-              </div>
-              <div className="col-12 py-3">
-                <p className="trending">Is it trending blog ?</p>
-                <div className="form-check-inline mx-2">
-                  <input
-                    type="radio"
-                    className="form-check-input"
-                    value="yes"
-                    name="radioOption"
-                    checked={trending === "yes"}
-                    onChange={handleTrending}
-                  />
-                  <label htmlFor="radioOption" className="form-check-label">
-                    Yes&nbsp;
-                  </label>
-                  <input
-                    type="radio"
-                    className="form-check-input"
-                    value="no"
-                    name="radioOption"
-                    checked={trending === "no"}
-                    onChange={handleTrending}
-                  />
-                  <label htmlFor="radioOption" className="form-check-label">
-                    No
-                  </label>
-                </div>
-              </div>
-              <div className="col-12 py-3">
-                <select
-                  value={category}
-                  onChange={onCategoryChange}
-                  className="catg-dropdown"
-                >
-                  <option>Please select category</option>
-                  {categoryOption.map((option, index) => (
-                    <option value={option || ""} key={index}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="col-12 py-3">
-                <textarea
-                  className="form-control description-box"
-                  placeholder="Description"
-                  value={description}
-                  name="description"
+              <div>
+              <input
+                  type="text"
+                  className="form-control input-text-box"
+                  placeholder="Enter location"
+                  name="location"
+                  value={location}
                   onChange={handleChange}
                 />
               </div>
+              <div>
+              <input
+                  type="text"
+                  className="form-control input-text-box"
+                  placeholder="Enter Price"
+                  name="price"
+                  value={price}
+                  onChange={handleChange}
+                />
+              </div>
+              
+              
+             
+             
               <div className="mb-3">
                 <input
                   type="file"
@@ -255,4 +196,4 @@ const AddEditBlog = ({ user, setActive }) => {
   );
 };                                                       
 
-export default AddEditBlog;
+export default CreateContainer;

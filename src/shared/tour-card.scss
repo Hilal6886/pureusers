@@ -10,6 +10,7 @@
     --inputcolor: hsl(330, 12%, 97%);
     --bodyColor: rgb(240, 240, 246);
     --cardBg: rgb(225, 225, 235);
+    --secondary-color: #faa935;
   }
 
 .tour_img img{
@@ -91,6 +92,24 @@
   }
   .btn a {
     font-weight: 500;
+    color: var(--whitecolor);
+    text-align: center;
+  }
+  .btnu {
+    
+   
+    
+    padding: .4rem 1rem;
+    background: var(--primarycolor);
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: auto;
+
+  }
+  .btnu a {
+    font-weight: 400;
     color: var(--whitecolor);
     text-align: center;
   }

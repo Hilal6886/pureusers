@@ -8,6 +8,7 @@ import  Testimonial from "../../components/Testimonial/Testimonial.jsx"
 
 
 
+
 class HomeRoute extends Component {
   
   blogs = [
@@ -52,6 +53,7 @@ class HomeRoute extends Component {
       <Experience/>
       <Gallary/>
       <Testimonial/>
+    
     
       </div>
       

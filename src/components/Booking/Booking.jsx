@@ -1,19 +1,44 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import './booking.scss'
 import {  Form,FormGroup,ListGroup,ListGroupItem,Button} from 'reactstrap'
 import {useNavigate} from 'react-router-dom'
+import { getAllTours } from '../../services/TourService';
+import {useParams} from 'react-router-dom'
+import { db } from '../../firebase';
+import { collection ,addDoc} from "firebase/firestore";
+import { auth } from '../../firebase';
 
-const Booking = ({tour, avgRating}) => {
-    const {price,reviews} = tour;
+
+const Booking = ({avgRating}) => {
+    const [tours, setTours] = useState([]);
+    const {id} = useParams();
     const navigate = useNavigate()
     const [credentials, setCredentials] = useState({
-        userId: '01', // latr it will dy
-        userEmail: 'example@gmail.com',
+        userId: '', // latr it will dy
+        userEmail: '',
         fullName: '',
         phone: '',
-        guestSize: 1,
-        bookAt:''
+        guestSize: '',
+        bookAt:'',
+        tourid:''
     })
+
+    useEffect(() => {
+      async function fetchData() {
+        const result = await getAllTours();
+        setTours(result);
+      }
+      fetchData();
+     
+      
+      
+    }, []);
+    const tour = tours.find(tour=> tour.id === id)
+    if (!tour) {
+      return <div>Tour not found</div>;
+    }
+    const {price,reviews} = tour;
+   
 
 
     const handleChange = e => {
@@ -24,10 +49,41 @@ const Booking = ({tour, avgRating}) => {
     const totalAmount = Number(price) * Number(credentials.guestSize) +
     Number (serviceFee)
    // snd date to server
-   const handleClick = e => {
-    e.preventDefault();
-    navigate("/ThankYou")
-   }
+ 
+   
+   // ...
+  
+  
+    // Check if fullName is not empty or undefined
+   
+  
+    const handleClick = async (e) => {
+      e.preventDefault();
+    
+      try {
+        // get the currently logged-in user
+        const user = auth.currentUser;
+        // add the booking to the 'bookings' collection
+        const bookingRef = await addDoc(collection(db, 'bookings'), {
+          userId: user.uid,
+          userEmail: user.email,
+          fullName: credentials.fullName,
+          phone: credentials.phone,
+          guestSize: credentials.guestSize,
+          bookAt: credentials.bookAt,
+          totalAmount: totalAmount,
+          createdAt: new Date(),
+          tourId:tour.id
+        });
+        console.log('Booking added with ID: ', bookingRef.id);
+        navigate("/ThankYou");
+      } catch (error) {
+        console.error('Error adding booking: ', error);
+      }
+    };
+    
+  
+   
 
 
 
@@ -46,7 +102,7 @@ const Booking = ({tour, avgRating}) => {
         <h5>Information</h5>
         <Form className='booking_info-form' onSubmit={handleClick}>
             <FormGroup>
-                <input type='text' placeholder='Full Name' id='fullname'
+                <input type='text' placeholder='Full Name' id='fullName'
                 required onChange={handleChange} />
             </FormGroup>
             <FormGroup>

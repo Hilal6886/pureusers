@@ -29,6 +29,10 @@ import Reset from "./pages/Reset";
 import VarifyEmail from "./pages/VerifyEmail";
 import {AuthProvider} from './pages/AuthContext'
 import {onAuthStateChanged} from 'firebase/auth'
+import AddTours from "./pages/AddTours";
+import CreateContainer from "./pages/CreateContainer";
+import AddServices from "./pages/AddServices";
+import BookingList from "./pages/Bookings";
 
 
 
@@ -86,9 +90,9 @@ const App = () => {
           <ServicesRoute />
         </ProtectedRoute>} />
       <Route path="/offers" element={
-        <ProtectedRoute>
+        
           <OfferRoute />
-        </ProtectedRoute>} />
+        } />
       <Route path="/featured-tours" element={<HomeRoute />} />
       <Route path="/Experience" element={<HomeRoute />} />
       <Route path="/Gallary" element={<HomeRoute />} />
@@ -103,6 +107,8 @@ const App = () => {
           } />
       <Route path="/reset" element={<Reset />} />
       <Route path="/verify-email" element={<VarifyEmail />} />
+     
+     
       <Route
           path="CBlog"
           element={ <CBlog  setActive={setActive} user={user} active={active} />  }
@@ -125,7 +131,7 @@ const App = () => {
           <ContactRoute />
         </ProtectedRoute>} />
      
-      <Route path="/tours" element={
+      <Route path="/tourss" element={
         <ProtectedRoute>
           <ToursRoute />
         </ProtectedRoute>} />
@@ -134,6 +140,8 @@ const App = () => {
           <TourDetailsRoute />
         </ProtectedRoute>} />
       <Route path="/ThankYou" element={<ThankYouRoute />} />
+      
+      <Route path="/booking" element={<BookingList />} />
  
     
       
@@ -141,7 +149,7 @@ const App = () => {
              <Route
           path="/create"
           element={
-            user?.uid ? <AddEditBlog user={user}  /> : <Navigate to="CBlog" />
+            user?.uid ? <AddEditBlog user={user}  /> : <Navigate to="/cblog" />
           }
         />
         <Route
@@ -150,10 +158,43 @@ const App = () => {
             user?.uid ? (
               <AddEditBlog user={user} setActive={setActive} />
             ) : (
-              <Navigate to="CBlog" />
+              <Navigate to="/" />
             )
           }
         />
+             <Route
+          path="/count"
+          element={
+            user?.uid ? <CreateContainer user={user}  /> : <Navigate to="/offers" />
+          }
+        />
+        <Route
+          path="/counts/:id"
+          element={
+            user?.uid ? (
+              <CreateContainer user={user} setActive={setActive} />
+            ) : (
+              <Navigate to="offers" />
+            )
+          }
+        />
+          <Route
+          path="/tou"
+          element={
+            user?.uid ? <AddTours user={user}  /> : <Navigate to="/" />
+          }
+        />
+        <Route
+          path="/tous/:id"
+          element={
+            user?.uid ? (
+              <AddTours user={user} setActive={setActive} />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+      
         <Route
           path="cblog"
           element={<CBlog setActive={setActive} user={user} />}

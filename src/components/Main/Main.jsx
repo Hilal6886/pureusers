@@ -1,7 +1,8 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './main.scss'
 import TourCard from '../../shared/TourCard';
-import tourDATA from '../../assets/data/tours';
+
+import { getAllTours } from '../../services/TourService';
 
 
 
@@ -11,6 +12,15 @@ import {Col} from "reactstrap"
 
 
  const Main = () => {
+  const [tour, setTours] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getAllTours();
+      setTours(result);
+    }
+    fetchData();
+  }, []);
   return (
     <section>
             <div  data-aos="fade-up"className='scIntro'>
@@ -23,7 +33,7 @@ import {Col} from "reactstrap"
                 </div>
         <>
         <div data-aos="fade-up"className="continents grid">
-      { tourDATA?.map(tour  => (
+      { tour?.map(tour  => (
         <Col lg='3' className='mb-4' key={tour.id}><TourCard tour={tour}/></Col>
        ))}
        </div>

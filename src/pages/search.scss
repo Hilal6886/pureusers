@@ -1,0 +1,97 @@
+:root {
+    --primarycolor: hsl(26, 93%, 50%);
+    --Hovercolor: hsl(26, 90%, 42%);
+    --secondary-color: #faa935;
+    --heading-color: #0b2727;
+    ---whitecolor: hsl(0, 0%,100%);
+    --blackcolor: hsl(0, 0%, 18%);
+    --textcolor: hsl(240, 1%, 48%);
+    --whitecolorDeam: hsl(0, 0%, 93%);
+    --greyBg: hsl(0, 0%, 96%);
+    --greytext: rgb(190, 190, 190);
+    --inputcolor: hsl(330, 12%, 97%);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBg: rgb(225, 225, 235);
+  }
+.search_bar{
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    box-shadow: rgba(17,12,46,0.15) 0px 48px 100px 0px;
+    width: max-content;
+    background: var(--whitecolor);
+    position: center;
+  
+    
+}
+.form_group span{
+    font-size: 1rem;
+    color: var(--primarycolor);
+    
+}
+
+.form_group h6{
+    color: var(--secondary-color)
+}
+
+.form_group input{
+    border: none;
+    font-size: 0.9rem;
+   
+    font-weight: 500;
+}
+.form_group input:focus{
+    outline: none;
+}
+.form_group-fast{
+    border-right: 2px solid#ddd ;
+   
+}
+.search-icon i{
+    font-size: 1.6rem;
+    padding: 0.5rem;
+    background: var(--secondary-color);
+    color: #fff;
+    border-radius: 10px 5px 10px 5px;
+    cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+    
+   .search_bar {
+     grid-template-columns: repeat(1, 3fr);
+    
+   }
+ }
+ @media screen and (min-width: 660px) {
+   .cardDiv {
+     padding: 1rem 1rem;
+     grid-template-columns: repeat(6, 1fr);
+   }
+ }
+ @media screen and (min-width: 940px) {
+   .homes {
+     height: 70vh;
+   }
+ }
+ @media screen and (min-width: 1240px) {
+   .homes {
+     height: 80vh;
+   }
+   .homesContent {
+     padding-left: 0;
+     padding-right: 0;
+   }
+   .cardDiv {
+     padding: 2rem 1rem;
+     grid-template-columns: repeat(3, 1fr);
+   }
+   .input {
+     margin-bottom: 1rem;
+   }
+   .searchOptions {
+     bottom: -1rem;
+     padding: 8px 1rem;
+   }
+   span {
+     font-size: 17px;
+   }
+ }

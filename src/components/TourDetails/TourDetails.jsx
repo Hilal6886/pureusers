@@ -1,22 +1,35 @@
-import React,{useRef,useState} from 'react'
+import React,{useRef,useState,useEffect} from 'react'
 import './tourdetails.scss'
 import { Container,Row, Col, Form,ListGroup } from 'reactstrap'
 import {useParams} from 'react-router-dom'
-import tourData from '../../assets/data/tours';
+
 import calculateAvgRating from '../../utils/avgRating';
 import avatar from '../../assets/images/avatar.jpg'
 import Booking from '../Booking/Booking';
 import  Testimonial from "../../components/Testimonial/Testimonial.jsx"
+import { getAllTours } from '../../services/TourService';
 
 const TourDetails = () => {
+  const [tours, setTours] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getAllTours();
+      setTours(result);
+    }
+    fetchData();
+  }, []);
   const {id} = useParams();
   const reviewMsgRef = useRef('')
   const [tourRating,setTourRating ]=useState(null)
   //this is static data, crescent will later  call our api and load our data from database
 
-  const tour = tourData.find(tour=> tour.id === id)
+  const tour = tours.find(tour=> tour.id === id)
+  if (!tour) {
+    return <div>Tour not found</div>;
+  }
   
-  const {photo, title, desc, price,address, reviews, city, distance,maxGroupSize} = tour
+  const {imgUrl, title, description, price,address, reviews, city, distance,maxGroupSize} = tour
   
   const {totalRating,avgRating} = calculateAvgRating(reviews);
   const options ={day: 'numeric', month: 'long', year:'numeric'}
@@ -32,7 +45,7 @@ const TourDetails = () => {
       <Row>
         <Col lg='8'>
           <div className="tour_content">
-            <img src={photo} alt=''/>
+            <img src={imgUrl} alt=''/>
             <div className="tour_info">
               <h2>{title}</h2>
               <div className="d-flex align-items-center gap-5">
@@ -62,7 +75,7 @@ const TourDetails = () => {
                 
               </div>
               <h5>Description</h5>
-              <p>{desc}</p>
+              <p>{description}</p>
             </div>
             <div className="tour_reviews mt-4">
               <h4> Reviws ({reviews?.length} reviews)</h4>

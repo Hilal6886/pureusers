@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import './navbar.scss'
-
+import logo from './qw.png'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import userAvatar from '../../assets/images/avatar.png'
 import useAuth from '../custom-hooks/useAuth'
@@ -16,6 +16,13 @@ const Navbar = ({user}) => {
     const userId = user?.uid
     console.log('userId',userId)
     console.log('name',user?.displayName)
+    const [selectedOption, setSelectedOption] = useState('/admin');
+    const navigate = useNavigate();
+  
+    const handleOptionChange = (event) => {
+      setSelectedOption(event.target.value);
+      navigate(event.target.value);
+    }
    const [active, setActive] = useState('navBar')
     const ShowNav = ()=>{
         setActive('navBar activeNavbar')
@@ -37,6 +44,7 @@ const Navbar = ({user}) => {
 
         })
     }
+    
 
   
     return(
@@ -44,9 +52,9 @@ const Navbar = ({user}) => {
         <header className="header flex">
                 <div className="logoDev">
                     <a href="/home" className="logo">
-                        <h2 className="flex">
-                        Quantum Tour And Travels
-                        </h2>
+                       <div className="flex">
+                        <img src={logo} alt='logo'/>
+                       </div>
 
                     </a>
 
@@ -60,7 +68,7 @@ const Navbar = ({user}) => {
                         <a href="/home" className="navLink">HOME</a>
                     </li>
                     <li className="NavItem">
-                        <a href="/Tours" className="navLink">TOURS</a>
+                        <a href="/Tourss" className="navLink">TOURS</a>
                     </li>
 
                     <li className="NavItem">
@@ -86,10 +94,21 @@ const Navbar = ({user}) => {
                         <a href="/contact-us" className="navLink">CONTACT</a>
                     </li>
                     {isAdmin && 
-                    <li className="NavItem">
-                        <a href="/create" className="navLink">ADMIN</a>
-                </li>
+                   
+                   <li className='NavItem'>
+                   <select   style={{ border: 'none', outline:'none', WebkitAppearance: 'none', MozAppearance: 'none', 
+                   appearance: 'none', padding: '0.5rem', backgroundColor: 'transparent' ,
+                    fontSize: '1rem', color: ' #606060',  fontWeight: '500' }} value={selectedOption} onChange={handleOptionChange}>
+                   <option value="/">ADMIN</option>
+                     <option value="/create">Add Blog</option>
+                     <option value="/tou">Add Tours</option>
+                     <option value="/count">Add Offers</option>
+                     <option value="/hilll">Add services</option>
+                     <option value="/booking">Bookings</option>
+                   </select>
+                 </li>
 }
+
                 
                   
                
@@ -103,16 +122,12 @@ const Navbar = ({user}) => {
 
                             <div>
                                
-                    <button className="btnq">
+                    <button className="btnq flex">
                     <a href="/login">Login</a>
                             
 
                     </button> 
-                    <button className="btnq">
-                    <a href="/singup">Sign up</a>
-                            
-
-                    </button> 
+                   
                     
                    
                             </div>

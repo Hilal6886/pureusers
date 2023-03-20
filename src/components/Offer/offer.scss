@@ -48,7 +48,7 @@
 }
 small{
     font-weight: 500;
-    color: var(--whitecolor);
+    color: var(--blackcolor);
 }
 .destImage{
     position: relative;
@@ -107,8 +107,8 @@ h4{
 .btnn{
   background: var(--primarycolor);
     margin-top: 2rem;
-    margin-left: 5rem;
-    width: 30%;
+   
+    width: 100%;
     text-align: center;
     justify-content: center;
     padding: .5rem 4rem;

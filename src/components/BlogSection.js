@@ -7,7 +7,7 @@ import { excerpt } from "../utility";
 import useAdmin from "../utils/hooks";
 
 
-const BlogSection = ({ id,title,description,category,imgUrl,userId,author,timestamp,user, handleDelete,}) => {
+const BlogSection = ({ id, title, description, category, imgUrl, userId, author, timestamp, handleDelete }) => {
   const isAdmin = useAdmin();
   console.log("Admin", isAdmin);
 
@@ -38,32 +38,32 @@ const BlogSection = ({ id,title,description,category,imgUrl,userId,author,timest
             <button className="btn btn-read">Read More</button>
           </Link>
           {isAdmin && (
-       
-       <div style={{ float: "right" }}>
-           
-       <FontAwesome
-         name="trash"
-         style={{ margin: "15px", cursor: "pointer" }}
-         size="2x"
-         onClick={() => handleDelete(id)}
-       />
-       <Link to={`/update/${id}`}>
-         <FontAwesome
-           name="edit"
-           style={{ cursor: "pointer" }}
-           size="2x"
-         />
-       </Link>
-     </div>
-        
-      )}
-         
 
-       </div>
-          
-          
-       
-          
+            <div style={{ float: "right" }}>
+
+              <FontAwesome
+                name="trash"
+                style={{ margin: "15px", cursor: "pointer" }}
+                size="2x"
+                onClick={() => handleDelete(id)}
+              />
+              <Link to={`/update/${id}`}>
+                <FontAwesome
+                  name="edit"
+                  style={{ cursor: "pointer" }}
+                  size="2x"
+                />
+              </Link>
+            </div>
+
+          )}
+
+
+        </div>
+
+
+
+
       </div>
     </div>
   );

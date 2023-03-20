@@ -5,10 +5,20 @@ import tourData from '../../assets/data/tours';
 import TourCard from '../../shared/TourCard'
 import { Col, Container, Row } from 'reactstrap'
 import  Testimonial from "../../components/Testimonial/Testimonial.jsx"
+import { getAllTours } from '../../services/TourService';
 
 const Tours = () => {
   const [pageCount, setPageCount] =useState(0)
   const [page,setpage] = useState(0)
+  const [tour, setTours] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getAllTours();
+      setTours(result);
+    }
+    fetchData();
+  }, []);
 
   useEffect(()=>{
 
@@ -27,7 +37,7 @@ setPageCount(pages)
         <Row>
           {
             <div data-aos="fade-up"className="continents grid">
-            { tourData?.map(tour  => (
+            { tour?.map(tour  => (
               <Col lg='3' className='mb-4' key={tour.id}><TourCard tour={tour}/></Col>
              ))}
              <Col lg='12'>
