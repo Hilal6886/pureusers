@@ -11,7 +11,7 @@ export default function useAdmin() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-  
+  console.log('user' ,user)
         const userRef = doc(db, 'users', user.uid);
         getDoc(userRef)
           .then((doc) => {

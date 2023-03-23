@@ -18,7 +18,9 @@ import {
     collection,
     getFirestore,
     addDoc,
-    getDocs,
+    getDoc,
+    doc,
+    setDoc,
      query,
      where,
   } from "firebase/firestore";
@@ -30,36 +32,32 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
+
 const signInWithGoogle = async () => {
-  
   try {
+  
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
-    if (docs.docs.length === 0) {
-      await addDoc(collection(db, "users"), {
+
+  
+    const userRef = doc(db, 'users', user.uid);
+    const userSnap = await getDoc(userRef);
+
+  
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
         uid: user.uid,
-        name: user.displayName,
-        authProvider: "google",
+        displayName: user.displayName,
         email: user.email,
+        photoURL: user.photoURL,
       });
     }
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-    try {
-    await signInWithPopup(googleProvider);
-    const user = auth.currentUser;
-    if (user && !user.emailVerified) {
-      await user.sendEmailVerification();
-
-    }
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    alert(error.message);
   }
 };
+
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);

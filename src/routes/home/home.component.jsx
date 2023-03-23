@@ -5,6 +5,7 @@ import Main from "../../components/Main/Main.jsx"
 import Experience from "../../components/Experience/Experience.jsx"
 import  Gallary from "../../components/Gallary/Gallary.jsx"
 import  Testimonial from "../../components/Testimonial/Testimonial.jsx"
+import OfferRoute from "../Offer/Offer-route.component";
 
 
 
@@ -52,6 +53,7 @@ class HomeRoute extends Component {
       <Main/>
       <Experience/>
       <Gallary/>
+      <OfferRoute/>
       <Testimonial/>
     
     
