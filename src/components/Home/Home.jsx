@@ -63,7 +63,7 @@ const Home = (props) => {
                         <span><i class='ri-group-line'></i></span>
                         <div>
                             <h6>Max people</h6>
-                            <input type='number' placeholder=' Enter How many people you are' ref={maxGroupSizeRef} />
+                            <input type='number' placeholder=' Enter number of people' ref={maxGroupSizeRef} />
                         </div>
                     </FormGroup>
                    
