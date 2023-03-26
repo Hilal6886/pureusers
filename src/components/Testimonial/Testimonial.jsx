@@ -1,6 +1,6 @@
 import React from 'react'
-import './testimonial.scss'
 import {Container,Col,Row} from "reactstrap";
+import './testimonial.scss'
 
 
 import maleTourist from '../Testimonial/My project (1).png'
