@@ -25,15 +25,7 @@ const quick_links2 = [
     {
         path: '/gallery',
         display: 'Gallery'
-    },
-    {
-        path: '/login',
-        display: 'Login'
-    },
-    {
-        path: '/signup',
-        display: 'Signup'
-    },
+    }
 ];
 
 
