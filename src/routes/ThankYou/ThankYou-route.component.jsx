@@ -5,9 +5,9 @@ class ThankYouRoute extends Component {
 
   render(){
     return (
-      <Layout>
+      // <Layout>
        <ThankYou/>
-    </Layout>
+    // </Layout>
     )
   }
 }

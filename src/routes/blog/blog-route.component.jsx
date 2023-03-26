@@ -5,9 +5,9 @@ class BlogRoute extends Component {
 
   render(){
     return (
-      <Layout>
+      // <Layout>
        <Blog/>
-    </Layout>
+    // </Layout>
     )
   }
 }

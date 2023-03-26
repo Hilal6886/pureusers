@@ -34,9 +34,9 @@ class HomeRoute extends Component {
   ];
   render(){
     return (
-      <Layout>
+      // <Layout>
        <Services/>
-    </Layout>
+    // </Layout>
     )
   }
 }

@@ -60,7 +60,7 @@ const Navbar = ({user}) => {
 
                 </div>
 
-                <div className={active}>
+                <div className="navBar">
                  <ul className="navLists flex">
                  
                  
@@ -108,11 +108,6 @@ const Navbar = ({user}) => {
                    </select>
                  </li>
 }
-
-                
-                  
-               
-               
                     <div className="profile_action" ref={profileActionRef}
                     onClick={toggleProfileAction}>
                         {

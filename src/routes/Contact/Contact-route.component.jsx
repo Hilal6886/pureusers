@@ -5,9 +5,9 @@ class ContactRoute extends Component {
 
   render(){
     return (
-      <Layout>
+      // <Layout>
        <Contact/>
-    </Layout>
+    // </Layout>
     )
   }
 }

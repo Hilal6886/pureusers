@@ -5,9 +5,10 @@ import About from "../../components/About/About.jsx"
 class AboutRoute extends Component {
   render(){
     return (
-      <Layout>
+      // <Layout>
        <About/>
-    </Layout>)
+    // </Layout>
+    )
 }
 }
 export default AboutRoute;
