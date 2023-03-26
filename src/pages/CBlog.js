@@ -101,7 +101,7 @@ const CBlog = ({ setActive, user, active, }) => {
     setLastVisible(docSnapshot.docs[docSnapshot.docs.length - 1]);
   };
 
-  console.log("blogs", blogs);
+  // console.log("blogs", blogs);
 
   const updateState = (docSnapshot) => {
     const isCollectionEmpty = docSnapshot.size === 0;
@@ -210,7 +210,7 @@ const CBlog = ({ setActive, user, active, }) => {
     };
   });
 
-  console.log("categoryCount", categoryCount);
+  // console.log("categoryCount", categoryCount);
 
   return (
     <div className="container-fluid pb-4 pt-4 padding">

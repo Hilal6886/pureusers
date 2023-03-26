@@ -36,7 +36,7 @@ const Offer = () => {
     });
   }, []);
 
-  console.log("BBLOGGGGGGGGGGGGGGG", getAllOffers)
+  // console.log("BBLOGGGGGGGGGGGGGGG", getAllOffers)
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure wanted to delete that blog ?")) {
       try {
@@ -71,7 +71,7 @@ const Offer = () => {
                 <div className="offerBody">
                 <h6>{title}</h6>
                   <div className="price flex">
-                    <h6>${price}</h6>
+                    <h6>₹{price}</h6>
                    
                     <span className="status">For Rent</span>
                   </div>

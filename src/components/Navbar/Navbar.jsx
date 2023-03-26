@@ -60,7 +60,7 @@ const Navbar = ({user}) => {
 
                 </div>
 
-                <div className="navBar">
+                <div className={active}>
                  <ul className="navLists flex">
                  
                  
@@ -116,20 +116,15 @@ const Navbar = ({user}) => {
                             ) :(
 
                             <div>
-                               
-                    <button className="btnq flex">
-                    <a href="/login">Login</a>
-                            
-
-                    </button> 
-                   
-                    
-                   
+                                {/**
+                                <button className="btnq flex">
+                                <a href="/login">Login</a>
+                                </button> 
+                            */}
                             </div>
 
                       )  }
                         </div> 
-     
                          
                  </ul>
                 
@@ -141,8 +136,8 @@ const Navbar = ({user}) => {
                 </div>
     
                  <div onClick={ShowNav} className="toggleNavbar">
-                 <img src={currentUser? currentUser.photoURL: userAvatar} alt='user profile'  onClick={toggleProfileAction}/>
-                 
+
+                 <img src={userAvatar} alt='user profile'  onClick={toggleProfileAction}/>
                  </div>
                 
                       

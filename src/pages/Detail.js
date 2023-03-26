@@ -71,7 +71,7 @@ const Detail = ({ setActive, user }) => {
     setBlog(blogDetail|| {});
     setLikes(blogDetail.likes || []);
     setComments(blogDetail.comments || []);
-    console.log("BBLOGGGGGGGGGGGGGGG",blogDetail)
+    // console.log("BBLOGGGGGGGGGGGGGGG",blogDetail)
     // const relatedBlogs = await getRelatedBlogs(blogDetail.tags)
     // setRelatedBlogs(relatedBlogs);
     setLoading(false);

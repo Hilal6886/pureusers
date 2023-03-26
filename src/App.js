@@ -53,6 +53,7 @@ const App = () => {
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
+      console.log("auth users")
       if (authUser) {
         setUser(authUser);
       } else {
@@ -86,9 +87,9 @@ const App = () => {
       <Route path="/" element={<HomeRoute />} />
       <Route path="/home" element={<HomeRoute />} />
       <Route path="/services" element={
-        <ProtectedRoute>
+        
           <ServicesRoute />
-        </ProtectedRoute>} />
+       } />
       <Route path="/offers" element={
         
           <OfferRoute />
@@ -123,22 +124,22 @@ const App = () => {
         />
       
       <Route path="/about" element={
-        <ProtectedRoute>
+        
           <AboutRoute />
-        </ProtectedRoute>} />
-      <Route path="/contact" element={
-        <ProtectedRoute>
+       } />
+      <Route path="/contact-us" element={
+        
           <ContactRoute />
-        </ProtectedRoute>} />
+       } />
      
       <Route path="/tourss" element={
-        <ProtectedRoute>
+        
           <ToursRoute />
-        </ProtectedRoute>} />
+       } />
       <Route path="/tour/:id" element={
-        <ProtectedRoute>
+        
           <TourDetailsRoute />
-        </ProtectedRoute>} />
+       } />
       <Route path="/ThankYou" element={<ThankYouRoute />} />
       
       <Route path="/booking" element={<BookingList />} />
@@ -155,17 +156,21 @@ const App = () => {
         <Route
           path="/update/:id"
           element={
+            <ProtectedRoute>
             user?.uid ? (
               <AddEditBlog user={user} setActive={setActive} />
-            ) : (
-              <Navigate to="/" />
-            )
+              ) : (
+                <Navigate to="/" />
+                )
+                </ProtectedRoute>
           }
         />
              <Route
           path="/count"
           element={
+            <ProtectedRoute>
             user?.uid ? <CreateContainer user={user}  /> : <Navigate to="/offers" />
+            </ProtectedRoute>
           }
         />
         <Route
