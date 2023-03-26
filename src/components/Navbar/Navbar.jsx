@@ -139,11 +139,6 @@ const Navbar = ({user}) => {
 
                  <img src={userAvatar} alt='user profile'  onClick={toggleProfileAction}/>
                  </div>
-                
-                      
-                 <ToastContainer />
-
-
         </header>
 
         </section>

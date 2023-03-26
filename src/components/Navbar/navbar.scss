@@ -26,11 +26,10 @@
 }
 
 .logo img {
-  width: 100%;
-  margin-top: 1.5rem;
+  width:100%;
   height: auto;
-  margin-left: -3rem;
-
+  max-width: 150px;
+  max-height: 54px
 }
 
 
@@ -60,8 +59,8 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    margin: auto;
     padding: 0.5rem 0;
+    margin:0px !important;
   }
   .NavItem {
     padding: 0.5rem 0;
@@ -86,7 +85,6 @@
     cursor: pointer;
     
     display: flex;
-  margin-bottom: 0.8rem;
   margin-left: 1.5rem;
    
     
@@ -131,21 +129,12 @@
 }
 
 @media screen and (min-width: 769px) {
-  .logo img {
-    width: 60%;
-    margin-top: 1rem;
-    height: auto;
-    margin-left: -3rem;
-  
-  }
-  
   
   .closeNavbar {
     display: none;
   }
   .toggleNavbar img{
     
-    margin-bottom: 1rem;
     width: 40px;
     border-radius: 50px;
   }
@@ -155,7 +144,6 @@
     left: 0;
     width: 150px;
     z-index: 10;
-    padding: 15px;
     display: flex;
     flex-direction: column;
     background: var(--cardBg);
@@ -170,6 +158,7 @@
     justify-content: center;
     flex-direction: row;
     height: fit-content;
+    margin:0px !important;
   
   }
   .NavItem{
