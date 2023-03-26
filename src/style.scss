@@ -336,16 +336,20 @@ $yellow:#f5bc04;
 // Detail
 
 .blog-title-box {
-    width: 38.2%;
+    width: 25.2%;
 	z-index: 555;
 	background-size: cover;
+	border-radius: 3rem;
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: center;
 
     .single & {
 		position: relative;
 		height: 700px;
-		width: 100%;
+		width: 80%;
+		margin-left: 10rem;
+		margin-top: 2rem;
+		border-radius: 1rem;
 	}
 
     .overlay {
