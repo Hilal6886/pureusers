@@ -143,7 +143,7 @@ function Contact() {
                         <p>
                           <span>Email:</span>
                           <a href="mailto:info@yoursite.com">
-                            Quantum@gmail.com
+                            quantumtourandtravels@gmail.com
                           </a>
                         </p>
                       </div>
