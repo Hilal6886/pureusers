@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import { Link ,useNavigate} from "react-router-dom";
 import './navbar.scss'
-import logo from './qw.png'
+import logo from './ddd.png'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import userAvatar from '../../assets/images/avatar.png'
 import useAuth from '../custom-hooks/useAuth'
