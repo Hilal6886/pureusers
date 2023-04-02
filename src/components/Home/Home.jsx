@@ -32,7 +32,7 @@ const Home = (props) => {
     return (
         <section className='homes'>
             <div className="overlays"></div>
-            <video src={hilal} muted autoPlay loop type="video/mp4"></video>
+            <video src={hilal} muted autoPlay loop type="video/mp4" playbackRate="0.1" defaultPlaybackRate="0.1"></video>
             <div className="homeCont container">
                 <div className="txtDev">
                     <span className="smalltext">
