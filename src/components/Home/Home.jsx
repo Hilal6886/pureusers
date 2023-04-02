@@ -11,7 +11,9 @@ import { Col, Form, FormGroup } from 'reactstrap'
 
 
 const { getImageUrl } = require('../../services/media.service.js')
-const hilal = getImageUrl('hilal.mp4')
+const hilal = getImageUrl('hilal_Trim.mp4')
+// const hilal="https://drive.google.com/file/d/1GTJbqjaNpoQNA-CWVFH7jteNEzsFBegJ/view?usp=share_link"
+// const hilal="https://drive.google.com/drive/u/0/folders/1OJx8sq-2A-SyXIeM_9mwCAVMEa6oFBrA"
 const Home = (props) => {
     const locationRef = useRef('')
     const distanceRef = useRef('0')
