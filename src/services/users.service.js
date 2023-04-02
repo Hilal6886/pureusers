@@ -21,8 +21,6 @@ import {
     getDoc,
     doc,
     setDoc,
-     query,
-     where,
   } from "firebase/firestore";
   import { app } from '../firebase'
 
@@ -72,18 +70,30 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     
     const res = await createUserWithEmailAndPassword(auth, email, password);
     
+    console.log("signInWithEmailAndPassword",res)
     const user = res.user;
     
-    
+    const userRef = doc(db, 'users', user.uid);
+    const userSnap = await getDoc(userRef);
+
+  
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+      });
+    }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-    await addDoc(collection(db, "users"), {
-      uid: user.uid,
-      name,
-      authProvider: "local",
-      email
-    });
+    // await addDoc(collection(db, "users"), {
+    //   uid: user.uid,
+    //   name,
+    //   authProvider: "local",
+    //   email
+    // });
   } catch (err) {
-    console.error(err);
+    console.error("bbbbbbbbbbbbbbbbbbbbbb",err);
     alert(err.message);
   }
   

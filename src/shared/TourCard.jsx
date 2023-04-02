@@ -9,7 +9,6 @@ import {
 import { db } from "../firebase";
 import { toast } from "react-toastify";
 import useAdmin from "../utils/hooks";
-import FontAwesome from "react-fontawesome";
 
 const TourCard = ({ tour }) => {
   const [loading, setLoading] = useState(true);
@@ -52,18 +51,16 @@ const TourCard = ({ tour }) => {
 
 <div style={{ float: "right" }}>
 
-<FontAwesome
-  name="trash"
-  style={{ margin: "15px", cursor: "pointer" }}
+<i class="ri-delete-bin-line"
+  style={{ margin: "15px", cursor: "pointer",color:"red" }}
   size="2x"
   onClick={() => handleDelete(id)}
-/>
+></i>
 <Link to={`/tous/${id}`}>
-  <FontAwesome
-    name="edit"
+<i class="ri-edit-box-line"
     style={{ cursor: "pointer" }}
     size="2x"
-  />
+   > </i>
 </Link>
 </div>
 

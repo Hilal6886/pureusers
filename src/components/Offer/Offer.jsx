@@ -21,7 +21,6 @@ import { db } from "../../firebase";
 import { toast } from "react-toastify";
 
 import { getoffer, getAllOffers } from '../../services/offerService';
-import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 
 const Offer = () => {
@@ -103,18 +102,16 @@ const Offer = () => {
 
                   <div style={{ float: "right" }}>
 
-                  <FontAwesome
-                    name="trash"
-                    style={{ margin: "15px", cursor: "pointer" }}
+                  <i class="ri-delete-bin-line"
+                    style={{ margin: "15px", cursor: "pointer",color:"red" }}
                     size="2x"
                     onClick={() => handleDelete(id)}
-                  />
+                  ></i>
                   <Link to={`/counts/${id}`}>
-                    <FontAwesome
-                      name="edit"
+                  <i class="ri-edit-box-line"
                       style={{ cursor: "pointer" }}
                       size="2x"
-                    />
+                    ></i>
                   </Link>
                 </div>
       
