@@ -84,7 +84,7 @@ const AddEditBlog = ({ user, setActive }) => {
         }
       );
     };
-
+console.log("FILE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",file)
     file && uploadFile();
   }, [file]);
 

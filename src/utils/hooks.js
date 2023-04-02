@@ -8,15 +8,17 @@ export default function useAdmin() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+      const user={...currentUser}
         setUser(user);
-  console.log('user' ,user)
         const userRef = doc(db, 'users', user.uid);
         getDoc(userRef)
-          .then((doc) => {
-            if (doc.exists) {
-              const userData = doc.data();
+        .then((doc) => {
+          if (doc.exists) {
+            const userData = doc.data();
+            user.isAdmin=userData.admin
+            localStorage.setItem("USER",JSON.stringify(user||{}))
               if (userData && userData.admin) {
                 setIsAdmin(true);
               } else {
@@ -28,6 +30,7 @@ export default function useAdmin() {
             console.log('Error fetching user data:', error);
           });
       } else {
+        localStorage.removeItem("USER")
         setUser(null);
         setIsAdmin(false);
       }

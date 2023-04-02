@@ -10,7 +10,6 @@ import { FaWifi } from 'react-icons/fa';
 import { MdAirportShuttle } from 'react-icons/md';
 import { MdLocationOn } from 'react-icons/md';
 import Aos from 'aos';
-import useAdmin from "../../utils/hooks";
 import 'aos/dist/aos.css';
 import {
   deleteDoc,
@@ -26,7 +25,13 @@ import { Link } from "react-router-dom";
 const Offer = () => {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const isAdmin = useAdmin();
+  const userData=localStorage.getItem("USER")
+  let currentUser=null
+  let isAdmin=false
+  if(userData){
+      currentUser = JSON.parse(userData)
+      isAdmin =currentUser.isAdmin;
+  }
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -102,13 +107,13 @@ const Offer = () => {
 
                   <div style={{ float: "right" }}>
 
-                  <i class="ri-delete-bin-line"
+                  <i className="ri-delete-bin-line"
                     style={{ margin: "15px", cursor: "pointer",color:"red" }}
                     size="2x"
                     onClick={() => handleDelete(id)}
                   ></i>
                   <Link to={`/counts/${id}`}>
-                  <i class="ri-edit-box-line"
+                  <i className="ri-edit-box-line"
                       style={{ cursor: "pointer" }}
                       size="2x"
                     ></i>

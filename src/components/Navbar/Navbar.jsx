@@ -9,8 +9,6 @@ import {signOut} from "firebase/auth"
 import { auth } from "../../firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useAdmin from '../../utils/hooks';
-
 
 const Navbar = ({user}) => {
     const userId = user?.uid
@@ -30,23 +28,34 @@ const Navbar = ({user}) => {
     const removeNavbar= ()=>{
         setActive('navBar ')
     }
-    const {currentUser} =useAuth()
-    const isAdmin = useAdmin();
+    const userData=localStorage.getItem("USER")
+    let currentUser=null
+    let isAdmin=false
+    if(userData){
+        currentUser = JSON.parse(userData)
+        isAdmin =currentUser.isAdmin;
+    }
     const profileActionRef = useRef(null)
-    const toggleProfileAction = ()=> profileActionRef
-    .toggle('show_profileActions')
+    const toggleProfileAction = ()=>{
+        console.log("profileActionRefprofileActionRefprofileActionRef",profileActionRef)
+        profileActionRef.current.classList.toggle('show_profileActions')
+    } 
     const logout =()=>{
-       
+       console.log("LOGIINNNGput")
         signOut(auth).then(()=>{
-           toast.success('logged out') 
+            console.log("logout sucessfully")
+            localStorage.removeItem("USER")
+            window.location.reload()//location.reload()
+        //    toast.success('logged out') 
         }).catch(err=>{
-            toast.error(err.message)
+            console.log("errror",err)
+            // toast.error(err.message)
 
         })
     }
+
     
 
-  
     return(
         <section className="navBarSection">
         <header className="header flex">
@@ -108,8 +117,7 @@ const Navbar = ({user}) => {
                    </select>
                  </li>
 }
-                    <div className="profile_action" ref={profileActionRef}
-                    onClick={toggleProfileAction}>
+                    <div>
                         {
                             currentUser ?
                             ( <button className='btnq' onClick={logout}>Logout</button> 
@@ -137,7 +145,7 @@ const Navbar = ({user}) => {
     
                  <div onClick={ShowNav} className="toggleNavbar">
 
-                 <img src={userAvatar} alt='user profile'  onClick={toggleProfileAction}/>
+                 <img src={userAvatar} alt='user profile'  ref={profileActionRef}  onClick={toggleProfileAction}/>
                  </div>
         </header>
 

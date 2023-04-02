@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { excerpt } from "../utility";
 
-
-import useAdmin from "../utils/hooks";
-
-
 const BlogSection = ({ id, title, description, category, imgUrl, userId, author, timestamp, handleDelete }) => {
-  const isAdmin = useAdmin();
+  const userData=localStorage.getItem("USER")
+  let currentUser=null
+  let isAdmin=false
+  if(userData){
+      currentUser = JSON.parse(userData);
+      isAdmin =currentUser.isAdmin;
+  }
   console.log("Admin", isAdmin);
 
   return (
@@ -39,14 +41,14 @@ const BlogSection = ({ id, title, description, category, imgUrl, userId, author,
           {isAdmin && (
 
             <div style={{ float: "right" }}>
-            <i class="ri-delete-bin-line"
+            <i className="ri-delete-bin-line"
             style={{ margin: "15px", cursor: "pointer",color:"red" }}
             size="2x"
             onClick={() => handleDelete(id)}
             >
             </i>
               <Link to={`/update/${id}`}>
-              <i class="ri-edit-box-line"
+              <i className="ri-edit-box-line"
                   style={{ cursor: "pointer" }}
                   size="2x"
                 ></i>

@@ -32,7 +32,7 @@ const Home = (props) => {
     return (
         <section className='homes'>
             <div className="overlays"></div>
-            <video src={hilal} muted autoPlay loop type="video/mp4" playbackRate="0.1" defaultPlaybackRate="0.1"></video>
+            <video src={hilal} muted autoPlay loop type="video/mp4" ></video>
             <div className="homeCont container">
                 <div className="txtDev">
                     <span className="smalltext">
@@ -47,7 +47,7 @@ const Home = (props) => {
 
                 <div className="cardDiv grid">
                 <FormGroup className='d-flex gap-3 form_group form_group-fast'>
-                <span><i class='ri-map-pin-line'></i></span>
+                <span><i className='ri-map-pin-line'></i></span>
                 <div>
                     <h6>Location</h6>
                     <input type='text' placeholder=' Enter Where are you going' ref={locationRef}/>
@@ -55,14 +55,14 @@ const Home = (props) => {
             </FormGroup>
 
                     <FormGroup className='d-flex gap-3 form_group form_group-fast'>
-                <span><i class='ri-map-pin-time-line'></i></span>
+                <span><i className='ri-map-pin-time-line'></i></span>
                 <div>
                     <h6>Distance</h6>
                     <input type='number' placeholder=' Enter Distance k/m' ref={distanceRef}/>
                 </div>
             </FormGroup>
                     <FormGroup className='d-flex gap-3 form_group form_group-last'>
-                        <span><i class='ri-group-line'></i></span>
+                        <span><i className='ri-group-line'></i></span>
                         <div>
                             <h6>Max people</h6>
                             <input type='number' placeholder=' Enter number of people' ref={maxGroupSizeRef} />
@@ -70,7 +70,7 @@ const Home = (props) => {
                     </FormGroup>
                    
                     <span className='search-icon' type='submit' onClick={searchHandler}>
-            <i class='ri-search-line'></i>
+            <i className='ri-search-line'></i>
             </span>
                     
            

@@ -31,10 +31,9 @@ import {AuthProvider} from './pages/AuthContext'
 import {onAuthStateChanged} from 'firebase/auth'
 import AddTours from "./pages/AddTours";
 import CreateContainer from "./pages/CreateContainer";
-import AddServices from "./pages/AddServices";
 import BookingList from "./pages/Bookings";
 
-
+import useAdmin from "../src/utils/hooks"
 
 
 
@@ -49,24 +48,16 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   const Navigate = useNavigate();
-
-
-  useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
-      console.log("auth users")
-      if (authUser) {
-        setUser(authUser);
-      } else {
-        setUser(null);
-      }
-    });
-  }, []);
   const [currentUser, setCurrentUser] = useState(null)
   const [timeActive, setTimeActive] = useState(false)
+  useAdmin()
+
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
+      setUser(user||{});
+      setCurrentUser(user||{})
+      console.log("USERRRRRRRRRRRRRRRRRRRRRRRRR",user)
     })
   }, [])
   return (
@@ -142,7 +133,11 @@ const App = () => {
        } />
       <Route path="/ThankYou" element={<ThankYouRoute />} />
       
-      <Route path="/booking" element={<BookingList />} />
+      <Route path="/booking" element={
+              <ProtectedRoute>
+              <BookingList />
+              </ProtectedRoute>             
+            } />
  
     
       
@@ -150,59 +145,56 @@ const App = () => {
              <Route
           path="/create"
           element={
-            user?.uid ? <AddEditBlog user={user}  /> : <Navigate to="/cblog" />
+            <ProtectedRoute>
+            <AddEditBlog user={user}  />
+            </ProtectedRoute>
           }
         />
         <Route
           path="/update/:id"
-          element={
-            <ProtectedRoute>
-            user?.uid ? (
+          element={          
+              <ProtectedRoute>
               <AddEditBlog user={user} setActive={setActive} />
-              ) : (
-                <Navigate to="/" />
-                )
-                </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
              <Route
           path="/count"
           element={
             <ProtectedRoute>
-            user?.uid ? <CreateContainer user={user}  /> : <Navigate to="/offers" />
+            <CreateContainer user={user}  />
             </ProtectedRoute>
           }
         />
         <Route
           path="/counts/:id"
           element={
-            user?.uid ? (
-              <CreateContainer user={user} setActive={setActive} />
-            ) : (
-              <Navigate to="offers" />
-            )
+            <ProtectedRoute>
+            <CreateContainer user={user} setActive={setActive} />
+            </ProtectedRoute>
           }
         />
           <Route
           path="/tou"
           element={
-            user?.uid ? <AddTours user={user}  /> : <Navigate to="/" />
+            <ProtectedRoute>
+            <AddTours user={user}  />
+            </ProtectedRoute>
           }
         />
         <Route
           path="/tous/:id"
           element={
-            user?.uid ? (
-              <AddTours user={user} setActive={setActive} />
-            ) : (
-              <Navigate to="/" />
-            )
+            <ProtectedRoute>
+            <AddTours user={user} setActive={setActive} />
+            </ProtectedRoute>
           }
         />
       
         <Route
-          path="cblog"
-          element={<CBlog setActive={setActive} user={user} />}
+          path="/cblog"
+          element={
+            <CBlog setActive={setActive} user={user} />}
         />
         <Route
           path="/search"
