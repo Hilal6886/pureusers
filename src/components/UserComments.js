@@ -16,7 +16,7 @@ const UserComments = ({ name, body, createdAt, msg }) => {
                 <>
                   <div className="media-left">
                     <img
-                     src={currentUser? currentUser.photoURL: userAvatar} alt='user profile'
+                     src={ userAvatar} alt='user profile'
                       className="rounded-circle"
                     />
                   </div>

@@ -22,8 +22,10 @@
   padding: 0.5rem;
   z-index: 1000;
   height: 60px;
-
+  position: fixed;
+  top: 0;
 }
+
 
 .logo img {
   width:100%;
@@ -62,8 +64,20 @@
     padding: 0.5rem 0;
     margin:0px !important;
   }
+  .navLists h5{
+    color: var(--textcolor);
+    font-size: 1rem;
+    font-family: cursive;
+  }
   .NavItem {
     padding: 0.5rem 0;
+   
+  }
+  .NavItem i{
+    color: var(--blackcolor);
+   
+    margin-right: 1rem;
+    
   }
   .navLink {
     color: var(--textcolor);
@@ -72,6 +86,15 @@
   }
   .navLink:hover {
     color: var(--Hovercolor);
+  }
+  .navLink:hover::after{
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: var(--primarycolor);
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
   }
   .btnq  {
     display: flex;
@@ -129,10 +152,12 @@
 }
 
 @media screen and (min-width: 769px) {
-  
-  .closeNavbar {
+  .toggleNavbar, .closeNavbar {
     display: none;
   }
+ .navLists h5{
+  display: none;
+ }
   .toggleNavbar img{
     
     width: 40px;
@@ -165,6 +190,9 @@
     margin-right: 1rem;
     margin-left: 1rem;
   }
+  .NavItem i{
+    color: var(--blackcolor);
+  }
   .NavItem .navLink {
     color: var(--textcolor);
     padding: 0 0.45rem;
@@ -174,8 +202,18 @@
     
     
   }
-  .NavItem .navLink:hover {
+  .navLink:hover {
     color: var(--primarycolor);
+    transition: 0.3s ease-in-out;
+  }
+  .navLink:hover::after{
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: var(--primarycolor);
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
   }
   .btnq {
     

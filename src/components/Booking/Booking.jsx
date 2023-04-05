@@ -139,7 +139,7 @@ const Booking = ({avgRating}) => {
 
             </ListGroupItem>
         </ListGroup>
- {/** <button className='btna primary_btn w-100% mt-4' onClick={handleClick}> Book Now</button> */}
+  <button className='btna primary_btn w-100% mt-4' onClick={handleClick}> Book Now</button> 
     </div>
   </div>
 }

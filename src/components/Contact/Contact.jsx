@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { db } from "../../firebase"; 
+import { collection, addDoc } from 'firebase/firestore';
 
 import "./contact.scss";
 
@@ -12,17 +14,33 @@ function Contact() {
     message: "",
   });
 
-  const { name, email, subject, message } = state;
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name || !email || !subject || !message) {
-      toast.error("Please provide value in each input field");
-    } else {
-     
-      setState({ name: "", email: "", subject: "", message: "" });
-      toast.success("Form Submitted Successfully");
-    }
-  };
+  const { name, email, subject, message } = state
+  
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!name || !email || !subject || !message) {
+    toast.error('Please provide a value in each input field');
+    return;
+  }
+  
+  try {
+    await addDoc(collection(db, 'contact-us'), {
+      name,
+      email,
+      subject,
+      message,
+    });
+
+    setState({ name: '', email: '', subject: '', message: '' });
+    toast.success('Form submitted successfully');
+  } catch (error) {
+    console.error('Error adding document: ', error);
+    toast.error('An error occurred while submitting the form');
+  }
+};
+
+ 
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -116,7 +134,7 @@ function Contact() {
                     </p>
                     <div className="dbox w-100 d-flex align-items-start">
                       <div className="icon d-flex align-items-center justify-content-center">
-                        <span className="fa fa-map-marker"></span>
+                        <span> <i class="ri-home-3-line"></i></span>
                       </div>
                       <div className="text pl-3">
                         <p>
@@ -126,7 +144,7 @@ function Contact() {
                     </div>
                     <div className="dbox w-100 d-flex align-items-center">
                       <div className="icon d-flex align-items-center justify-content-center">
-                        <span className="fa fa-phone"></span>
+                        <span> <i class="ri-phone-line"></i></span>
                       </div>
                       <div className="text pl-3">
                         <p>
@@ -137,7 +155,7 @@ function Contact() {
                     </div>
                     <div className="dbox w-100 d-flex align-items-center">
                       <div className="icon d-flex align-items-center justify-content-center">
-                        <span className="fa fa-paper-plane"></span>
+                        <span ><i class="ri-mail-line"></i></span>
                       </div>
                       <div className="text pl-3">
                         <p>
@@ -150,7 +168,7 @@ function Contact() {
                     </div>
                     <div className="dbox w-100 d-flex align-items-center">
                       <div className="icon d-flex align-items-center justify-content-center">
-                        <span className="fa fa-globe"></span>
+                        <span ><i class="ri-global-line"></i></span>
                       </div>
                       <div className="text pl-3">
                         <p>
