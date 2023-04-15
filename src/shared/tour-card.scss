@@ -15,7 +15,9 @@
 
 .tour_img img{
     width: 100%;
-    border-radius:  5px 5px 0 0;
+    max-height: 60%;
+    
+    border-radius:  1.5rem;
 }
 
 .card{
@@ -39,8 +41,8 @@
     
     border-radius: 10px;
     align-items: center;
-    background: var(--cardBG);
-    box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+    background-color: hsl(0, 100%, 97%);
+    box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.189);
     overflow: hidden;
   }
 .tour_img{
@@ -99,13 +101,19 @@
     
    
     
-    padding: .4rem 1rem;
+    padding: .5rem 4rem;
     background: var(--primarycolor);
-    border-radius: .5rem;
+    border-radius: 3rem;
+    text-align: center;
+    font-weight: 600;
+    gap: .5rem;
+    justify-content: center;
     border: none;
     outline: none;
     cursor: pointer;
     height: auto;
+    width: 100%;
+    margin-top: 2rem;
 
   }
   .btnu a {

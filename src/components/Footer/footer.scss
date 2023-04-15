@@ -44,6 +44,7 @@
 
 .footer_quick-links li a {
     text-decoration: none;
+    background-color: hsl(0, 100%, 98%);
    
     font-size: 1rem;
 }
@@ -54,3 +55,12 @@
 .footer_quick-links p{
     margin-top: 0.7rem;
 }
+.list-group-item{
+background-color: hsl(0, 100%, 98%);
+}
+@media screen and (max-width: 768px) {
+    .footer{
+        margin-bottom: 4rem;
+    }
+   
+  }

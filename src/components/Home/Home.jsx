@@ -10,10 +10,10 @@ import { TiSocialPinterestCircular } from 'react-icons/ti'
 import { Col, Form, FormGroup } from 'reactstrap'
 
 
+
 const { getImageUrl } = require('../../services/media.service.js')
 const hilal = getImageUrl('hilal_Trim.mp4')
-// const hilal="https://drive.google.com/file/d/1GTJbqjaNpoQNA-CWVFH7jteNEzsFBegJ/view?usp=share_link"
-// const hilal="https://drive.google.com/drive/u/0/folders/1OJx8sq-2A-SyXIeM_9mwCAVMEa6oFBrA"
+
 const Home = (props) => {
     const locationRef = useRef('')
     const distanceRef = useRef('0')
@@ -28,10 +28,14 @@ const Home = (props) => {
            return alert('All feilds are required to fill! ')
         }
 
+       
     }
+    const portfolioLink = "https://www.facebook.com/profile.php?id=100087155440871&mibextid=ZbWKwL";
+    const instagram = "https://instagram.com/quantumtourandtravels?igshid=ZDdkNTZiNTM=";
     return (
         <section className='homes'>
             <div className="overlays"></div>
+           
             <video src={hilal} muted autoPlay loop type="video/mp4" ></video>
             <div className="homeCont container">
                 <div className="txtDev">
@@ -46,28 +50,15 @@ const Home = (props) => {
 
 
                 <div className="cardDiv grid">
-                <FormGroup className='d-flex gap-3 form_group form_group-fast'>
-                <span><i className='ri-map-pin-line'></i></span>
+                <FormGroup className='d-flex gap-3 form_group form_group-'>
+               
                 <div>
-                    <h6>Location</h6>
+                   
                     <input type='text' placeholder=' Enter Where are you going' ref={locationRef}/>
                 </div>
             </FormGroup>
 
-                    <FormGroup className='d-flex gap-3 form_group form_group-fast'>
-                <span><i className='ri-map-pin-time-line'></i></span>
-                <div>
-                    <h6>Distance</h6>
-                    <input type='number' placeholder=' Enter Distance k/m' ref={distanceRef}/>
-                </div>
-            </FormGroup>
-                    <FormGroup className='d-flex gap-3 form_group form_group-last'>
-                        <span><i className='ri-group-line'></i></span>
-                        <div>
-                            <h6>Max people</h6>
-                            <input type='number' placeholder=' Enter number of people' ref={maxGroupSizeRef} />
-                        </div>
-                    </FormGroup>
+                  
                    
                     <span className='search-icon' type='submit' onClick={searchHandler}>
             <i className='ri-search-line'></i>
@@ -82,8 +73,10 @@ const Home = (props) => {
 
                 <div className="homeFooterIcons flex">
                     <div className="rightIcons">
-                        <FiFacebook className='icon' />
-                        <AiOutlineInstagram className='icon' />
+                    <a href={portfolioLink} target="_blank" rel="noopener noreferrer">  <FiFacebook className='icon' /></a>
+                    <a href={instagram} target="_blank" rel="noopener noreferrer">   <AiOutlineInstagram className='icon' /></a>
+                      
+                      
                         <CiTwitter className='icon' />
 
                     </div>

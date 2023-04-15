@@ -33,11 +33,11 @@ const TourDetails = () => {
 
   const { totalRating, avgRating } = calculateAvgRating(reviews);
   const options = { day: 'numeric', month: 'long', year: 'numeric' }
-  //submit request to the server
+ 
   const submitHandler = e => {
     e.preventDefault()
     const reviewText = reviewMsgRef.current.value
-    //later we will call our api
+
   }
   return (<>
     <section>
@@ -49,7 +49,7 @@ const TourDetails = () => {
               <div className="tour_info">
                 <h2>{title}</h2>
                 <div className="d-flex align-items-center gap-5">
-                  <span className="tour_ratings d-flex align-items center justify-content gap-1 ">
+                 {/*} <span className="tour_ratings d-flex align-items center justify-content gap-1 ">
                     <i className="ri-star-line"></i>
                     {avgRating === 0 ? null :
                       avgRating}
@@ -59,21 +59,38 @@ const TourDetails = () => {
                       <span> ({reviews?.length})</span>
                     )}
 
-                  </span>
-                  <span>
-                    <i className="ri-map-pin-2-line"></i> {address}
-                  </span>
+                  </span>*/}
+
                 </div>
                 <div className="tour_extra-details">
-                  <span><i className="ri-map-pin-2-line"></i> {city}</span>
-                  <span><i className="ri-money-doller-circle-line"></i> ₹{price}
-                    per person</span>
-                  <span><i className="ri-map-pin-time-line"></i> ${distance} k/m
-                  </span>
+                  <div className="amenities flex">
+                    <div className="singleAmenities flex">
+
+                      <i className="ri-map-pin-2-line"></i> {city}
+
+                    </div>
+
+                    <div className="singleAmenities flex">
+
+                      <i class="ri-price-tag-line"></i> <small>₹</small> {price}
+
+                    </div>
+
+                    <div className="singleAmenities flex">
+
+
+                      <i class="ri-time-line"></i>  <small>Duration</small>{distance}
+                    </div>
+
+                  </div>
+
+
+
 
 
 
                 </div>
+
                 <h5>Description</h5>
                 <p>{description}</p>
               </div>
@@ -101,7 +118,7 @@ const TourDetails = () => {
 
                   </div>
                   <div className="review_input">
-                    <input type='text' ref={reviewMsgRef} placeholder='share your thoughts' />
+                    <input type='text' ref={reviewMsgRef} placeholder='Share Your Thoughts' />
                     <button className='btnt primary_btn text-white' type='submit'>
                       Submit
                     </button>

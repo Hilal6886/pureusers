@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 import CommentBox from "../components/CommentBox";
 import Like from "../components/Like";
 import FeatureBlogs from "../components/FeatureBlogs";
-import RelatedBlog from "../components/RelatedBlog";
+
 import Tags from "../components/Tags";
 import UserComments from "../components/UserComments";
 import { db } from "../firebase";
@@ -26,18 +26,18 @@ import Spinner from "../components/Spinner";
 
 import {
   collection,
-  
+
   getDocs,
   limit,
   query,
-  
+
   orderBy,
-  
+
 } from "firebase/firestore";
-import { getBlog,  getRecentBlogs, getBlogs, getRelatedBlogs, updateBlog } from "../services/blog.service"
+import { getBlog, updateBlog } from "../services/blog.service"
 
 const Detail = ({ setActive, user }) => {
-  
+
   const userId = user?.uid;
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -67,8 +67,8 @@ const Detail = ({ setActive, user }) => {
 
   const getBlogDetail = async () => {
     const blogDetail = await getBlog(id)
-    blogDetail.timestamp=(blogDetail.timestamp).toDate().toDateString()
-    setBlog(blogDetail|| {});
+    blogDetail.timestamp = (blogDetail.timestamp).toDate().toDateString()
+    setBlog(blogDetail || {});
     setLikes(blogDetail.likes || []);
     setComments(blogDetail.comments || []);
     // console.log("BBLOGGGGGGGGGGGGGGG",blogDetail)
@@ -94,7 +94,7 @@ const Detail = ({ setActive, user }) => {
       name: user?.displayName,
       body: userComment,
     });
-    await updateBlog(id,{...blog,comments})
+    await updateBlog(id, { ...blog, comments })
     toast.success("Comment posted successfully");
     setUserComment("");
   };
@@ -110,13 +110,14 @@ const Detail = ({ setActive, user }) => {
           likes = likes.filter((id) => id !== userId);
           setLikes(likes);
         }
-    await updateBlog(id,
-       {
-      ...blog,
-      likes }
-      )
+        await updateBlog(id,
+          {
+            ...blog,
+            likes
+          }
+        )
+      }
     }
-  }
   };
 
   return (

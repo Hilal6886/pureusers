@@ -138,7 +138,7 @@ const AddEditBlog = ({ user, setActive }) => {
 
   return (
     <div className="container-fluid mb-4">
-      <div className="container">
+      <div className="containert">
         <div className="col-12">
           <div className="text-center heading py-2">
             {id ? "Update Tour" : "Create Tour"}
@@ -146,7 +146,7 @@ const AddEditBlog = ({ user, setActive }) => {
         </div>
         <div className="row h-100 justify-content-center align-items-center">
           <div className="col-10 col-md-8 col-lg-6">
-            <form className="row blog-form" onSubmit={handleSubmit}>
+            <form className=" ghy row blog-form" onSubmit={handleSubmit}>
               <div className="col-12 py-3">
                 <input
                   type="text"
@@ -168,6 +168,16 @@ const AddEditBlog = ({ user, setActive }) => {
                   onChange={handleChange}
                 />
               </div>
+              <div className="col-12 py-3">
+                <input
+                 type= 'text'
+                  className="form-control  input-text-box"
+                  placeholder="Duration"
+                  value={distance}
+                  name="distance"
+                  onChange={handleChange}
+                />
+              </div>
               
               
               <div className="col-12 py-3">
@@ -181,7 +191,7 @@ const AddEditBlog = ({ user, setActive }) => {
               </div>
               <div className="col-12 py-3">
                 <input
-                 type= 'text'
+                 type= 'number'
                   className="form-control  input-text-box"
                   placeholder="price"
                   value={price}
@@ -200,25 +210,7 @@ const AddEditBlog = ({ user, setActive }) => {
                 />
               </div>
              
-              <div className="col-12 py-3">
-                <input
-                 type= 'number'
-                  className="form-control  input-text-box"
-                  placeholder="Distance"
-                  value={distance}
-                  name="distance"
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="col-12 py-3">
-                <textarea
-                  className="form-control  input-text-box"
-                  placeholder="Address"
-                  value={address}
-                  name="address"
-                  onChange={handleChange}
-                />
-              </div>
+             
               <div className="mb-3">
                 <input
                   type="file"

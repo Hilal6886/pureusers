@@ -47,10 +47,13 @@
   display: grid;
   padding: 0.5rem;
 
-  border-radius: 10px;
+ 
   align-items: center;
-  background: var(--cardBG);
-  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow: inset 20px 20px 60px #bebebe,
+              inset -20px -20px 60px #ffffff;
   overflow: hidden;
   margin-right: 1.5rem;
   margin-left: 1.5em;

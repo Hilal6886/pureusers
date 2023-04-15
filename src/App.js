@@ -34,6 +34,8 @@ import CreateContainer from "./pages/CreateContainer";
 import BookingList from "./pages/Bookings";
 
 import useAdmin from "../src/utils/hooks"
+import BottomNav from "./components/Navbar/BottomNav";
+import Varifyotp from "./components/Booking/VerifyOtp";
 
 
 
@@ -204,6 +206,7 @@ const App = () => {
          <Route path="/tag/:tag" element={<TagBlog setActive={setActive} />} />
         <Route path="/category/:category" element={<CategoryBlog setActive={setActive}  />} />
         <Route path="/blogs" element={<Blogs setActive={setActive} />} />
+        <Route path="/verify-otp" element={<Varifyotp/>} />
       
    
     
@@ -216,6 +219,9 @@ const App = () => {
     </Routes>
     </AuthProvider>
     <Footer/>
+    <BottomNav/>
+    
+  
     </div>
     
 

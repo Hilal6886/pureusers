@@ -46,7 +46,7 @@ video {
 
 .homeCont {
   width: 100%;
-  height: max-content;
+  height: 100%;
   padding: 8rem 1.5rem 3rem;
   display: flex;
   row-gap: 6rem;
@@ -74,12 +74,17 @@ video {
 
 .cardDiv {
   padding: 0.5rem 1rem;
-  border-radius: 30px;
+  border-radius: 10px;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-  width: max-content;
+  
+  max-width: 250px;
+  min-width: 250px;
   background: var(--whitecolor);
   position: center;
-  gap: 0.8rem;
+  display: flex;
+  gap: 0.4rem;
+ 
+ 
 }
 
 .priceInput span {
@@ -191,10 +196,10 @@ input::placeholder {
   border-radius: 10px 5px 10px 5px;
   cursor: pointer;
  
-  margin-bottom: 5rem;
+ 
 }
 .search-icon {
- margin-left: 5rem;
+ margin-right: 8rem;
 }
 
 .form_group-fast {
@@ -234,9 +239,11 @@ input::placeholder {
     width: 145px;
   }
 
-  .cardDiv {
-    grid-template-columns: repeat(1, 1fr);
+  .homeFooterIcons{
+    margin-top: 10rem;
   }
+
+
 
   .form_group-fast {
     border-right: 2px solid#ddd;
@@ -248,39 +255,39 @@ input::placeholder {
 }
 
 @media screen and (min-width: 660px) {
-  .cardDiv {
-    padding: 1rem 1rem;
-    grid-template-columns: repeat(2, 1fr);
+ 
+  .homeFooterIcons{
+    margin-top: 10rem;
   }
+
 }
 
 @media screen and (min-width: 940px) {
+ 
+  .homeFooterIcons{
+    margin-top: 10rem;
+  }
   .homes {
     height: 70vh;
   }
 
-  .cardDiv {
-    padding: 1rem 1rem;
-    width: 90%;
-    grid-template-columns: repeat(4, 1fr);
-  }
+
 }
 
 @media screen and (min-width: 1200px) {
   .homes {
     height: 80vh;
   }
+ 
+  .homeFooterIcons{
+    margin-top: 10rem;
+  }
 
   .homesContent {
     padding-left: 0;
     padding-right: 0;
   }
-  .cardDiv {
-    padding: 1rem 1rem;
-    width: 70%;
-    grid-template-columns: repeat(4, 1fr);
-   margin-top: -5rem;
-  }
+
 
  
  

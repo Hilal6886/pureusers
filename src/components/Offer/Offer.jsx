@@ -40,9 +40,9 @@ const Offer = () => {
     });
   }, []);
 
-  // console.log("BBLOGGGGGGGGGGGGGGG", getAllOffers)
+ 
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure wanted to delete that blog ?")) {
+    if (window.confirm("Are you sure wanted to delete that offer ?")) {
       try {
         setLoading(true);
         await deleteDoc(doc(db, "offers", id));

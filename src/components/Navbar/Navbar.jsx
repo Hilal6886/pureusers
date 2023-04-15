@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState,useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import './navbar.scss'
 import logo from './ddd.png'
 import { AiFillCloseCircle } from 'react-icons/ai'
@@ -49,10 +50,16 @@ const Navbar = ({ user }) => {
         })
     }
     const [showNav, setShowNav] = useState(true);
+    const location = useLocation();
+
+    useEffect(() => {
+      setShowNav(false);
+    }, [location.pathname]);
 
     const toggleNav = () => {
         setShowNav(!showNav);
     }
+    
 
 
 
@@ -77,7 +84,7 @@ const Navbar = ({ user }) => {
                             <img src={currentUser ? currentUser.photoURL : userAvatar}
                                 alt='user profile' ref={profileActionRef} onClick={toggleProfileAction} />
                         </div>
-                        <h5>PROFILE</h5>
+                       
 
 
                         <li className="NavItem">
@@ -104,7 +111,7 @@ const Navbar = ({ user }) => {
 
                         <li className="NavItem">
                             <i class="ri-hand-heart-line"></i>
-                            <a href="/offers" className="navLink">   OFFERS</a>
+                            <a href="/offers" className="navLink"> OFFERS</a>
                         </li>
 
                         <li className="NavItem">
@@ -120,15 +127,20 @@ const Navbar = ({ user }) => {
                             <i class="ri-contacts-line"></i>
                             <a href="/contact-us" className="navLink">CONTACT</a>
                         </li>
+                        
+                       
                         {isAdmin &&
 
                             <li className='NavItem'>
-                                <select style={{
+                                   <i class="ri-user-settings-line"></i>
+                                <select className="navLink"style={{marginRight:'-2rem',
+
+
                                     border: 'none', outline: 'none', WebkitAppearance: 'none', MozAppearance: 'none',
-                                    appearance: 'none', padding: '0.5rem', backgroundColor: 'transparent',
+                                    appearance: 'none',  backgroundColor: 'transparent',
                                     fontSize: '1rem', color: ' #606060', fontWeight: '500'
-                                }} value={selectedOption} onChange={handleOptionChange}>
-                                    <option value="/">ADMIN</option>
+                                }} value={selectedOption} onChange={handleOptionChange}> 
+                                    <option  value="/" >ADMIN</option>
                                     <option value="/create">Add Blog</option>
                                     <option value="/tou">Add Tours</option>
                                     <option value="/count">Add Offers</option>

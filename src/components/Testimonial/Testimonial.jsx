@@ -3,7 +3,7 @@ import {Container,Col,Row} from "reactstrap";
 import './testimonial.scss'
 
 
-import maleTourist from '../Testimonial/My project (1).png'
+import maleTourist from '../Testimonial/My project-1 (1).png'
 
 
 

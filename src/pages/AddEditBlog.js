@@ -155,7 +155,7 @@ console.log("FILE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",file)
 
   return (
     <div className="container-fluid mb-4">
-      <div className="container">
+      <div className="containert">
         <div className="col-12">
           <div className="text-center heading py-2">
             {id ? "Update Blog" : "Create Blog"}
@@ -163,7 +163,7 @@ console.log("FILE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",file)
         </div>
         <div className="row h-100 justify-content-center align-items-center">
           <div className="col-10 col-md-8 col-lg-6">
-            <form className="row blog-form" onSubmit={handleSubmit}>
+            <form className="ghy row blog-form" onSubmit={handleSubmit}>
               <div className="col-12 py-3">
                 <input
                   type="text"

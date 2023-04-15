@@ -7,6 +7,8 @@ import {useParams} from 'react-router-dom'
 import { db } from '../../firebase';
 import { collection ,addDoc} from "firebase/firestore";
 import { auth } from '../../firebase';
+import { signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
+
 
 
 const Booking = ({avgRating}) => {
@@ -61,10 +63,25 @@ const Booking = ({avgRating}) => {
       e.preventDefault();
     
       try {
-        // get the currently logged-in user
-        const user = auth.currentUser;
-        // add the booking to the 'bookings' collection
-        const bookingRef = await addDoc(collection(db, 'bookings'), {
+        // Authenticate user's phone number
+        const phoneAuthProvider = signInWithPhoneNumber(auth, credentials.phone);
+        const verificationId = await phoneAuthProvider.confirm();
+    
+        // Navigate to OTP verification page
+        navigate("/verify-otp", { verificationId });
+    
+        // Wait for user to enter OTP and confirm authentication
+        const userCredential = await phoneAuthProvider.verifyPhoneNumber(
+          verificationId,
+          {
+            session: () => {},
+          }
+        );
+    
+        const user = userCredential.user;
+    
+        // Add the booking to the 'bookings' collection
+        const bookingRef = await addDoc(collection(db, "bookings"), {
           userId: user.uid,
           userEmail: user.email,
           fullName: credentials.fullName,
@@ -73,14 +90,15 @@ const Booking = ({avgRating}) => {
           bookAt: credentials.bookAt,
           totalAmount: totalAmount,
           createdAt: new Date(),
-          tourId:tour.id
+          tourId: tour.id,
         });
-        console.log('Booking added with ID: ', bookingRef.id);
+        console.log("Booking added with ID: ", bookingRef.id);
         navigate("/ThankYou");
       } catch (error) {
-        console.error('Error adding booking: ', error);
+        console.error("Error adding booking: ", error);
       }
     };
+    
     
   
    
@@ -90,13 +108,13 @@ const Booking = ({avgRating}) => {
   return <div className="booking">
     <div className="booking_top d-flex align-items-center justify-content-between">
         <h3>₹{price} <span>/per person</span></h3>
-        <span className="tour_ratings d-flex align-items center justify-content gap-1 ">
+       {/*} <span className="tour_ratings d-flex align-items center justify-content gap-1 ">
 <i className="ri-star-line"></i>
  {avgRating === 0 ? null :
   avgRating} ({reviews?.length})
  
 
-</span>
+ </span>*/}
     </div>
     <div className="booking_form">
         <h5>Information</h5>
