@@ -1,66 +1,34 @@
-/* Booking List CSS */
+.booking-list-container {
+  /* Add any other styles you want for the container */
+  margin-top: 4rem;
 
-.booking-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 30px;
-}
-
-
-.booking-table th,
-.booking-table td {
-  padding: 12px;
-  text-align: left;
-}
-
-.booking-table th {
-  background-color: #f2f2f2;
-}
-
-.booking-table td {
-  border-bottom: 1px solid #ddd;
-}
-
-/* Media queries */
-
-@media screen and (max-width: 768px) {
-  .booking-table {
-    display: block;
+  .table-container {
     overflow-x: auto;
+    max-width: 100%;
   }
-  .booking-table thead {
-    display: none;
-  }
-  .booking-table tbody tr {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-  }
-  .booking-table tbody td:before {
-    content: attr(data-label);
-    font-weight: bold;
-    margin-right: 10px;
+
+  .booking-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      white-space: nowrap;
+      border: 1px solid black;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      /* Add any other styles you want for table headers */
+    }
+
+    td {
+      /* Add any other styles you want for table cells */
+      color: blaxk;
+    }
   }
 }
 
-@media screen and (max-width: 480px) {
-  .booking-table {
-    display: block;
-    overflow-x: auto;
-  }
-  .booking-table thead {
-    display: none;
-  }
-  .booking-table tbody tr {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-  }
-  .booking-table tbody td:before {
-    content: attr(data-label);
-    font-weight: bold;
-    margin-right: 10px;
-  }
-}
+/* Add any other styles you want for the BookingList component */
