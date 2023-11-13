@@ -26,21 +26,25 @@ const initialState = {
 };
 
 const categoryOption = [
-  "Destination Guides",
-  "Adventure Travel",
-  "Budget travel","Cultural Experience","Solo Travel",
-  "Luxury Travel",
-  "Cruise Travel",
-  "Family Travel",
-  "Food and Drink",
-  "Nature and wildlife","Road Trips","Volunteer travel","Sustainable travel",
-  "Hiking and Trekking","Beach vacations","Wildlife safaris","Travel gear and tech",
-  "Language and cultural tips","Historical and Heritage sites","Health and wellness",
-  "Local Transportation","Medical Tourism","Photography",
+  'Industry News',
+  'Product Updates',
+  'How-To Guides',
+  'Case Studies',
+  'Thought Leadership',
+  'Best Practices',
+  'Customer Success Stories',
+  'Industry Analysis',
+  'Company News',
+  'Events and Webinars',
+  'Expert Interviews',
+  'Product Comparisons',
+  'Tips for Sales and Marketing',
+  'Industry Regulations and Compliance',
+  'Infographics and Visual Content',
  
 ];
 
-const AddEditBlog = ({ user, setActive }) => {
+const AddEditBlog = ({ user }) => {
   const [form, setForm] = useState(initialState);
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
@@ -99,7 +103,7 @@ console.log("FILE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",file)
     if (snapshot.exists()) {
       setForm({ ...snapshot.data() });
     }
-    setActive(null);
+  
   };
 
   const handleChange = (e) => {

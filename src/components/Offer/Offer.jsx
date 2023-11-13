@@ -58,50 +58,34 @@ const Offer = () => {
     <section data-aos="fade-up" className="offer container section">
       <div data-aos="fade-up" className="secContainer">
         <div className="seIntro">
-          <h2 data-aos="fade-up" className="secTtle">
-            OUR BEST HOTELS
+          <h2 data-aos="fade-up" className="secTtle gradient__text">
+            OUR FEATURED PRODUCTS
           </h2>
-          <p>from historical cities to natural spectacular, come see the best of the world!</p>
+          <p>Access millions of products</p>
         </div>
         <div data-aos="fade-up" className="ghft grid">
           {offers.map(({ id, imgUrl, stTdeitle, location, price, title }) => {
             return (
-              <div className="singleoffer" key={id}>
-                <div className="destImage">
-                  <img src={imgUrl} alt={stTdeitle} />
+              <div data-aos="fade-up"  className="singleoffer" key={id}>
+                <div data-aos="fade-up" className="destImage">
+                  <img data-aos="fade-up"  src={imgUrl} alt={stTdeitle} />
 
                   <span className="discount">20% off</span>
                 </div>
                 <div className="offerBody">
-                <h6>{title}</h6>
-                  <div className="price flex">
-                    <h6>₹{price}</h6>
-                   
-                    <span className="status">For Rent</span>
+                
+                  <div className="price flex ">
+                  <h6 className='gradient__text'>{title}</h6>
+                  <span className="status" >Featured</span>
+
                   </div>
                   <div className="amenities flex">
                     <div className="singleAmenities flex">
-                      <MdKingBed className="icons" />
-                      <small>2 Beds</small>
-                    </div>
-                    <div className="singleAmenities flex">
-                      <MdBathtub className="icons" />
-                      <small>1 Bath</small>
-                    </div>
-                    <div className="singleAmenities flex">
-                      <FaWifi className="icons" />
-                      <small> wi-fi</small>
-                    </div>
-                    <div className="singleAmenities flex">
-                      <MdAirportShuttle className="icons" />
-                      <small>shuttle</small>
+                    <h6>{price}</h6>
                     </div>
                   </div>
-                  <div className="location flex">
-                    <MdLocationOn className="icons" />
-                    <small> {location}</small>
-                  </div>
-                  <button className="btnn flex">Details</button>
+                 
+                  <button className="btnn flex">view product</button>
                 </div>
                 {isAdmin && (
 

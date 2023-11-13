@@ -1,49 +1,37 @@
 import React,{useState,useEffect} from 'react';
-import './main.scss'
-import TourCard from '../../shared/TourCard';
-
-import { getAllTours } from '../../services/TourService';
-import Aos from 'aos';
-import 'aos/dist/aos.css';
+import { google, slack, atlassian, dropbox, shopify } from './imports';
+import './brand.css';
 
 
 
 
-import {Col} from "reactstrap"
+
+
 
 
  const Main = () => {
-  const [tour, setTours] = useState([]);
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-   
-    });
   
-
-  useEffect(() => {
-    async function fetchData() {
-      const result = await getAllTours();
-      setTours(result);
-    }
-    fetchData();
-  }, []);
   return (
     <section>
-            <div  data-aos="fade-up"className='scIntro'>
-                    <h2  data-aos="fade-up"className='secTite'>
-             FEATURED TOURS
-                    </h2>
-                    <p>
-                        TRAVEL WITH QUANTUM TOUR AND TRAVELS
-                    </p>
-                </div>
-        <>
-        <div data-aos="fade-up"className="continents grid">
-      { tour?.map(tour  => (
-        <Col lg='3' className='mb-4' key={tour.id}><TourCard tour={tour}/></Col>
-       ))}
-       </div>
-       </>
+            <h2 className='gth'>Renowned and highly regarded by a multitude of Sales and Marketing professionals worldwide</h2>
+           
+           <div className="continents grid section__padding   ">
+    <div>
+      <img src={google} alt='p'/>
+    </div>
+    <div>
+      <img src={slack} alt='p' />
+    </div>
+    <div>
+      <img src={atlassian} alt='p'/>
+    </div>
+  
+    <div>
+      <img src={shopify} alt='p' />
+    </div>
+  </div>
+
+
     </section>
   )
 }

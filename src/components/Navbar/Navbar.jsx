@@ -1,8 +1,8 @@
-import React, { useRef, useState,useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation,Link } from 'react-router-dom';
 import './navbar.scss'
-import logo from './ddd.png'
+import logo from './ddr.png'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { GoThreeBars } from 'react-icons/go'
 import userAvatar from '../../assets/images/avatar.png'
@@ -23,7 +23,7 @@ const Navbar = ({ user }) => {
         setSelectedOption(event.target.value);
         navigate(event.target.value);
     }
-   
+
     const userData = localStorage.getItem("USER")
     let currentUser = null
     let isAdmin = false
@@ -53,13 +53,13 @@ const Navbar = ({ user }) => {
     const location = useLocation();
 
     useEffect(() => {
-      setShowNav(false);
+        setShowNav(false);
     }, [location.pathname]);
 
     const toggleNav = () => {
         setShowNav(!showNav);
     }
-    
+
 
 
 
@@ -78,29 +78,30 @@ const Navbar = ({ user }) => {
 
                 <div className={showNav ? 'navBar activeNavbar' : 'navBar'}>
                     <ul className="navLists flex">
-                       
+
                         <div className="toggleNavbar">
 
                             <img src={currentUser ? currentUser.photoURL : userAvatar}
                                 alt='user profile' ref={profileActionRef} onClick={toggleProfileAction} />
                         </div>
-                       
+
 
 
                         <li className="NavItem">
                             <i class="ri-home-line"></i>
-                            <a href="/home" className="navLink">HOME</a>
+                            
+                            <Link to="/home" className="navLink">HOME</Link>
                         </li>
-                        <li className="NavItem">
+                        {/*<li className="NavItem">
                         <i class="ri-roadster-line"></i>
                             <a href="/Tourss" className="navLink">TOURS</a>
 
-                        </li>
+    </li> */}
                         <li className="NavItem">
                             <i class="ri-user-3-line"></i>
-                            <a href="/about" className="navLink">ABOUT</a>
+                            <Link to="/table" className="navLink">CATEGORIES</Link>
                         </li>
-
+                       
 
                         <li className="NavItem">
                             <i class="ri-file-text-line"></i>
@@ -109,43 +110,45 @@ const Navbar = ({ user }) => {
 
                         </li>
 
-                        <li className="NavItem">
+                        {/* <li className="NavItem">
                             <i class="ri-hand-heart-line"></i>
                             <a href="/offers" className="navLink"> OFFERS</a>
-                        </li>
+</li> 
 
                         <li className="NavItem">
                             <i class="ri-service-line"></i>
                             <a href="/services" className="navLink">SERVICES</a>
-                        </li>
+                        </li> */}
 
 
-                      
+
 
 
                         <li className="NavItem">
                             <i class="ri-contacts-line"></i>
                             <a href="/contact-us" className="navLink">CONTACT</a>
                         </li>
-                        
-                       
+
+
                         {isAdmin &&
 
                             <li className='NavItem'>
-                                   <i class="ri-user-settings-line"></i>
-                                <select className="navLink"style={{marginRight:'-2rem',
+                                <i class="ri-user-settings-line"></i>
+                                <select className="navLink" style={{
+                                    marginRight: '-2rem',
 
 
                                     border: 'none', outline: 'none', WebkitAppearance: 'none', MozAppearance: 'none',
-                                    appearance: 'none',  backgroundColor: 'transparent',
-                                    fontSize: '1rem', color: ' #606060', fontWeight: '500'
-                                }} value={selectedOption} onChange={handleOptionChange}> 
-                                    <option  value="/" >ADMIN</option>
+                                    appearance: 'none', backgroundColor: 'transparent', background: '#031B34',
+                                    fontSize: '1rem', color: ' white', fontWeight: '500'
+                                }} value={selectedOption} onChange={handleOptionChange}>
+
+                                    <option value="/" >ADMIN</option>
                                     <option value="/create">Add Blog</option>
-                                    <option value="/tou">Add Tours</option>
+                                    <option value="/tou">Add categories</option>
                                     <option value="/count">Add Offers</option>
-                                    <option value="/hilll">Add services</option>
-                                    <option value="/booking">Bookings</option>
+
+
                                 </select>
                             </li>
                         }
@@ -156,11 +159,12 @@ const Navbar = ({ user }) => {
                                     ) : (
 
                                         <div>
-                                            
-                              {/*}  <button className="btnq flex">
-                                <a href="/login">Login</a>
-                                    </button> */}
-                            
+
+                                            <button className="btnq flex">
+                                                <a href="/login">Login</a>
+                                            </button>
+
+
                                         </div>
 
                                     )}
@@ -170,7 +174,7 @@ const Navbar = ({ user }) => {
 
 
 
-                   
+
                 </div>
 
                 {/* <div onClick={ShowNav} className="toggleNavbar">
@@ -178,9 +182,9 @@ const Navbar = ({ user }) => {
                  <img src={userAvatar} alt='user profile'  ref={profileActionRef}  onClick={toggleProfileAction}/>
                         </div>*/}
 
-<div onClick={toggleNav} className="closeNavbar">
-                        {showNav ? <AiFillCloseCircle className="icone" /> : <GoThreeBars className="icone" />}
-                    </div>
+                <div onClick={toggleNav} className="closeNavbar">
+                    {showNav ? <AiFillCloseCircle className="icone" /> : <GoThreeBars className="icone" />}
+                </div>
 
             </header>
 

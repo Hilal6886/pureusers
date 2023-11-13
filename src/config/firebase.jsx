@@ -6,14 +6,13 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAI8LQSdhvslYD0JNInFyu5GWCOoT2slEo",
-  authDomain: "quantumtourandtravels.firebaseapp.com",
-  databaseURL: "https://quantumtourandtravels-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "quantumtourandtravels",
-  storageBucket: "quantumtourandtravels.appspot.com",
-  messagingSenderId: "617147655857",
-  appId: "1:617147655857:web:df73b897a1964393a42490",
-  measurementId: "G-13PYD2SBLL"
+  apiKey: "AIzaSyBP6BdITd5ll9IR1c-Z1NnJcSkpoRa08RI",
+  authDomain: "pureusers.firebaseapp.com",
+  projectId: "pureusers",
+  storageBucket: "pureusers.appspot.com",
+  messagingSenderId: "1051264346080",
+  appId: "1:1051264346080:web:62f3a4ff010e20eed2ed85",
+  measurementId: "G-WQMTEP4VQ3"
 };
 
 // Initialize Firebase

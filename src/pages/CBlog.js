@@ -23,14 +23,13 @@ import { isEmpty, isNull } from "lodash";
 import { useLocation } from "react-router-dom";
 import Category from "../components/Category";
 
-import { makeAdmin } from "../utils/hooks";
 
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const CBlog = ({ setActive, user, active, }) => {
+const CBlog = ({user, active, }) => {
  
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
@@ -74,7 +73,7 @@ const CBlog = ({ setActive, user, active, }) => {
         setTotalBlogs(list);
         // setBlogs(list);
         setLoading(false);
-        setActive("home");
+        
       },
       (error) => {
         console.log(error);
@@ -85,7 +84,7 @@ const CBlog = ({ setActive, user, active, }) => {
       unsub();
       getTrendingBlogs();
     };
-  }, [setActive, active]);
+  }, [ active]);
 
   useEffect(() => {
     getBlogs();
@@ -153,7 +152,7 @@ const CBlog = ({ setActive, user, active, }) => {
     const combinedSearchBlogs = searchTitleBlogs.concat(searchTagBlogs);
     setBlogs(combinedSearchBlogs);
     setHide(true);
-    setActive("");
+  
   };
 
   useEffect(() => {
@@ -216,7 +215,7 @@ const CBlog = ({ setActive, user, active, }) => {
     <div className="container-fluid pb-4 pt-4 padding">
       <div className="container padding">
         <div className="row mx-0">
-          <Trending blogs={trendBlogs} />
+        
           <div className="col-md-8">
             <div className="blog-heading text-start py-2 mb-4">Daily Blogs</div>
             {blogs.length === 0 && location.pathname !== "/" && (
@@ -245,7 +244,7 @@ const CBlog = ({ setActive, user, active, }) => {
           <div className="col-md-3">
            
             <div className="blog-heading text-start py-2 mb-4">Tags</div>
-            <Tags tags={tags} />
+        
             <FeatureBlogs title={"Most Popular"} blogs={blogs} />
             <Category catgBlogsCount={categoryCount} />
           </div>

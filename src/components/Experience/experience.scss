@@ -1,51 +1,163 @@
 :root {
-    --primarycolor: hsl(26, 93%, 50%);
-    --Hovercolor: hsl(26, 90%, 42%);
-    ---whitecolor: hsl(0, 0%,100%);
-    --blackcolor: hsl(0, 0%, 18%);
-    --textcolor: hsl(240, 1%, 48%);
-    --whitecolorDeam: hsl(0, 0%, 93%);
-    --greyBg: hsl(0, 0%, 96%);
-    --greytext: rgb(190, 190, 190);
-    --inputcolor: hsl(330, 12%, 97%);
-    --bodyColor: rgb(240, 240, 246);
-    --cardBg: rgb(225, 225, 235);
-  }
-.experience_content{
+  --primarycolor: hsl(26, 93%, 50%);
+  --Hovercolor: hsl(26, 90%, 42%);
+  --whitecolor: hsl(0, 0%, 100%);
+  --blackcolor: hsl(0, 0%, 18%);
+  --textcolor: hsl(240, 1%, 48%);
+  --whitecolorDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greytext: rgb(190, 190, 190);
+  --inputcolor: hsl(330, 12%, 97%);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBg: rgb(225, 225, 235);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.experience_content h2 {
+  text-align: center;
+  font-weight: 600;
+}
+
+.hilal {
+  padding: 0;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.experience_card {
+
+  border-radius: 15px;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+
+  padding: 25px;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px; 
+}
+
+.experience_content {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--textcolor);
+}
+
+.experience_content p {
+  font-size: 1.1rem;
+  color: var(--textcolor);
+  margin-top: 1rem;
+  text-align: justify;
+  padding: 0.6rem;
+}
+
+.counter_wrapper {
+  margin-top: 2.5rem;
+  justify-content: center;
+}
+
+.counter_box span {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blackcolor);
+  font-size: 2rem;
+  font-weight: 900;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+}
+
+.counter_box h6 {
+  font-size: 1rem;
+  margin-top: 0.7rem;
+  color: var(--textcolor);
+  text-align: center;
+}
+
+.experience_img img {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .experience_content {
     font-size: 2.5rem;
-    margin-top: 4.5rem;
-    font-weight: 500;
+  }
+  .counter_box span {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+  .counter_box h6 {
+    font-size: 0.9rem;
+  }
 }
 
-.experience_content p{
-    font-size: 1.1rem;
-    columns: var(--textcolor);
-    margin-top: 1rem;
-
-}
-.counter_wrapper{
-    margin-top: 2.5rem;
-}
-.counter_box span{
-    width: 70px;
-    height: 70px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--primarycolor);
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: 600;
-    border-radius: 10p 5px 10px 5px;
+@media (max-width: 992px) {
+  .experience_content {
+    font-size: 2rem;
+  }
+  .experience_content h2 {
+    text-align: center;
+  }
+  .counter_box span {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  .counter_box h6 {
+    font-size: 0.8rem;
+  }
 }
 
-.counter_box h6{
-    font-size: 1.1rem;
-    margin-top: 0.7rem;
-    color: var(--textcolor);
+@media (max-width: 768px) {
+  .experience_content {
+    font-size: 1.8rem;
+  }
+  .counter_box span {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+  .counter_box h6 {
+    font-size: 0.7rem;
+  }
+  .experience_img img {
+    max-height: 200px;
+  }
 }
- .experience_img img{
-    margin-top: 3.5rem;
-    width: 100%;
- }
+
+@media (max-width: 576px) {
+  .experience_content {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+  }
+  .counter_box span {
+    width: 50px;
+    height: 50px;
+    font-size: 0.8rem;
+  }
+  .counter_box h6 {
+    font-size: 0.6rem;
+  }
+  .experience_img img {
+    max-height: 150px;
+  }
+}
+
+/* Add more media queries as needed for different screen sizes */

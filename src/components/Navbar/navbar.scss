@@ -10,6 +10,7 @@
   --inputcolor: hsl(330, 12%, 97%);
   --bodyColor: rgb(240, 240, 246);
   --cardBg: rgb(225, 225, 235);
+  --color-footer : #031B34;
   
 }
 
@@ -17,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--whitecolor);
+  background: var(--color-footer);
   width: 100%;
   padding: 0.5rem;
   z-index: 1000;
@@ -33,10 +34,13 @@
   max-width: 150px;
   max-height: 54px
 }
+body{
+  overflow-x: hidden;
+}
 
 
 .icone {
-  color: var(--primarycolor);
+  color: #89E894;
   transform: translateY(3px);
   font-size: 2rem;
   cursor: pointer;
@@ -46,7 +50,7 @@
   .navBar {
     flex: 1;
     height: calc(100vh - 60px);
-    background-color: var(--whitecolor);
+    background-color: var(--color-footer);
     position: fixed;
     top: 60px;
     left: 0;
@@ -88,7 +92,7 @@
    
   }
   .NavItem i{
-    color: var(--blackcolor);
+    color: #89E894;
    
     
     padding-right: 1rem;
@@ -96,7 +100,7 @@
     
   }
   .navLink {
-    color: var(--textcolor);
+    color: var(---whitecolor);
     font-size: 0.9rem;
     font-weight: 600;
   }
@@ -107,17 +111,17 @@
     content: '';
     width: 30px;
     height: 2px;
-    background: var(--primarycolor);
+    background: #89E894;
     position: absolute;
     bottom: -4px;
     left: 20px;
   }
   .btnq  {
     display: flex;
-   
+    width: 100%;
     margin-right: 1rem;
     padding: .4rem 1.5rem;
-    background: var(--primarycolor);
+    background: #89E894;
     border-radius: .5rem;
     border: none;
     outline: none;
@@ -275,10 +279,10 @@
     margin-left: 1rem;
   }
   .NavItem i{
-    color: var(--blackcolor);
+    color: #89E894;
   }
   .NavItem .navLink {
-    color: var(--textcolor);
+    color: var(--whitecolor);
     padding: 0 0.45rem;
     font-size: 1rem;
     font-weight: 500;
@@ -294,7 +298,7 @@
     content: '';
     width: 30px;
     height: 2px;
-    background: var(--primarycolor);
+    background: #89E894;
     position: absolute;
     bottom: -4px;
     left: 20px;
@@ -305,7 +309,7 @@
     margin-right: 3rem;
     margin-left: 3rem;
     padding: .2rem 1.8rem;
-    background: var(--primarycolor);
+    background: #89E894;
     border-radius: .5rem;
     border: none;
     outline: none;

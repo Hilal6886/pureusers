@@ -3,7 +3,8 @@ import {Container,Col,Row} from "reactstrap";
 import './testimonial.scss'
 
 
-import maleTourist from '../Testimonial/My project-1 (1).png'
+import maleTourist from '../Testimonial/yu.png'
+
 
 
 
@@ -19,18 +20,19 @@ const Testimonial = () => {
     
     <Container>
     <div className='tyu'>
-        <Row>
-            <Col lg ='6'>
+        <Row>      
+               <Col lg ='6'>
                 
                 <div className="newsletter_content">
-                <h3>Subscribe now to get useful traveling information.</h3>
+                <h2  className="gradient__text">SUBSCRIBE NOW TO GET USEFUL INFORMATION.</h2>
               
                  <div className='newsletter_input'>
                  <input type="email" placeholder='Enter your Email'/>
                  <button className='btnk newsletter_btn'>Subscribe</button>
                 </div>
-                <p>Quantum Tour and Travels is a premier travel agency dedicated to providing exceptional travel experiences to its clients. <br/>
-                With a team of experienced professionals and a wide network of travel partners,<br/>
+                <p>The Pure Users Data Platform provides a comprehensive and dynamic source of information for companies. 
+                  It offers real-time insights into company firmographics, technology usage, buying intent signals
+                  , and a wide range of other valuable account attributes.<br/>
                 
                  </p>
                 </div>  
@@ -53,8 +55,9 @@ const Testimonial = () => {
    </section>
     </Container>
    
-  
+   
    </section>
+  
    
   )
 }

@@ -1,191 +1,95 @@
-import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { db } from "../../firebase"; 
-import { collection, addDoc } from 'firebase/firestore';
+import React from 'react';
+import './contact.scss';
 
-import "./contact.scss";
-
-function Contact() {
-  const [state, setState] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const { name, email, subject, message } = state
-  
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!name || !email || !subject || !message) {
-    toast.error('Please provide a value in each input field');
-    return;
-  }
-  
-  try {
-    await addDoc(collection(db, 'contact-us'), {
-      name,
-      email,
-      subject,
-      message,
-    });
-
-    setState({ name: '', email: '', subject: '', message: '' });
-    toast.success('Form submitted successfully');
-  } catch (error) {
-    console.error('Error adding document: ', error);
-    toast.error('An error occurred while submitting the form');
-  }
-};
-
- 
-
-  const handleInputChange = (e) => {
-    let { name, value } = e.target;
-    setState({ ...state, [name]: value });
-  };
+const ProductPage = () => {
   return (
-    <section className="contact-section">
-      <div className="container">
-        <ToastContainer position="top-center" />
-        <div className="row justify-content-center">
-          <div className="col-md-10">
-            <div className="wrapper">
-              <div className="row no-gutters">
-                <div className="col-md-6">
-                  <div className="contact-wrap w-100 p-lg-5 p-4">
-                    <h3 className="mb-4">Send us a message</h3>
-                    <form
-                      id="contactForm"
-                      className="contactForm"
-                      onSubmit={handleSubmit}
-                    >
-                      <div className="row">
-                        <div className="col-md-12">
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              name="name"
-                              placeholder="Name"
-                              onChange={handleInputChange}
-                              value={name}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-12">
-                          <div className="form-group">
-                            <input
-                              type="email"
-                              className="form-control"
-                              name="email"
-                              placeholder="Email"
-                              onChange={handleInputChange}
-                              value={email}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-12">
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              name="subject"
-                              placeholder="Subject"
-                              onChange={handleInputChange}
-                              value={subject}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-md-12">
-                          <div className="form-group">
-                            <textarea
-                              type="text"
-                              className="form-control"
-                              name="message"
-                              placeholder="Message"
-                              cols="20"
-                              rows="6"
-                              onChange={handleInputChange}
-                              value={message}
-                            ></textarea>
-                          </div>
-                        </div>
-                        <div className="col-md-12">
-                          <div className="form-group">
-                            <input
-                              type="submit"
-                              value="Send Message"
-                              className="btn btn-primary"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div className="col-md-6 d-flex align-items-stretch">
-                  <div className="info-wrap w-100 p-lg-5 p-4 img">
-                    <h3>Contact us</h3>
-                    <p className="mb-4">
-                      We're open for any suggestion or just to have a chat
-                    </p>
-                    <div className="dbox w-100 d-flex align-items-start">
-                      <div className="icon d-flex align-items-center justify-content-center">
-                        <span> <i class="ri-home-3-line"></i></span>
-                      </div>
-                      <div className="text pl-3">
-                        <p>
-                          <span>Address:</span>  Manglora New Colony, Mangloora, Baramulla, Jammu and Kashmir 1934
-                        </p>
-                      </div>
-                    </div>
-                    <div className="dbox w-100 d-flex align-items-center">
-                      <div className="icon d-flex align-items-center justify-content-center">
-                        <span> <i class="ri-phone-line"></i></span>
-                      </div>
-                      <div className="text pl-3">
-                        <p>
-                          <span>Phone:</span>
-                          <a href="tel://123456789">+91 77809 57235</a>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="dbox w-100 d-flex align-items-center">
-                      <div className="icon d-flex align-items-center justify-content-center">
-                        <span ><i class="ri-mail-line"></i></span>
-                      </div>
-                      <div className="text pl-3">
-                        <p>
-                          <span>Email:</span>
-                          <a href="mailto:info@yoursite.com">
-                            quantumtourandtravels@gmail.com
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="dbox w-100 d-flex align-items-center">
-                      <div className="icon d-flex align-items-center justify-content-center">
-                        <span ><i class="ri-global-line"></i></span>
-                      </div>
-                      <div className="text pl-3">
-                        <p>
-                          <span>Website:</span>
-                          <a href="/">QuantumtourandTrevals.com</a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div className="container">
+      {/* Header */}
+      <h1 className="title">SalesForce CRM Users</h1>
+
+      <div className="flex">
+        {/* Left Card */}
+        <div className="w-1/2 card">
+          <div className="card-number">12,360</div>
+          <p className="card-text">Companies that are using SalesForce CRM</p>
+        </div>
+
+        {/* Right Form */}
+        <div className="w-1/2">
+          <form className="form">
+            {/* Form Inputs */}
+            <div className="form-group">
+              <label htmlFor="name" className="form-label">
+                Your Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="form-input"
+              />
             </div>
-          </div>
+
+            <div className="form-group">
+              <label htmlFor="company" className="form-label">
+                Company Name
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                className="form-input"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="form-input"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="phone" className="form-label">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                className="form-input"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message" className="form-label">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                className="form-textarea"
+              ></textarea>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="form-button"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
 
-export default Contact;
+export default ProductPage;

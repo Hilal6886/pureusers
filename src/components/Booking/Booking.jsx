@@ -1,141 +1,100 @@
-import React, {useState,useEffect} from 'react'
-import './booking.scss'
-import {  Form,FormGroup,ListGroup,ListGroupItem,Button} from 'reactstrap'
-import {useNavigate} from 'react-router-dom'
-import { getAllTours } from '../../services/TourService';
-import {useParams} from 'react-router-dom'
-import { db } from '../../firebase';
-import { collection ,addDoc} from "firebase/firestore";
-import { auth } from '../../firebase';
+import React, { useState } from 'react';
+import { Form, FormGroup } from 'reactstrap';
+import emailjs from 'emailjs-com';
+import './booking.scss';
 
 
-const Booking = ({avgRating}) => {
-    const [tours, setTours] = useState([]);
-    const {id} = useParams();
-    const navigate = useNavigate()
-    const [credentials, setCredentials] = useState({
-        userId: '', // latr it will dy
-        userEmail: '',
-        fullName: '',
-        phone: '',
-        guestSize: '',
-        bookAt:'',
-        tourid:''
-    })
 
-    useEffect(() => {
-      async function fetchData() {
-        const result = await getAllTours();
-        setTours(result);
-      }
-      fetchData();
-     
-      
-      
-    }, []);
-    const tour = tours.find(tour=> tour.id === id)
-    if (!tour) {
-      return <div>Tour not found</div>;
-    }
-    const {price,reviews} = tour;
-   
+const Booking = ({ product,handleToast }) => {
+  const [credentials, setCredentials] = useState({
+    name: '',
+    emailAddress: '',
+    phone: '',
+    message: ''
+  });
 
+  const handleChange = e => {
+    setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }));
+  };
 
-    const handleChange = e => {
-        setCredentials(prev=>({...prev, [e.target.id]:e.target.value}))
-    };
+  const handleClick = e => {
+    e.preventDefault();
 
-    const serviceFee = 10
-    const totalAmount = Number(price) * Number(credentials.guestSize) +
-    Number (serviceFee)
-   // snd date to server
+    // Send the form data to a specific email address using EmailJS
+    emailjs
+      .send(
+        'service_m4693a8',
+        'te23_pureUsers',
+        {
+          to_name: 'Recipient Name',
+        from_name: credentials.name,
+        number: credentials.phone,
+        'from-name': credentials.name,
+        user_email: credentials.emailAddress,
+        message: credentials.message,
+        product_title: product.title
+        },
+        'rGyJqdkYGKE7Z2QDt'
+      )
+      .then(
+        response => {
+          console.log('Email sent successfully', response.status, response.text);
+          handleToast('Thank you We will contact you soon ', 'success');
+        },
+        error => {
+          console.error('Failed to send email', error);
+          handleToast('Failed to send email', 'error');
+        }
+      );
+  };
+
+  return (
+    <div className="booking">
  
-   
-   // ...
-  
-  
-    // Check if fullName is not empty or undefined
-   
-  
-    const handleClick = async (e) => {
-      e.preventDefault();
-    
-      try {
-        // get the currently logged-in user
-        const user = auth.currentUser;
-        // add the booking to the 'bookings' collection
-        const bookingRef = await addDoc(collection(db, 'bookings'), {
-          userId: user.uid,
-          userEmail: user.email,
-          fullName: credentials.fullName,
-          phone: credentials.phone,
-          guestSize: credentials.guestSize,
-          bookAt: credentials.bookAt,
-          totalAmount: totalAmount,
-          createdAt: new Date(),
-          tourId:tour.id
-        });
-        console.log('Booking added with ID: ', bookingRef.id);
-        navigate("/ThankYou");
-      } catch (error) {
-        console.error('Error adding booking: ', error);
-      }
-    };
-    
-  
-   
-
-
-
-  return <div className="booking">
-    <div className="booking_top d-flex align-items-center justify-content-between">
-        <h3>₹{price} <span>/per person</span></h3>
-       
-    </div>
-    <div className="booking_form">
-        <h5>Information</h5>
-        <Form className='booking_info-form' onSubmit={handleClick}>
-            <FormGroup>
-                <input type='text' placeholder='Full Name' id='fullName'
-                required onChange={handleChange} />
-            </FormGroup>
-            <FormGroup>
-                <input type='number' placeholder='phone' id='phone'
-                required onChange={handleChange} />
-            </FormGroup>
-            <FormGroup className='d-flex align-items-center gap-3'>
-                <input type='date' placeholder='' id='bookAt'
-                required onChange={handleChange} />
-                 <input type='number' placeholder='Guest' id='guestSize'
-                required
-                 onChange={handleChange} />
-            </FormGroup>
-
+      <div className="booking_form">
+      
+        <h3 className="gradient__text8"><i class="ri-user-settings-line"></i>GET COUNTS AND QUOTES</h3>
+        <Form className="booking_info-form" onSubmit={handleClick}>
+          <FormGroup>
+            <input type="tet" placeholder=" Your Name" id="name" required onChange={handleChange} class="form--input"/>
+          </FormGroup>
+          <FormGroup>
+            <input type="tet" placeholder=" Company Name" id="name" required onChange={handleChange} class="form--input"/>
+          </FormGroup>
+          <FormGroup>
+            <input
+              type="email"
+              placeholder=" Business Email Address"
+              id="emailAddress"
+              required
+              onChange={handleChange}
+              class="form--input"
+            />
+          </FormGroup>
+          <FormGroup>
+            <input type="tel" placeholder="Phone Number" id="phone" required onChange={handleChange} class="form--input"/>
+          </FormGroup>
+          <FormGroup>
+            <input
+              
+              placeholder="Requirements"
+              id="message"
+              required
+              onChange={handleChange}
+              class="form--input7"
+            />
+          </FormGroup>
+          <button className="btna primary_btn w-100% mt-4" onClick={handleClick}>
+            SUBMIT REQUEST
+            <i class="ri-arrow-right-line"> </i>
+          </button>
         </Form>
+      </div>
+
+      <div className="booking_bottom"></div>
+  
     </div>
+  );
+};
 
-    <div className="booking_bottom">
-        <ListGroup>
-            <ListGroupItem className='border-0 px-0'>
-                <h5 className='d-flex align-items-center gap-1'>
-                    ₹{price}  <i className='ri-close-line'></i> 1 person</h5>
-                <span>₹{price}</span>
-
-            </ListGroupItem>
-            <ListGroupItem className='border-0 px-0'>
-                <h5>Service charge</h5>
-                <span>${serviceFee}</span>
-
-            </ListGroupItem>
-            <ListGroupItem className='border-0 px-0 total' >
-                <h5>Total</h5>
-                <span>${totalAmount}</span>
-
-            </ListGroupItem>
-        </ListGroup>
-  <button className='btna primary_btn w-100% mt-4' onClick={handleClick}> Book Now</button> 
-    </div>
-  </div>
-}
-
-export default Booking
+export default Booking;

@@ -1,7 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.seIntroy{
+  max-width: 70%;
+  text-align: center;
+  margin: 0 auto 2rem;
+  margin-top: 5rem;
+ 
+
+}
+.seIntroy h2{
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.wrapperR {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; /* Adjust alignment as per your needs */
+  justify-content: space-between;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.wrapperR .box {
+  background: #fff;
+  width: calc(33.33% - 10px);
+  padding: 25px;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px; /* Add some margin to separate the boxes */
+}
+
+.wrapperR .box i.quote {
+  font-size: 20px;
+  color: #4B0082;
+}
+.wrapperR {
+  width: 100%;
+  
+}
+
+.wrapperR .box .content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.box .info .namet {
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 1rem;
+}
 
 
-.gallary_title{
-    font-size: 2.3rem;
-    margin-bottom: 2.5rem;
-    margin-top: 3rem;
+.box .info .jobt {
+  font-size: 16px;
+  font-weight: 500;
+  color: #17a2b8;
+ 
+}
+
+.box .info .stars {
+  margin-top: 16px;
+}
+
+.box .info .stars i {
+  color: #17a2b8;
+
+}
+
+.box .content .image {
+  height: 75px;
+  width: 75px;
+  padding: 3px;
+  background: #4B0082;
+  border-radius: 50%;
+  overflow: hidden; /* Hide potential image overflow */
+}
+
+.content .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.box:hover .content .image img {
+  border-color: #fff;
+}
+
+@media (max-width: 1045px) {
+  .wrapperR .box {
+    width: calc(50% - 10px);
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 702px) {
+  .wrapperR .box {
+    width: 100%;
+  }
 }

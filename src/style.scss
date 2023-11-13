@@ -77,45 +77,13 @@ $yellow:#f5bc04;
 	 
 }
 .ghy{
-	border-radius:2rem;
-	background: rgba(127, 39, 156, 1);
-    background: -moz-linear-gradient(
-      -45deg,
-      rgba(127, 39, 156, 1) 0%,
-      rgba(46, 39, 157, 1) 100%
-    );
-    background: -webkit-gradient(
-      left top,
-      right bottom,
-      color-stop(0%, rgba(127, 39, 156, 1)),
-      color-stop(100%, rgba(46, 39, 157, 1))
-    );
-    background: -webkit-linear-gradient(
-      -45deg,
-      rgba(127, 39, 156, 1) 0%,
-      rgba(46, 39, 157, 1) 100%
-    );
-    background: -o-linear-gradient(
-      -45deg,
-      rgba(127, 39, 156, 1) 0%,
-      rgba(46, 39, 157, 1) 100%
-    );
-    background: -ms-linear-gradient(
-      -45deg,
-      rgba(127, 39, 156, 1) 0%,
-      rgba(46, 39, 157, 1) 100%
-    );
-    background: linear-gradient(
-      135deg,
-      rgba(127, 39, 156, 1) 0%,
-      rgba(46, 39, 157, 1) 100%
-    );
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f279c', endColorstr='#2e279d', GradientType=1 );
+	
+     background: #dadada
 }
 
 
 .input-text-box {
-    @include border-radius(0!important);
+  
 	font-size: 15px!important;
 	height: 45px!important;
 	letter-spacing: 1px!important;  
@@ -200,7 +168,7 @@ $yellow:#f5bc04;
 }
 
 .btn-add {
-    background: #bf7034 !important;
+    background: #6558d3!important;
 	@include border-radius(0!important);
 	color: #fff!important;
 	padding: 10px 50px!important;
@@ -320,7 +288,7 @@ $yellow:#f5bc04;
 }
 
 .btn-read {
-    background: #544e66 !important;
+    background: #6558d3 !important;
 	@include border-radius(0!important);
 	color: #fff!important;
 	padding: 5px 10px!important;

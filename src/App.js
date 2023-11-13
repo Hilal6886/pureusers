@@ -4,17 +4,18 @@ import "./style.scss";
 import Navbar from "./components/Navbar/Navbar.jsx"
 import Footer from "./components/Footer/Footer"
 import HomeRoute from "./routes/home/home.component";
-import ServicesRoute from "./routes/service-offered/service-offered.component";
 import OfferRoute from "./routes/Offer/Offer-route.component.jsx"
-import AboutRoute from "./routes/about/about-route.component.jsx"
+
 import ContactRoute from "./routes/Contact/Contact-route.component.jsx";
 import ToursRoute from "./routes/Tours/Tours-route.component.jsx"
 import TourDetailsRoute from "./routes/TourDetails/TourDetails-route.component.jsx"
-import ThankYouRoute from "./routes/ThankYou/ThankYou-route.component.jsx"
+
 import firebaseConfig from "./config/firebase.jsx";
 
 import { initializeApp } from "firebase/app";
 import { Routes, Route, useNavigate,  } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+
 import ProtectedRoute from './components/ProtectedRoute'
 import { auth } from "./firebase";
 import TagBlog from "./pages/TagBlog";
@@ -34,8 +35,10 @@ import CreateContainer from "./pages/CreateContainer";
 import BookingList from "./pages/Bookings";
 
 import useAdmin from "../src/utils/hooks"
-import BottomNav from "./components/Navbar/BottomNav";
 import Varifyotp from "./components/Booking/VerifyOtp";
+import Table from "./pages/Table";
+import CategoryProducts from "./pages/CategoryProducts";
+import Category from "./pages/Category";
 
 
 
@@ -43,16 +46,21 @@ import Varifyotp from "./components/Booking/VerifyOtp";
 
 
 const App = () => {
-  initializeApp(firebaseConfig);
+
   
 
   const [active, setActive] = useState("CBlog");
   const [user, setUser] = useState(null);
+  const location = useLocation();
+
 
   const Navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null)
   const [timeActive, setTimeActive] = useState(false)
   useAdmin()
+  
+
+  
 
 
   useEffect(() => {
@@ -62,6 +70,7 @@ const App = () => {
       console.log("USERRRRRRRRRRRRRRRRRRRRRRRRR",user)
     })
   }, [])
+  
   return (
     <div className="App">
     <Navbar
@@ -79,17 +88,14 @@ const App = () => {
 
       <Route path="/" element={<HomeRoute />} />
       <Route path="/home" element={<HomeRoute />} />
-      <Route path="/services" element={
-        
-          <ServicesRoute />
-       } />
+     
       <Route path="/offers" element={
         
           <OfferRoute />
         } />
       <Route path="/featured-tours" element={<HomeRoute />} />
       <Route path="/Experience" element={<HomeRoute />} />
-      <Route path="/Gallary" element={<HomeRoute />} />
+   
      
       <Route path="/Testimonial" element={<HomeRoute user={user}/>} />
       <Route path="/login" element={<Login />} />
@@ -116,10 +122,7 @@ const App = () => {
           element={<Detail user={user} />}
         />
       
-      <Route path="/about" element={
-        
-          <AboutRoute />
-       } />
+     
       <Route path="/contact-us" element={
         
           <ContactRoute />
@@ -129,11 +132,11 @@ const App = () => {
         
           <ToursRoute />
        } />
-      <Route path="/tour/:id" element={
+      <Route path="/product/:id" element={
         
           <TourDetailsRoute />
        } />
-      <Route path="/ThankYou" element={<ThankYouRoute />} />
+      
       
       <Route path="/booking" element={
               <ProtectedRoute>
@@ -184,14 +187,16 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/tous/:id"
-          element={
-            <ProtectedRoute>
-            <AddTours user={user} setActive={setActive} />
-            </ProtectedRoute>
-          }
-        />
+       <Route
+  path="/tours/:id"
+  element={
+    <ProtectedRoute>
+      <AddTours user={user} setActive={setActive} isEditing={location.state?.isEditing || false} />
+    </ProtectedRoute>
+  }
+/>
+
+
       
         <Route
           path="/cblog"
@@ -207,6 +212,9 @@ const App = () => {
         <Route path="/category/:category" element={<CategoryBlog setActive={setActive}  />} />
         <Route path="/blogs" element={<Blogs setActive={setActive} />} />
         <Route path="/verify-otp" element={<Varifyotp/>} />
+        <Route path="/table" element={<Table />} />
+        <Route  path="/products/:id"  element={<CategoryProducts/>} />
+        <Route path="/categories/:categoryId" element={<Category />} />
       
    
     
@@ -219,7 +227,7 @@ const App = () => {
     </Routes>
     </AuthProvider>
     <Footer/>
-    <BottomNav/>
+    
     
   
     </div>
