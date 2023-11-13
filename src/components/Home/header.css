@@ -1,0 +1,232 @@
+:root {
+  --font-family: 'Manrope', sans-serif;
+  --primarycolor: hsl(26, 93%, 50%);
+  --Hovercolor: hsl(26, 90%, 42%);
+  --secondary-color: #faa935;
+  --heading-color: #0b2727;
+  --whitecolor: hsl(0, 0%,100%);
+  --blackcolor: hsl(0, 0%, 18%);
+  --textcolor: hsl(240, 1%, 48%);
+  --whitecolorDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greytext: rgb(190, 190, 190);
+  --inputcolor: hsl(330, 12%, 97%);
+  --bodyColor: hsl(0, 100%, 98%);
+  --cardBg: rgb(225, 225, 235);
+  --gradient-text: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+.gpt3__header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.section__padding {
+  padding: 4rem 2rem;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #1d2bf3; /* Choose your preferred border color */
+  border-radius: 2px;
+  font-size: 16px;
+}
+input[type="text"]:focus {
+  border: 1px solid #1d2bf3; 
+ /* Choose your preferred border color when the input is focused */
+}
+
+.custom-heading {
+  font-size: 48px;
+  font-weight: bold;
+  color: #333; /* Choose your preferred text color */
+  margin-bottom: 20px;
+}
+.gpt3__header-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-right: 5rem;
+  margin-top: -7rem;
+}
+
+.gpt3__header-content h1 {
+  
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 87px;
+  letter-spacing: -0.04em;
+  margin-top: 4rem;
+}
+
+.gpt3__header-content p {
+  
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--textcolor);
+  text-align: center;
+  margin-top: 1.5rem;
+  
+}
+
+.gpt3__header-content__input {
+  width: 100%;
+  margin: 2rem 0 1rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.gpt3__header-content__input button {
+  flex: 0.6;
+  width: 100%;
+  min-height: 50px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  background:#6558d3;
+  border: 2px solid #6558d3;
+  padding: 0 1rem;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.gpt3__header-content__people {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 2rem;
+
+}
+
+.gpt3__header-content__people img {
+  width: 181.79px;
+  height: 38px;
+}
+
+.gpt3__header-content__people p {
+  margin: 0 0 0 1rem;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 38px;
+  color: var(--textcolor);
+  text-align: center;
+}
+
+.gpt3__header-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.gpt3__header-image .carousel {
+  width: 100%;
+  margin-top: 1.4rem;
+  border-radius: 1rem;
+}
+.gpt3__header-image .carousel .control-arrow {
+  display: none;
+}
+.gpt3__header-image .carousel .slider-wrapper .slider .slider-slide .slider-slide-index {
+  display: none;
+}
+
+
+.gpt3__header-image .carousel .slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.gpt3__header-image .carousel .slide img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.gpt3__header-image .carousel .thumbs-wrapper {
+  display: none;
+}
+
+@media screen and (max-width: 1050px) {
+  .gpt3__header {
+    flex-direction: column;
+  }
+
+  .gpt3__header-content {
+    margin: 0 0 3rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .gpt3__header-content h1 {
+    font-size: 48px;
+    line-height: 60px;
+   
+  }
+
+  .gpt3__header-content p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .gpt3__header-content__people {
+    flex-direction: column;
+  }
+
+  .gpt3__header-content__people p {
+    margin: 0;
+  }
+
+  .gpt3__header-content__input input,
+  .gpt3__header-content__input button {
+    font-size: 16px;
+    line-height: 24px;
+    align-content: center;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .gpt3__header-content h1 {
+    font-size: 36px;
+    line-height: 48px;
+    margin-top: .0rem;
+   
+    justify-content: center;
+    align-items: center;
+  }
+
+  .gpt3__header-content p {
+   
+    line-height: 24px;
+  }
+
+  .gpt3__header-content__input button {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+
+
+
+/* Styles for the highlight class inside custom-heading */
+
+
+/* Styles for the custom-paragraph class */
+
+
+/* Styles for the custom-button class */
+

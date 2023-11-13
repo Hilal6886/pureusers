@@ -1,0 +1,152 @@
+
+:root {
+  --primarycolor: hsl(26, 93%, 50%);
+  --Hovercolor: hsl(26, 90%, 42%);
+  ---whitecolor: hsl(0, 0%,100%);
+  --blackcolor: hsl(0, 0%, 18%);
+  --textcolor: hsl(240, 1%, 48%);
+  --whitecolorDeam: hsl(0, 0%, 93%);
+  --greyBg: hsl(0, 0%, 96%);
+  --greytext: rgb(190, 190, 190);
+  --inputcolor: hsl(330, 12%, 97%);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBg: rgb(225, 225, 235);
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+
+.search-bar {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #6558d3;
+  border-radius: 5px;
+}
+
+button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+
+  background: #ffffff;
+ 
+  color: #4B0082;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+thead th {
+  background-color: #6558d3;
+  color: #fff;
+  padding: 0.5rem;
+  text-align: left;
+  
+ 
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+
+tbody td a {
+  text-decoration: none;
+ font-weight: 700;
+}
+
+tbody td a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries */
+
+/* Extra small devices (phones) */
+@media only screen and (max-width: 480px) {
+  .search-bar {
+    max-width: 300px;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 0.3rem;
+  }
+}
+
+/* Small devices (tablets) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .search-bar {
+    max-width: 400px;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 0.4rem;
+  }
+}
+
+/* Medium devices (desktops) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .search-bar {
+    max-width: 500px;
+  }
+
+  table {
+    font-size: 1rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 0.5rem;
+  }
+}
+
+/* Large devices (large desktops) */
+@media only screen and (min-width: 1025px) {
+  .search-bar {
+    max-width: 600px;
+  }
+
+  table {
+    font-size: 1.1rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 0.6rem;
+  }
+}
