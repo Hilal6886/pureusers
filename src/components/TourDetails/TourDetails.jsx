@@ -48,7 +48,7 @@ const TourDetails = () => {
           <Row>
             <div className="hji">
               <div className="seIntro4">
-                <h2 className="secTtle4 ">{product.title} <br />Users</h2>
+                <h2 className="secTtle4  gradient__text ">{product.title} <br />Users</h2>
                 <ToastContainer position="top-right" autoClose={3000} hideProgressBar={true} />
               </div>
             </div>
@@ -159,22 +159,22 @@ const TourDetails = () => {
             </Col>
             <Col lg="8">
               <div className='b9'>
-                <h6> There are numerous benefits to using Pure Users's <span>{product.title} </span> users list.
-                  The data not only enhances your advertising endeavors but is also highly accessible and permission- <br />based.</h6>
-                <h6>To guarantee total timeliness, our data is additionally thoroughly validated by humans and carefully
-                  authenticated.</h6>
+                <p> There are numerous benefits to using Pure Users's <span>{product.title} </span> users list.
+                  The data not only enhances your advertising endeavors but is also highly accessible and permission- <br />based.</p>
+                <p>To guarantee total timeliness, our data is additionally thoroughly validated by humans and carefully
+                  authenticated.</p>
 
 
 
-                <h6>Customers from a variety of industrial backgrounds
-                  can use our <span>{product.title} </span> users list to their advantage in the following ways:</h6>
-                <h6>Using this <span>{product.title} </span> users
+                <p>Customers from a variety of industrial backgrounds
+                  can use our <span>{product.title} </span> users list to their advantage in the following ways:</p>
+                <p>Using this <span>{product.title} </span> users
                   list will be advantageous for software vendors.
                   This is the most effective way to reach out to different <span>{product.title} </span> Users worldwide and pitch
-                  your services. </h6>
-                <h6>Professionals and industries who use <span>{product.title} </span> are easily reachable
-                  by marketers and digital marketers.</h6>
-                <h6>Regular software companies can advertise their goods and services to decision-makers and executives in the industry who are already Salesforce users.</h6>
+                  your services. </p>
+                <p>Professionals and industries who use <span>{product.title} </span> are easily reachable
+                  by marketers and digital marketers.</p>
+                <p>Regular software companies can advertise their goods and services to decision-makers and executives in the industry who are already Salesforce users.</p>
 
               </div>
             </Col>
@@ -187,9 +187,9 @@ const TourDetails = () => {
         <Row>
           <Col lg='12'>
             <div className='rt'>
-              <h3> 100% Technology Guarantee</h3>
-              <h3> 98% Deliverability Guarantee</h3>
-              <h3> 100% Company Details Guarantee</h3>
+              <p> 100% Technology Guarantee</p>
+              <p> 98% Deliverability Guarantee</p>
+              <p> 100% Company Details Guarantee</p>
             </div>
           </Col>
         </Row>
