@@ -19,7 +19,7 @@ const Category = ({ catgBlogsCount }) => {
             </li>
           ))}
         </ul>
-      </div>
+      </div>  
     </div>
   );
 };

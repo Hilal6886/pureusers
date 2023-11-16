@@ -1,14 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useLocation,Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import './navbar.scss'
 import logo from './ddr.png'
 import { AiFillCloseCircle } from 'react-icons/ai'
-import { GoThreeBars } from 'react-icons/go'
+import { MdOutlineSubject } from 'react-icons/md'
 import userAvatar from '../../assets/images/avatar.png'
 
 import { signOut } from "firebase/auth"
 import { auth } from "../../firebase";
+
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -89,19 +90,15 @@ const Navbar = ({ user }) => {
 
                         <li className="NavItem">
                             <i class="ri-home-line"></i>
-                            
+
                             <Link to="/home" className="navLink">HOME</Link>
                         </li>
-                        {/*<li className="NavItem">
-                        <i class="ri-roadster-line"></i>
-                            <a href="/Tourss" className="navLink">TOURS</a>
 
-    </li> */}
                         <li className="NavItem">
                             <i class="ri-user-3-line"></i>
                             <Link to="/table" className="navLink">CATEGORIES</Link>
                         </li>
-                       
+
 
                         <li className="NavItem">
                             <i class="ri-file-text-line"></i>
@@ -109,20 +106,6 @@ const Navbar = ({ user }) => {
                             <a href="/CBlog" className="navLink">BLOGS</a>
 
                         </li>
-
-                        {/* <li className="NavItem">
-                            <i class="ri-hand-heart-line"></i>
-                            <a href="/offers" className="navLink"> OFFERS</a>
-</li> 
-
-                        <li className="NavItem">
-                            <i class="ri-service-line"></i>
-                            <a href="/services" className="navLink">SERVICES</a>
-                        </li> */}
-
-
-
-
 
                         <li className="NavItem">
                             <i class="ri-contacts-line"></i>
@@ -183,7 +166,7 @@ const Navbar = ({ user }) => {
                         </div>*/}
 
                 <div onClick={toggleNav} className="closeNavbar">
-                    {showNav ? <AiFillCloseCircle className="icone" /> : <GoThreeBars className="icone" />}
+                    {showNav ? <AiFillCloseCircle className="icone" /> : <MdOutlineSubject className="icone" />}
                 </div>
 
             </header>

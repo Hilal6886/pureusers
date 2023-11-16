@@ -1,95 +1,82 @@
-import React from 'react';
-import './contact.scss';
+// ContactForm.js
 
-const ProductPage = () => {
+import React, { useState } from 'react';
+import './contact.scss'; // Assuming you have a corresponding CSS file
+import con from './cont.jpg'
+
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    console.log('Form submitted:', formData);
+  };
+
   return (
-    <div className="container">
-      {/* Header */}
-      <h1 className="title">SalesForce CRM Users</h1>
-
-      <div className="flex">
-        {/* Left Card */}
-        <div className="w-1/2 card">
-          <div className="card-number">12,360</div>
-          <p className="card-text">Companies that are using SalesForce CRM</p>
+   < div>
+    <section className="section-wrapper">
+      <div className="box-wrapper">
+        <div className="info-wrap">
+          <h2 className="info-title">Contact Information</h2>
+          <h3 className="info-sub-title">Fill up the form and our Team will get back to you within 24 hours</h3>
+          <ul className="info-details">
+            <li>
+              <i className="fas fa-phone-alt"></i>
+              <span>Phone:</span> <a href="tel:+1235235598">+91 9663565181</a>
+            </li>
+            <li>
+              <i className="fas fa-paper-plane"></i>
+              <span>Email:</span> <a href="mailto:info@yoursite.com">info@pureusers.com</a>
+            </li>
+            <li>
+              <i className="fas fa-globe"></i>
+              <span>Website:</span> <a href="ww">pureusers.com</a>
+            </li>
+          </ul>
+          <ul className="social-icons">
+            <li><a href="#"><i className="fab fa-facebook"></i></a></li>
+            <li><a href="#"><i className="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i className="fab fa-linkedin-in"></i></a></li>
+          </ul>
         </div>
-
-        {/* Right Form */}
-        <div className="w-1/2">
-          <form className="form">
-            {/* Form Inputs */}
-            <div className="form-group">
-              <label htmlFor="name" className="form-label">
-                Your Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="form-input"
-              />
+        <div className="form-wrap">
+          <form action="#" method="POST">
+            <h2 className="form-title">Send us a message</h2>
+            <div className="form-fields">
+              <div className="form-group">
+                <input type="text" className="fname" placeholder="First Name" />
+              </div>
+              <div className="form-group">
+                <input type="text" className="lname" placeholder="Last Name" />
+              </div>
+              <div className="form-group">
+                <input type="email" className="email" placeholder="Mail" />
+              </div>
+              <div className="form-group">
+                <input type="number" className="phone" placeholder="Phone" />
+              </div>
+              <div className="form-group">
+                <textarea name="message" id="" placeholder="Write your message"></textarea>
+              </div>
             </div>
-
-            <div className="form-group">
-              <label htmlFor="company" className="form-label">
-                Company Name
-              </label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                className="form-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email" className="form-label">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="form-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phone" className="form-label">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                className="form-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message" className="form-label">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                className="form-textarea"
-              ></textarea>
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="form-button"
-            >
-              Submit
-            </button>
+            <input type="submit" value="Send Message" className="submit-button" />
           </form>
         </div>
       </div>
-    </div>
+    </section>
+  </div>
   );
 };
 
-export default ProductPage;
+export default ContactForm;

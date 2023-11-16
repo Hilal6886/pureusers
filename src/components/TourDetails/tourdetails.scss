@@ -11,39 +11,16 @@
   --bodyColor: rgb(240, 240, 246);
   --cardBg: rgb(225, 225, 235);
 }
-
-.sal {
-  margin: 0 2rem 0 7rem;
-}
-.salr {
-  margin: 5rem 2rem 3rem 2rem;
-
+body{
+  overflow-x: hidden;
 }
 
-.card {
-  background-color: #c5e8ec;
-  border: 1px solid #c5e8ec;
-  border-radius: 8px;
-  padding: 20px;
-  height: 486px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
 
-.card-number {
-  font-size: 7rem;
-  font-weight: bold;
-  color: var(--blackcolor);
-  margin-bottom: 10px;
-}
 
-.card-text {
-  color: var(--blackcolor);
-  font-size: 4rem;
-  font-weight: bold
+
+
+.hji {
+  margin-top: 3rem;
 }
 
 .seIntro4 h2 {
@@ -61,43 +38,36 @@
   margin-top:3rem
 }
 
-.hji {
-  margin-top: 3rem;
-}
-
-
-.btnt a {
-  font-weight: 500;
-  color: var(--whitecolor);
-  text-align: center;
-}
-
-.related-products {
-  margin-top: 40px;
+.card {
+  background-color: #c5e8ec;
+  border: 1px solid #c5e8ec;
+  border-radius: 8px;
   padding: 20px;
-  background-color: #f8f8f8;
-}
-
-.features {
+  height: 586px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.features li {
-  display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.features li + * {
-  margin-top: 0.75rem;
-}
-
-.ht {
-  display: flex;
+  text-align: center;
   justify-content: center;
 }
 
+.card-number {
+  font-size: 10rem;
+  font-weight: bold;
+  color: var(--blackcolor);
+  margin-bottom: 10px;
+}
+
+.card-text {
+  color: var(--blackcolor);
+  font-size: 7rem;
+  font-weight: bold
+}
+.salr {
+  margin: 5rem 2rem 3rem 2rem;
+
+}
 .car {
   background-color: #4d94ff;
   border: 1px solid #4d94ff;
@@ -110,18 +80,13 @@
   align-items: center;
   text-align: center;
 }
-
 .border {
   padding: 0.4rem 0.4rem;
   border: 1px solid white;
   display: flex;
-
-
-  
   justify-content: space-evenly;
   gap: 18px; /* Adjust the gap between icons and names */
 }
-
 .card-numb {
   font-size: 1.1rem;
   font-weight: 500;
@@ -142,16 +107,17 @@
   margin-bottom: 10px; /* Adjust the margin between rows */
   width: 150%; /* Set a width for each row, adjust as needed */
 }
-
-.b9 h4{
-  text-align: center;
-  color: gray;
-  font-family: 'Inter', sans-serif;
-  margin-right:5rem;
+.b9{
+  margin-top: 6rem;
 }
-.b9 span{
-  font-size:1rem;
-  font-weight:500;
+.b9 h6{
+  text-align: center;
+  color: black;
+ 
+}
+.b9 .h6 span{
+  font-size:3rem;
+  font-weight:600;
   color:black;
 }
 
@@ -196,6 +162,54 @@
   border-bottom: 1px solid #ddd;
 }
 
+.thed{
+  text-align: center;
+  margin: 2rem 2rem 2rem 2rem;
+}
+
+
+.btnt a {
+  font-weight: 500;
+  color: var(--whitecolor);
+  text-align: center;
+}
+
+.related-products {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.features li + * {
+  margin-top: 0.75rem;
+}
+
+.ht {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* ContactTable.css */
 
 .contact-table {
@@ -233,6 +247,41 @@
 
 
 /* Media queries for responsiveness */
+@media screen and (max-width: 960px) {
+  .card-number {
+    font-size: 5rem;
+  }
+
+  .card-text {
+    font-size: 2.5rem;
+  }
+
+  .secTtle4 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+
+ 
+  .btnt a {
+    font-size: 1rem;
+  }
+
+  .related-products {
+    margin-top: 20px;
+    padding: 15px;
+  }
+
+  .features li {
+    font-size: 0.9rem;
+  }
+
+  .b9 h4 {
+    font-size: 1.5rem;
+    margin-right: 2rem;
+  }
+}
 @media screen and (max-width: 768px) {
   
 .sal {
@@ -240,9 +289,12 @@
 }
 .seIntro4 h2 {
   margin-top: 2rem;
-  font-size: 5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 3.5rem;
+}
+.rt {
+  font-size: .3rem;
 }
 
   .responsive thead {
@@ -290,6 +342,7 @@
     font-size: 1rem;
     font-weight:bold
   }
+  
 }
 
 /* Colors */
@@ -320,6 +373,81 @@
     font-weight: bold;
     margin-right: 10px;
   }
+  .titleone {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .card {
+    height: 326px;
+  }
+
+  .card-number {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 1rem;
+  }
+
+
+
+  .ht {
+    display: flex;
+    justify-content: center;
+  }
+
+  .car {
+    height: 400px;
+    width: 100%;
+    margin-bottom:3rem
+  }
+  .card-numb {
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--whitecolor);
+    text-align: left; /* Align text to the left within the icon column */
+  }
+  .card-num {
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--whitecolor);
+    text-align: left; /* Align text to the left within the icon column */
+  }
+
+  .border {
+    gap: 12px;
+  }
+
+  .goos {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .b9 h4 {
+    font-size: 1.2rem;
+    margin-right: 0;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .rt {
+    font-size: 1rem;
+  }
+
+  .user.table {
+    padding: 30px 0;
+  }
+
+  .table-con {
+    padding: 0 10px;
+  }
+
+  .responsive-table td {
+    font-size: 12px;
+  }
+
+
 
 
 
@@ -327,9 +455,13 @@
 
   .seIntro4 h2 {
     margin-top: 2rem;
-    font-size: 5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 3.5rem;
+    text-align: center;
+  }
+  .rt {
+    font-size: 1rem;
   }
   
  
@@ -359,6 +491,21 @@
     font-weight:bold
   }
 }
+.b9{
+  margin-top: 1rem;
+}
+.b9 h6{
+  text-align: center;
+  color: black;
+  font-size: .8rem;
+ 
+}
+.b9 .span{
+  font-size:3rem;
+  font-weight:600;
+  color:black;
+}
+
 
 
 
@@ -389,6 +536,9 @@
   .responsive-table tr:nth-child(even) {
     background: #fafafa;
   }
+}
+.rt {
+  font-size: 1rem;
 }
 
 .responsive-table th,
@@ -444,112 +594,8 @@
 }
 /* ... (previous styles) */
 
-@media screen and (max-width: 960px) {
-  .card-number {
-    font-size: 5rem;
-  }
-
-  .card-text {
-    font-size: 2.5rem;
-  }
-
-  .secTtle4 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-transform:uppercase;
-    font-weight:700;
-  }
-
- 
-  .btnt a {
-    font-size: 1rem;
-  }
-
-  .related-products {
-    margin-top: 20px;
-    padding: 15px;
-  }
-
-  .features li {
-    font-size: 0.9rem;
-  }
-
-  .b9 h4 {
-    font-size: 1.5rem;
-    margin-right: 2rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .card {
-    height: 326px;
-  }
-
-  .card-number {
-    font-size: 1rem;
-  }
-
-  .card-text {
-    font-size: 1rem;
-  }
 
 
-
-  .ht {
-    display: flex;
-    justify-content: center;
-  }
-
-  .car {
-    height: 400px;
-    width: 100%;
-    margin-bottom:3rem
-  }
-  .card-numb {
-    font-size: .8rem;
-    font-weight: 500;
-    color: var(--whitecolor);
-    text-align: left; /* Align text to the left within the icon column */
-  }
-  .card-num {
-    font-size: .8rem;
-    font-weight: 500;
-    color: var(--whitecolor);
-    text-align: left; /* Align text to the left within the icon column */
-  }
-
-  .border {
-    gap: 12px;
-  }
-
-  .goos {
-    width: 100%;
-    flex-direction: row;
-  }
-
-  .b9 h4 {
-    font-size: 1.2rem;
-    margin-right: 0;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .rt {
-    flex-direction: column;
-  }
-
-  .user.table {
-    padding: 30px 0;
-  }
-
-  .table-con {
-    padding: 0 10px;
-  }
-
-  .responsive-table td {
-    font-size: 12px;
-  }
-}
 
 @media screen and (max-width: 480px) {
   .card {
