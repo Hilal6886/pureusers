@@ -29,13 +29,16 @@
 }
 input[type="text"] {
   width: 100%;
+  box-shadow: 0px 0px 20px -18px;
+  height: 45px;
   padding: 12px;
-  border: 1px solid #1d2bf3; /* Choose your preferred border color */
-  border-radius: 2px;
-  font-size: 16px;
+  border-radius: 12px;
+  border: 1.5px solid lightgrey;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 input[type="text"]:focus {
-
+  border: 2px solid grey;
  /* Choose your preferred border color when the input is focused */
 }
 
@@ -105,9 +108,11 @@ input[type="text"]:focus {
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  margin-top: 2rem;
+  gap: 12px;
+  
 
 }
+
 
 .gpt3__header-content__people img {
   width: 181.79px;
@@ -115,8 +120,8 @@ input[type="text"]:focus {
 }
 
 .gpt3__header-content__people p {
-  margin: 0 0 0 1rem;
-  font-family: var(--font-family);
+  margin: 0 0 0 ;
+
   font-weight: 500;
   font-size: 14px;
   line-height: 38px;
@@ -203,9 +208,10 @@ input[type="text"]:focus {
     font-size: 36px;
     line-height: 48px;
     margin-top: .0rem;
+    margin-left: 2.5rem;
    
-    justify-content: center;
-    align-items: center;
+
+    text-align: center;
   }
 
   .gpt3__header-content p {
@@ -216,6 +222,23 @@ input[type="text"]:focus {
   .gpt3__header-content__input button {
     font-size: 12px;
     line-height: 16px;
+  }
+  input[type="text"] {
+    width: 100%;
+    box-shadow: 0px 0px 20px -18px;
+    height: 45px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid lightgrey;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+  }
+  input[type="text"]:focus {
+    border: 2px solid grey;
+   /* Choose your preferred border color when the input is focused */
   }
 }
 

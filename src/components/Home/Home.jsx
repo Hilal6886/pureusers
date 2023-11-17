@@ -63,7 +63,7 @@ const Home = () => {
         <div className="search-bar">
           <input
             type="text"
-            placeholder="Search categories"
+            placeholder="Search ......"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />

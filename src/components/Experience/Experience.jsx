@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './experience.scss';
 import { Container, Col, Row } from 'reactstrap';
-import experience from './gd.jpg';
+import experience from './ji8.jpg';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 

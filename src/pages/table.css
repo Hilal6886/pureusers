@@ -31,7 +31,7 @@
   width: 100%;
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #6558d3;
+  border: 1px solid #6558d3 important! ; 
   border-radius: 5px;
 }
 

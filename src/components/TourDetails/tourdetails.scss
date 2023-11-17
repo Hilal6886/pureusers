@@ -455,15 +455,13 @@ body{
     margin-bottom: 3.5rem;
     text-align: center;
   }
-  .rt {
-    display: flex;
-    flex-direction: row;
-  }
+ 
   .rt p{
     display:flex;
-    flex-direction: row;
+
     justify-content:space-around;
-    font-size: 20px;
+    font-size: 12px;
+    color: gray;
   }
   
  
