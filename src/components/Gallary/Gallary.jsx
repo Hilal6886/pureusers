@@ -29,13 +29,13 @@ const Gallary = () => {
       <i class="ri-double-quotes-l"></i>
        
         <p>
-          Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat
-          thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.
+        Game-changer for our sales team! Pure Users helps us pinpoint and connect with high-potential leads,
+         skyrocketing our conversion rates."
         </p>
         <div className="content">
           <div className="info">
             <div className="namet">Alex Smith</div>
-            <div className="jobt">Designer | Developer</div>
+            <div className="jobt">Founder | CEO</div>
             <div className="stars">
             <i class="ri-star-s-line"></i>
             <i class="ri-star-s-line"></i>
@@ -54,8 +54,16 @@ const Gallary = () => {
       <i class="ri-double-quotes-l"></i>
        
         <p>
-          Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat
-          thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.
+        Incredible results with Pure Users! Sales prospecting has never been this efficient. 
+        Highly recommended for businesses looking to accelerate growth."
+
+
+
+
+
+
+
+
         </p>
         <div className="content">
           <div className="info">
@@ -78,8 +86,9 @@ const Gallary = () => {
       <div data-aos="fade-up" className="box">
       <i class="ri-double-quotes-l"></i>
         <p>
-          Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat
-          thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.
+        Thanks to Pure Users, we've seen a significant uptick in sales.
+ Their solution makes it easy to identify and engage with prospects,
+  giving our business a competitive edge.
         </p>
         <div className="content">
           <div className="info">

@@ -55,10 +55,17 @@ const Home = () => {
     <div className="gpt3__header section__padding" id="home">
       <div className="gpt3__header-content">
         <h1 className="custom-heading gradient__text">
-        Empower Your <br/> Growth with <br/>  <span className="highlight">Pure Users</span>
+          Empower Your  Growth with  Pure Users
         </h1>
+        <p>
+          At Pure Users, we empower businesses to boost
+          sales by efficiently identifying, prioritizing, and engaging
+          with prospects who are most likely to benefit from and purchase your solutions.
+          Our innovative approach streamlines the sales process,
+          ensuring a focused and effective strategy to drive success for your business.
+        </p>
         <p className="custom-paragraph">
-        Browse Powerful Software Solutions by Category
+          Browse Powerful Software Solutions by Category
         </p>
         <div className="search-bar">
           <input
