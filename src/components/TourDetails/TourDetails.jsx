@@ -67,124 +67,117 @@ const TourDetails = () => {
               </div>
             </Col>
           </Row>
-        </div>
-
-      </section>
-      <section>
-        <div className='salr'>
           <Row>
 
-            <Col lg="4">
+<Col lg="4">
 
-              <div className=" car">
-                <div className='border'>
-                  <div className="card-numb">
-                    <div className='goos'>
-                      <i class="ri-profile-line"></i>
-                      <ul> First Name</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-profile-fill"></i>
-                      <ul> Last Name</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-community-line"></i>
-                      <ul> Company</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-briefcase-line"></i>
-                      <ul> Job Title </ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-money-dollar-box-line"></i>
-                      <ul> Revenue</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-pages-line"></i>
-                      <ul> Website</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-building-4-line"></i>
-                      <ul> City</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-group-line"></i>
-                      <ul> Staff</ul>
-                    </div>
-
-
-                  </div>
-
-                  <div className="card-num">
-                    <div className='goos'>
-                      <i class="ri-mail-line"></i>
-                      <ul> Email</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-phone-line"></i>
-                      <ul> Phone No</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-linkedin-box-fill"></i>
-                      <ul> LinkedIn</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-map-pin-user-fill"></i>
-                      <ul> Mailling Address</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-bar-chart-2-line"></i>
-                      <ul> Growth</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-building-line"></i>
-                      <ul> Industry</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-facebook-circle-fill"></i>
-                      <ul> Social Media</ul>
-                    </div>
-                    <div className='goos'>
-                      <i class="ri-git-branch-line"></i>
-                      <ul> Decision Makers</ul>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-
-
-
-            </Col>
-            <Col lg="8">
-              <div className='b9'>
-                <p> There are numerous benefits to using Pure Users's <span>{product.title} </span> users list.
-                  The data not only enhances your advertising endeavors but is also highly accessible and permission- <br />based.</p>
-                <p>To guarantee total timeliness, our data is additionally thoroughly validated by humans and carefully
-                  authenticated.</p>
-
-
-
-                <p>Customers from a variety of industrial backgrounds
-                  can use our <span>{product.title} </span> users list to their advantage in the following ways:</p>
-                <p>Using this <span>{product.title} </span> users
-                  list will be advantageous for software vendors.
-                  This is the most effective way to reach out to different <span>{product.title} </span> Users worldwide and pitch
-                  your services. </p>
-                <p>Professionals and industries who use <span>{product.title} </span> are easily reachable
-                  by marketers and digital marketers.</p>
-                <p>Regular software companies can advertise their goods and services to decision-makers and executives in the industry who are already Salesforce users.</p>
-
-              </div>
-            </Col>
-          </Row>
+  <div className=" car">
+    <div className='border'>
+      <div className="card-numb">
+        <div className='goos'>
+          <i class="ri-profile-line"></i>
+          <ul> First Name</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-profile-fill"></i>
+          <ul> Last Name</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-community-line"></i>
+          <ul> Company</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-briefcase-line"></i>
+          <ul> Job Title </ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-money-dollar-box-line"></i>
+          <ul> Revenue</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-pages-line"></i>
+          <ul> Website</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-building-4-line"></i>
+          <ul> City</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-group-line"></i>
+          <ul> Staff</ul>
         </div>
 
-      </section>
 
-      <section>
-        <Row>
+      </div>
+
+      <div className="card-num">
+        <div className='goos'>
+          <i class="ri-mail-line"></i>
+          <ul> Email</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-phone-line"></i>
+          <ul> Phone No</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-linkedin-box-fill"></i>
+          <ul> LinkedIn</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-map-pin-user-fill"></i>
+          <ul> Mailling Address</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-bar-chart-2-line"></i>
+          <ul> Growth</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-building-line"></i>
+          <ul> Industry</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-facebook-circle-fill"></i>
+          <ul> Social Media</ul>
+        </div>
+        <div className='goos'>
+          <i class="ri-git-branch-line"></i>
+          <ul> Decision Makers</ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+</Col>
+<Col lg="8">
+  <div className='b9'>
+    <p> There are numerous benefits to use  Pure Users's <span>{product.title} </span> users list.
+      The data not only enhances your advertising endeavors but is also highly accessible and permission- <br />based.</p>
+    <p>To guarantee total timeliness, our data is additionally thoroughly validated by humans and carefully
+      authenticated.
+      Customers from a variety of industrial backgrounds
+      can use our <span>{product.title} </span> users list to their advantage in the following ways.
+       
+    Using this <span>{product.title} </span> users
+      list will be advantageous for software vendors.
+      This is the most effective way to reach out to different <span>{product.title} </span> Users worldwide and pitch
+      your services. 
+    Professionals and industries who use <span>{product.title} </span> are easily reachable
+      by marketers and digital marketers.</p>
+
+
+
+ 
+    <p>Regular software companies can advertise their goods and services to 
+      decision-makers and executives in the industry who are already <span>{product.title} </span> users.</p>
+
+  </div>
+</Col>
+</Row>
+<Row>
           <Col lg='12'>
             <div className='rt'>
               <p> 100% Technology Guarantee</p>
@@ -193,7 +186,17 @@ const TourDetails = () => {
             </div>
           </Col>
         </Row>
+        <Row>
+          <Col lg='12'>
+            
+          </Col>
+        </Row>
+        </div>
+
       </section>
+      
+
+    
 
 
       <section className="user table">
@@ -229,17 +232,17 @@ const TourDetails = () => {
         <Row>
           <Col lg='12'>
             <div className='thed'>
-              <h5> Current data: To guarantee optimum relevancy, we constantly update and maintain a well-structured database.</h5>
-              <h5> Prefabricated data: You receive ready-to-download data that has been
-                packaged and customized in advance. </h5>
-              <h5> Highest response rate: Up to 95% delivery rate with very few hard bounces is possible with Pure Users.</h5>
-              <h5> egal compliance: To guarantee total adherence to the law, all of our data originates from opt-in mailing
+              <p> Current data: To guarantee optimum relevancy, we constantly update and maintain a well-structured database.</p>
+              <p> Prefabricated data: You receive ready-to-download data that has been
+                packaged and customized in advance. </p>
+              <p> Highest response rate: Up to 95% delivery rate with very few hard bounces is possible with Pure Users.</p>
+              <p> Legal compliance: To guarantee total adherence to the law, all of our data originates from opt-in mailing
                 lists and other sources. Our data is completely GDPR and CAN-SPAM compliant.
-              </h5>
-              <h5> With the most comprehensive  <span>{product.title} </span>  Users List available, Pure Users can assist you in growing your
+              </p>
+              <p> With the most comprehensive  <span>{product.title} </span>  Users List available, Pure Users can assist you in growing your
                 company. We assume full responsibility for the database's correctness of information. You can only
                 anticipate accurate contact details and enhanced prospects for expanding your clientele while working with
-                us.</h5>
+                us.</p>
 
             </div>
           </Col>
@@ -247,7 +250,7 @@ const TourDetails = () => {
       </section>
 
       <section>
-        <div className='sal'>
+        <div className='salr'>
           <Row>
             <div className="h">
               <div className="seIntro">
@@ -345,7 +348,7 @@ const TourDetails = () => {
             </Col>
             <Col lg="4">
               <div className='bo9'>
-                <Booking2 product={product} handleToast={handleToast} />
+              <Booking product={product} handleToast={handleToast} />
               </div>
             </Col>
           </Row>

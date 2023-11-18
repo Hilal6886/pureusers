@@ -52,8 +52,10 @@ const Booking = ({ product,handleToast }) => {
     <div className="booking">
  
       <div className="booking_form">
-      
-        <h3 className="gradient__text8"><i class="ri-user-settings-line"></i>GET COUNTS AND QUOTES</h3>
+         <div className='head'>
+       
+        <h3 className="gradient__text8">GET COUNTS AND QUOTES</h3>
+        </div>
         <Form className="booking_info-form" onSubmit={handleClick}>
           <FormGroup>
             <input type="tet" placeholder=" Your Name" id="name" required onChange={handleChange} class="form--input"/>

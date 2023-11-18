@@ -16,10 +16,11 @@ const Gallary = () => {
   return (
     <section>
         <div className="seIntroy">
-          <h2 data-aos="fade-up" className="gradient__text">
+          <h2 className="gradient__text">
             Testomonial
+    
           </h2>
-          <p>what clients say about us</p>
+         
         </div>
     <Container>
         <Row>

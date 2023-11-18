@@ -115,7 +115,8 @@
   background-color: #4133B7;
 }
 .pri h1{
-  color:black;
+  color:#7309A8;
   text-align:center;
-  textTransform: uppercase,
+  text-Transform: uppercase;
+  font-weight:bold;
 }

@@ -89,34 +89,37 @@ const Navbar = ({ user }) => {
 
 
                         <li className="NavItem">
-                            <i class="ri-home-line"></i>
+                         
 
                             <Link to="/home" className="navLink">HOME</Link>
                         </li>
 
                         <li className="NavItem">
-                            <i class="ri-user-3-line"></i>
+                          
                             <Link to="/table" className="navLink">CATEGORIES</Link>
                         </li>
 
 
                         <li className="NavItem">
-                            <i class="ri-file-text-line"></i>
+                          
+                            <Link to="/CBlog" className="navLink">BLOGS</Link>
 
-                            <a href="/CBlog" className="navLink">BLOGS</a>
+                         
 
                         </li>
 
                         <li className="NavItem">
-                            <i class="ri-contacts-line"></i>
-                            <a href="/contact-us" className="navLink">CONTACT</a>
+                          
+                       
+                            <Link to="/contact-us" className="navLink">CONTACT</Link>
+                            
                         </li>
 
 
                         {isAdmin &&
 
                             <li className='NavItem'>
-                                <i class="ri-user-settings-line"></i>
+                           
                                 <select className="navLink" style={{
                                     marginRight: '-2rem',
 
