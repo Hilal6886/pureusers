@@ -8,11 +8,16 @@ import './tourdetails.scss';  // Import the updated CSS file
 import Booking from '../Booking/Booking';
 import Testimonial from '../../components/Testimonial/Testimonial';
 import Booking2 from '../Booking2/Booking2';
+import { useNavigate } from 'react-router-dom'; // Add this import
 
 const TourDetails = () => {
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const { id: productId } = useParams();
+  const navigate = useNavigate();
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -41,6 +46,8 @@ const TourDetails = () => {
     return <div>Loading...</div>;
   }
 
+  
+
   return (
     <>
       <section>
@@ -54,10 +61,11 @@ const TourDetails = () => {
             </div>
             <Col lg="6">
 
-              <div className=" card">
-                <div className="card-number">209,360</div>
-                <p className="card-text">COMPANIES THAT USES {product.title}</p>
-              </div>
+            <div className=" card">
+  <div className="card-number">{product.companyuser}</div>
+  <p className="card-text">COMPANIES THAT USE {product.title}</p>
+</div>
+
 
 
             </Col>
@@ -186,21 +194,21 @@ const TourDetails = () => {
             </div>
           </Col>
         </Row>
-        <Row>
-          <Col lg='12'>
-            
-          </Col>
-        </Row>
+       
         </div>
 
       </section>
       
 
-    
+      <Row>
+          <Col lg='12'>
+            
+          </Col>
+        </Row>
 
 
-      <section className="user table">
-        <h2 className="titleone"> Companies Using {product.title} </h2>
+      <section className="sal user ">
+        <h2 className="titleone"> Companies Currently Using {product.title} </h2>
         <div className="table-con">
           <div className="desktop">
             <table className="responsive">
@@ -358,21 +366,36 @@ const TourDetails = () => {
 
 
       {relatedProducts.length > 0 && (
-        <div className="related-products">
-          <Container>
-            <h2>Related Products</h2>
-            <ListGroup>
-              {relatedProducts.map((relatedProduct) => (
-                <ListGroupItem key={relatedProduct.id}>
-
-                  <h5>{relatedProduct.title}</h5>
-                  {/* Add more details or links for each related product */}
-                </ListGroupItem>
-              ))}
-            </ListGroup>
-          </Container>
+  <section className=" salr related-products-section">
+    <h2>Other Technology Users Email List Includes </h2>
+    <div className="related-products-table contact-table">
+      <div className="contact-row">
+        <div className="contact-cell title">Product </div>
+        <div className="contact-cell title"> Users</div>
+      </div>
+      {relatedProducts.map((relatedProduct) => (
+        <div className="contact-row" key={relatedProduct.id}>
+          <div className="contact-cell">
+            <a
+              href={`/product/${relatedProduct.id}`}
+              className="related-product-link"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log(`Navigating to /product/${relatedProduct.id}`);
+                navigate(`/product/${relatedProduct.id}`);
+                scrollToTop();
+              }}
+            >
+              {relatedProduct.title}
+            </a>
+          </div>
+          <div className="contact-cell">{relatedProduct.companyuser}</div>
         </div>
-      )}
+      ))}
+    </div>
+  </section>
+)}
+
 
 
     </>

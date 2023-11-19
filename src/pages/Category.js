@@ -91,6 +91,7 @@ const Category = () => {
   const handleAddProduct = () => {
     const newProduct = {
       title: '',
+      companyuser: "",
       description: '',
       imageFile: null, // Add imageFile property to store the file object
       users: [],
@@ -102,12 +103,7 @@ const Category = () => {
 
   // ... Existing code ...
 
-const handleImageChange = (e, productIndex) => {
-  const file = e.target.files[0];
-  const updatedProducts = [...products];
-  updatedProducts[productIndex].imageFile = file;
-  setProducts(updatedProducts);
-};
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -115,42 +111,31 @@ const handleSubmit = async (e) => {
   try {
     const productDocs = [];
 
-    // Step 1: Update category name
+    //  Update category name
     await updateDoc(doc(db, 'categories', categoryId), {
       name: categoryName,
     });
 
-    // Step 2: Update products and product users
+    //  Update products and product users
     for (let i = 0; i < products.length; i++) {
       const product = products[i];
       const imageFile = product.imageFile; // Get the imageFile from the product
 
-      if (!product.title || !product.description) {
+      if (!product.title || !product.description || !product.companyuser) {
         toast.error('All fields are mandatory to fill');
         return;
       }
-
-      let imageUrl = null; // Default imageUrl to null
-
-      // If imageFile exists, perform image upload
-      if (imageFile) {
-        const storageRef = ref(storage, `product_images/${imageFile.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, imageFile);
-        const snapshot = await uploadTask;
-        imageUrl = await getDownloadURL(snapshot.ref);
-      }
-
       const productDocRef = await addDoc(collection(db, 'products'), {
         title: product.title,
+        companyuser: product.companyuser,
         description: product.description,
-        imageUrl: imageUrl, // Add imageUrl property to store the download URL of the image
         category: categoryId,
         users: product.users, // Add the product users within the product document
       });
       productDocs.push(productDocRef);
     }
 
-    // Step 3: Update the category with the list of product ids
+    //  Update the category with the list of product ids
     await updateDoc(doc(db, 'categories', categoryId), {
       products: productDocs.map((doc) => doc.id),
     });
@@ -203,6 +188,19 @@ const handleSubmit = async (e) => {
                       />
                     </div>
                     <div>
+                    <label htmlFor={`companyuser-${productIndex}`}>Companies using this product:</label>
+                    <input
+                      type="number"
+                      id={`companyuser-${productIndex}`}
+                      name="companyuser"
+                      className="form-control input-text-box"
+                      rows="3"
+                      value={product.companyuser}
+                      onChange={(e) => handleProductChange(e, productIndex)}
+                      required
+                    />
+                  </div>
+                    <div>
                       <label htmlFor={`description-${productIndex}`}>Description:</label>
                       <textarea
                         id={`description-${productIndex}`}
@@ -214,17 +212,7 @@ const handleSubmit = async (e) => {
                         required
                       ></textarea>
                     </div>
-                    <div>
-                      <label htmlFor={`image-${productIndex}`}>Product Image:</label>
-                      <input
-                        type="file"
-                        id={`image-${productIndex}`}
-                        name="image"
-                        className="form-control-file"
-                        onChange={(e) => handleImageChange(e, productIndex)}
-                         // Image is required only for new products
-                      />
-                    </div>
+                    
 
                     {/* Product Users */}
                     <h3>Product Users</h3>

@@ -11,16 +11,19 @@
   --bodyColor: rgb(240, 240, 246);
   --cardBg: rgb(225, 225, 235);
 }
-body{
+
+body {
   overflow-x: hidden;
 }
 
-.sal{
-  margin: 2rem 2rem 3rem 2rem;
-
+/* Add this CSS to prevent table overflow on small screens */
+.table-container {
+  overflow-x: auto;
 }
 
-
+.sal {
+  margin: 2rem 2rem 3rem 2rem;
+}
 
 .hji {
   margin-top: 3rem;
@@ -32,10 +35,8 @@ body{
   font-weight: 700;
   margin-bottom: 3.5rem;
   text-align: center;
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
-
-
 
 .card {
   background-color: #c5e8ec;
@@ -61,24 +62,26 @@ body{
 .card-text {
   color: var(--blackcolor);
   font-size: 3rem;
-  font-weight: bold
+  font-weight: bold;
 }
+
 .salr {
   margin: 5rem 2rem 3rem 2rem;
-
 }
+
 .car {
   background-color: #4d94ff;
   border: 1px solid #4d94ff;
   border-radius: 8px;
   padding: 10px;
-  margin-top:2rem;
+  margin-top: 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
+
 .border {
   padding: 0.4rem 0.4rem;
   border: 1px solid white;
@@ -86,69 +89,76 @@ body{
   justify-content: space-evenly;
   gap: 18px; /* Adjust the gap between icons and names */
 }
+
 .card-numb {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--whitecolor);
-  text-align: left; /* Align text to the left within the icon column */
+  text-align: left;
 }
+
 .card-num {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--whitecolor);
-  text-align: left; /* Align text to the left within the icon column */
+  text-align: left;
 }
 
 .goos {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Align items vertically in the row */
-  margin-bottom: 10px; /* Adjust the margin between rows */
-  width: 150%; /* Set a width for each row, adjust as needed */
+  align-items: center;
+  margin-bottom: 10px;
+  width: 150%;
 }
-.b9{
+
+.b9 {
   margin-top: 4rem;
 }
-.b9 p{
+
+.b9 p {
   text-align: center;
   font-size: 1.3rem;
   color: var(--textcolor);
   margin-top: 1rem;
   padding: 0.6rem;
 }
-.b9  span{
-  font-size:1,4rem;
-  font-weight:600;
-  color: var(--textcolor);
-}
-.thed p{
-  text-align: center;
-  font-size: 1.3rem;
-  color: var(--textcolor);
-  margin-top: 1rem;
-  padding: 0.6rem;
-}
-.thed span{
-  font-size:1,4rem;
-  font-weight:600;
+
+.b9 span {
+  font-size: 1.4rem;
+  font-weight: 600;
   color: var(--textcolor);
 }
 
+.thed p {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--textcolor);
+  margin-top: 1rem;
+  padding: 0.6rem;
+}
+
+.thed span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--textcolor);
+}
 
 .rt {
-  display:flex;
+  display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content: space-around;
 }
-.rt p{
-  font-size:1.5rem;
-  font-weight:700;
+
+.rt p {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--textcolor);
-  
 }
+
 /* Styles for the table section */
 .user.table {
- 
+  margin: 2rem;
   padding: 30px 0;
 }
 
@@ -156,22 +166,22 @@ body{
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 20px;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .table-con {
-  width: 1600px;
-  margin: 0 auto;
+  width: 100%;
+  overflow-x: auto; /* Add this to prevent table overflow on small screens */
 }
+
 .responsive td:before {
   content: attr(data-label);
- display:none
 }
+
 /* Table styles */
 .responsive {
   width: 100%;
   border-collapse: collapse;
-  border-spacing: 0;
 }
 
 .responsive thead {
@@ -186,11 +196,10 @@ body{
   border-bottom: 1px solid #ddd;
 }
 
-.thed{
+.thed {
   text-align: center;
   margin: 2rem 2rem 2rem 2rem;
 }
-
 
 .btnt a {
   font-weight: 500;
@@ -223,6 +232,7 @@ body{
   display: flex;
   justify-content: center;
 }
+
 /* ContactTable.css */
 
 .contact-table {
@@ -249,28 +259,25 @@ body{
 }
 
 .icon {
-  margin-right: 5px; /* Adjust the margin as needed */
+  margin-right: 5px;
 }
 
 .green {
-  color:  #6558d3;
+  color: #6558d3;
 }
-
-
-
+.responsive td[data-label]:before {
+  display: none;
+}
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 960px) {
-  
-
   .secTtle4 {
     font-size: 2rem;
     margin-bottom: 2rem;
-    text-transform:uppercase;
-    font-weight:700;
+    text-transform: uppercase;
+    font-weight: 700;
   }
 
- 
   .btnt a {
     font-size: 1rem;
   }
@@ -289,18 +296,18 @@ body{
     margin-right: 2rem;
   }
 }
-@media screen and (max-width: 768px) {
-  
-.sal {
-  margin: 0 2rem 0 2rem;
-}
-.seIntro4 h2 {
-  margin-top: 2rem;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 3.5rem;
-}
 
+@media screen and (max-width: 768px) {
+  .sal {
+    margin: 0 2rem 0 2rem;
+  }
+
+  .seIntro4 h2 {
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3.5rem;
+  }
 
   .responsive thead {
     display: none;
@@ -315,6 +322,9 @@ body{
     display: block;
     text-align: right;
   }
+  .responsive td[data-label]:before {
+    display: block;
+  }
 
   .secTtle4 {
     margin-top: 2rem;
@@ -322,6 +332,7 @@ body{
     font-weight: 600;
     margin-bottom: 3.5rem;
   }
+
   .card {
     background-color: #c5e8ec;
     border: 1px solid #c5e8ec;
@@ -335,19 +346,19 @@ body{
     text-align: center;
     margin-bottom: 1.5rem;
   }
+
   .card-number {
     font-size: 3rem;
     font-weight: bold;
     color: var(--blackcolor);
     margin-bottom: 10px;
   }
-  
+
   .card-text {
     color: var(--blackcolor);
     font-size: 1rem;
-    font-weight:bold
+    font-weight: bold;
   }
-  
 }
 
 /* Colors */
@@ -371,86 +382,87 @@ body{
   visibility: hidden;
 }
 
-  .responsive td:before {
-    content: attr(data-label);
-    float: left;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  .titleone {
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight:bold;
-  }
- 
+.responsive td:before {
+  content: attr(data-label);
+  float: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 10px;
+}
 
+.titleone {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
 
+.ht {
+  display: flex;
+  justify-content: center;
+}
 
+.car {
+  height: 400px;
+  width: 300px;
+  margin-bottom: 3rem;
+}
 
-  .ht {
-    display: flex;
-    justify-content: center;
-  }
+.card-numb {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--whitecolor);
+  text-align: left;
+}
 
-  .car {
-    height: 400px;
-    width: 300px;
-    margin-bottom:3rem
-  }
+.card-num {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--whitecolor);
+  text-align: left;
+}
 
-  .card-numb {
-    font-size: .8rem;
-    font-weight: 500;
-    color: var(--whitecolor);
-    text-align: left; /* Align text to the left within the icon column */
-  }
-  .card-num {
-    font-size: .8rem;
-    font-weight: 500;
-    color: var(--whitecolor);
-    text-align: left; /* Align text to the left within the icon column */
-  }
+.border {
+  gap: 12px;
+}
 
-  .border {
-    gap: 12px;
-  }
+.goos {
+  width: 100%;
+  flex-direction: row;
+}
 
-  .goos {
-    width: 100%;
-    flex-direction: row;
-  }
+.b9 h4 {
+  font-size: 1.2rem;
+  margin-right: 0;
+  text-align: center;
+  margin-bottom: 1rem;
+}
 
-  .b9 h4 {
-    font-size: 1.2rem;
-    margin-right: 0;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
+.rt {
+  font-size: 1rem;
+}
 
-  .rt {
-    font-size: 1rem;
-  }
+.user.table {
+  margin: 2rem;
+  padding: 30px 0;
+}
 
-  .user.table {
-    padding: 30px 0;
-  }
+.table-con {
+  padding: 0 10px;
+  overflow-x: auto;
+}
 
-  .table-con {
-    padding: 0 10px;
-  }
+.responsive-table td {
+  font-size: 12px;
+}
 
-  .responsive-table td {
-    font-size: 12px;
-  }
-  .responsive-table thead {
-    visibility: visible;
-  }
-  .responsive-table th {
-    background: #6558d3;
-  }
+.responsive-table thead {
+  visibility: visible;
+}
 
+.responsive-table th {
+  background: #6558d3;
+}
 
 .responsive-table tr {
   border: 1px solid #ddd;
@@ -462,22 +474,12 @@ body{
 
 .contact-table {
   width: 100%;
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
 }
 
-
-
-
 @media screen and (max-width: 500px) {
-
-  
-
-
-
-
-
-
-
+  /* ... Your existing small screen styles ... */
+}
 
 @media screen and (min-width: 600px) {
   .responsive-table tr {
@@ -485,69 +487,14 @@ body{
     border-bottom-width: 1px;
     margin-bottom: 0;
   }
+
   .responsive-table tr:nth-child(even) {
     background: #fafafa;
   }
 }
-.rt {
-  font-size: 1rem;
-}
 
-.responsive-table th,
-.responsive-table td {
-  padding: 10px;
-  text-align: left;
-}
-
-.responsive-table th {
-  text-transform: uppercase;
-  font-size: 11px;
-}
-
-.responsive-table td {
-  font-size: 13px;
-  border-bottom: 1px dotted #ddd;
-}
-
-.responsive-table td:last-child {
-  border-bottom: none;
-}
-
-/* Additional media query for smaller screens */
-@media screen and (max-width: 599px) {
-  .responsive-table th {
-    position: relative;
-    background: #6558d3;
-  }
-
-  .responsive-table th::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 100%;
-    height: 8px;
-    background: #fafafa;
-  }
-
-  .responsive-table td {
-    display: block;
-    text-align: right;
-    font-size: 14px;
-    border-bottom: 1px dotted #ddd;
-  }
-
-  .responsive-table td:before {
-    content: attr(data-label);
-    float: left;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-}
-/* ... (previous styles) */
-
-
-
+/* ... (remaining styles) */
+/* ... (remaining styles) */
 
 @media screen and (max-width: 480px) {
   .card {
@@ -561,8 +508,6 @@ body{
   .card-text {
     font-size: 1.5rem;
   }
-
-
 
   .btnt a {
     font-size: 0.9rem;
@@ -584,6 +529,10 @@ body{
   .responsive-table td {
     font-size: 11px;
   }
+  .responsive-table{
+    background-color: #4d94ff;
+  }
+
   .seIntro4 h2 {
     margin-top: 2rem;
     font-size: 2rem;
@@ -591,16 +540,14 @@ body{
     margin-bottom: 3.5rem;
     text-align: center;
   }
- 
-  .rt p{
-    display:flex;
 
-    justify-content:space-around;
+  .rt p {
+    display: flex;
+    justify-content: space-around;
     font-size: 12px;
     color: gray;
   }
-  
- 
+
   .card {
     background-color: #c5e8ec;
     border: 1px solid #c5e8ec;
@@ -614,33 +561,33 @@ body{
     text-align: center;
     margin-bottom: 1.5rem;
   }
+
   .card-number {
     font-size: 3rem;
     font-weight: bold;
     color: var(--blackcolor);
     margin-bottom: 10px;
   }
-  
+
   .card-text {
     color: var(--blackcolor);
     font-size: 1rem;
-    font-weight:bold
+    font-weight: bold;
   }
 }
-.b9{
+
+.b9 {
   margin-top: 1rem;
 }
-.b9 h6{
+
+.b9 h6 {
   text-align: center;
   color: black;
-  font-size: .8rem;
- 
-}
-.b9 .span{
-  font-size:3rem;
-  font-weight:600;
-  color:black;
-}
+  font-size: 0.8rem;
 }
 
-/* ... (remaining styles) */
+.b9 .span {
+  font-size: 3rem;
+  font-weight: 600;
+  color: black;
+}

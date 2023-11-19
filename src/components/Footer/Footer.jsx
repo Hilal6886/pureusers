@@ -18,7 +18,7 @@ const Footer = () => (
             <li><a href="#"><i className="fab fa-facebook"></i></a></li>
             <li><a href="#"><i className="fab fa-twitter"></i></a></li>
             <li><a href="#"><i className="fab fa-linkedin-in"></i></a></li>
-            <li><a href="#"><i className="fab fa-youtube"></i></a></li>
+         
           </ul>
       </div>
       <div className="gpt3__footer-links_div">

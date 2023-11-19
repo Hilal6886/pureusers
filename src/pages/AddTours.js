@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { collection, addDoc, updateDoc } from 'firebase/firestore';
-import { db, storage } from '../firebase';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { db } from '../firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddEditBlog = () => {
   const [category, setCategory] = useState('');
   const [products, setProducts] = useState([]);
-  const [imageFiles, setImageFiles] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleCategoryChange = (e) => {
@@ -29,34 +27,20 @@ const AddEditBlog = () => {
     setProducts(updatedProducts);
   };
 
-
-  const handleImageChange = (e, index) => {
-    const file = e.target.files[0];
-    const updatedImageFiles = [...imageFiles];
-    updatedImageFiles[index] = file;
-    setImageFiles(updatedImageFiles);
-  };
-
   const handleAddProduct = () => {
     const newProduct = {
       title: '',
       description: '',
-     
-     
-      users: [], // New array for holding product users
+      companyuser: '',
+      users: [],
     };
     setProducts([...products, newProduct]);
-    setImageFiles([...imageFiles, null]);
   };
 
   const handleRemoveProduct = (index) => {
     const updatedProducts = [...products];
     updatedProducts.splice(index, 1);
     setProducts(updatedProducts);
-
-    const updatedImageFiles = [...imageFiles];
-    updatedImageFiles.splice(index, 1);
-    setImageFiles(updatedImageFiles);
   };
 
   const handleAddUser = (productIndex) => {
@@ -66,7 +50,6 @@ const AddEditBlog = () => {
       companyWebsite: '',
       country: '',
       revenue: '',
-     
     });
     setProducts(updatedProducts);
   };
@@ -77,67 +60,52 @@ const AddEditBlog = () => {
     setProducts(updatedProducts);
   };
 
- 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const productDocs = [];
+    try {
+      const productDocs = [];
+      setIsSubmitting(true);
 
-    setIsSubmitting(true);
-
-    const categoryDocRef = await addDoc(collection(db, 'categories'), {
-      name: category,
-    });
-
-    for (let i = 0; i < products.length; i++) {
-      const product = products[i];
-      const imageFile = imageFiles[i];
-
-      if (
-        !product.title ||
-        !product.description
-      ) {
-        toast.error('All fields are mandatory to fill');
-        setIsSubmitting(false);
-        return;
-      }
-
-      let imageUrl = null;
-      if (imageFile) {
-        const storageRef = ref(storage, `product_images/${imageFile.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, imageFile);
-        const snapshot = await uploadTask;
-
-        imageUrl = await getDownloadURL(snapshot.ref);
-      }
-
-      const productDocRef = await addDoc(collection(db, 'products'), {
-        title: product.title,
-        description: product.description,
-        imageUrl: imageUrl,
-        category: categoryDocRef.id,
-        users: product.users,
+      const categoryDocRef = await addDoc(collection(db, 'categories'), {
+        name: category,
       });
-      productDocs.push(productDocRef);
+
+      for (let i = 0; i < products.length; i++) {
+        const product = products[i];
+
+        if (!product.title || !product.description || !product.companyuser) {
+          toast.error('All fields are mandatory to fill');
+          setIsSubmitting(false);
+          return;
+        }
+
+        const productDocRef = await addDoc(collection(db, 'products'), {
+          title: product.title,
+          companyuser: product.companyuser,
+          description: product.description,
+          category: categoryDocRef.id,
+          users: product.users,
+        });
+
+        productDocs.push(productDocRef);
+      }
+
+      await updateDoc(categoryDocRef, {
+        products: productDocs.map((doc) => doc.id),
+      });
+
+      toast.success('Category and products saved successfully');
+
+      setCategory('');
+      setProducts([]);
+    } catch (error) {
+      toast.error('Error adding document');
+      console.error('Error adding document: ', error);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    await updateDoc(categoryDocRef, {
-      products: productDocs.map((doc) => doc.id),
-    });
-
-    toast.success('Category and products saved successfully');
-
-    setCategory('');
-    setProducts([]);
-    setImageFiles([]);
-  } catch (error) {
-    toast.error('Error adding document');
-    console.error('Error adding document: ', error);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
   return (
     <div className="container-fluid mb-4">
@@ -173,6 +141,18 @@ const handleSubmit = async (e) => {
                     />
                   </div>
                   <div>
+                    <label htmlFor={`companyuser-${index}`}>Companies using this product:</label>
+                    <input
+                      type="number"
+                      id={`companyuser-${index}`}
+                      name="companyuser"
+                      className="form-control input-text-box"
+                      value={product.companyuser}
+                      onChange={(e) => handleProductChange(e, index)}
+                      required
+                    />
+                  </div>
+                  <div>
                     <label htmlFor={`description-${index}`}> Product Description:</label>
                     <textarea
                       id={`description-${index}`}
@@ -183,21 +163,7 @@ const handleSubmit = async (e) => {
                       required
                     ></textarea>
                   </div>
-                 
-                 
-                  <div>
-                    <label htmlFor={`image-${index}`}>Product Image:</label>
-                    <input
-                      type="file"
-                      id={`image-${index}`}
-                      name="image"
-                      className="form-control-file"
-                      onChange={(e) => handleImageChange(e, index)}
-                      
-                    />
-                  </div>
 
-                  {/* Product Users */}
                   <h3>Product Users</h3>
                   {product.users.map((user, userIndex) => (
                     <div key={userIndex}>
@@ -259,7 +225,7 @@ const handleSubmit = async (e) => {
                           required
                         />
                       </div>
-                   
+
                       <div>
                         <button
                           type="button"
