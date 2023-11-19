@@ -151,14 +151,17 @@ body {
   }
 
   .btnq {
-    display: flex;
+    background-color: #6558d3;
+    border: 0;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 500;
+    outline: 0;
+    padding: 0.625em 0.75em;
+    text-align: center;
+    text-decoration: none;
     width: 100%;
-    padding: .4rem 1.5rem;
-    background: #89E894;
-    border-radius: .5rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
   }
 
   .btnq a {
@@ -331,15 +334,17 @@ body {
   }
 
   .btnq {
-    margin-right: 3rem;
-    margin-left: 3rem;
-    padding: .2rem 1.8rem;
-    background: #89E894;
-    border-radius: .5rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    height: auto;
+    background-color: #6558d3;
+    border: 0;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 500;
+    outline: 0;
+    padding: 0.625em 0.75em;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
   }
 
   .btnq a {

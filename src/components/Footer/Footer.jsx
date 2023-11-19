@@ -11,8 +11,9 @@ const Footer = () => (
     <div className="gpt3__footer-links">
       <div className="gpt3__footer-links_logo">
         <img src={gpt3Logo} alt="gpt3_logo" />
-        <p>At our company, we offer a cutting-edge Data Insights Platform that empowers businesses with comprehensive and real-time information. Our platform provides deep insights into company
-           demographics, technology adoption, purchasing intent signals, and a wide range of valuable account attributes.</p>
+        <p>At our company, we offer a cutting-edge Data Insights Platform that 
+          empowers businesses with comprehensive and real-time information. 
+          </p>
            
           <ul className="social-icons">
             <li><a href="#"><i className="fab fa-facebook"></i></a></li>

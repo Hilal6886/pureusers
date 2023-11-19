@@ -146,7 +146,7 @@ const Navbar = ({ user }) => {
 
                                         <div>
 
-                                            <button className="btnq flex">
+                                            <button className="btnq ">
                                                 <a href="/login">Login</a>
                                             </button>
 
