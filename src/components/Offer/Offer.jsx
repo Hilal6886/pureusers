@@ -55,14 +55,16 @@ const Offer = () => {
       try {
         setLoading(true);
         await deleteDoc(doc(db, "fatured products", id));
-        toast.success("Offer deleted successfully");
+        toast.success("featured product deleted successfully");
         setLoading(false);
       } catch (err) {
         console.log(err);
       }
     }
   };
-
+  const handleEdit = async (featuredproductId) => {
+    navigate(`/update featured product/${featuredproductId}`);
+  };
   return (
     <section data-aos="fade-up" className="offer container section">
       <div data-aos="fade-up" className="secContainer">
@@ -105,7 +107,22 @@ const Offer = () => {
                   </button>
                 </div>
          
-               
+                {isAdmin && (
+                    <td>
+                      <i
+                        className="ri-delete-bin-line"
+                        style={{ margin: '15px', cursor: 'pointer', color: 'red' }}
+                        size="2x"
+                        onClick={() => handleDelete(featuredproduct.id)}
+                      ></i>
+                      <i
+                        className="ri-edit-box-line"
+                        style={{ cursor: 'pointer' }}
+                        size="2x"
+                        onClick={() => handleEdit(featuredproduct.id)}
+                      ></i>
+                    </td>
+                  )}
               </div>
             );
           })}

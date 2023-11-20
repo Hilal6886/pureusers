@@ -39,6 +39,7 @@ import Varifyotp from "./components/Booking/VerifyOtp";
 import Table from "./pages/Table";
 import CategoryProducts from "./pages/CategoryProducts";
 import Category from "./pages/Category";
+import Featuredproduct from "./pages/Featuredproduct";
 
 
 
@@ -189,6 +190,7 @@ const App = () => {
           <Route path="/table" element={<Table />} />
           <Route path="/products/:id" element={<CategoryProducts />} />
           <Route path="/categories/:categoryId" element={<Category />} />
+          <Route path="/update featured product/:featuredproduct.Id " element={<Featuredproduct/>} />
         </Routes>
       </AuthProvider>
       <Footer />

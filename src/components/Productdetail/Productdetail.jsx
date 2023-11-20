@@ -5,12 +5,12 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Booking from '../Booking/Booking';
 import { useNavigate } from 'react-router-dom';
-import { fetchProducts,getRelatedProducts } from '../../services/ProductService';
+import { fetchProducts,getFeaturedProducts } from '../../services/ProductService';
 
 const TourDetails = () => {
   const [featuredproduct, setProduct] = useState(null);
-  const [relatedProducts, setRelatedProducts] = useState([]);
-  const { id: featuredproductId } = useParams();
+  const [otherFeaturedProducts, setOtherFeaturedProducts] = useState([]);
+  const { id: featuredProductId } = useParams();
   const navigate = useNavigate();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -20,29 +20,29 @@ const TourDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productArray = await fetchProducts(featuredproductId);
+        const productArray = await fetchProducts(featuredProductId);
         if (productArray.length > 0) {
           setProduct(productArray[0]);
         } else {
-          // Handle case where no product is found
           console.error('Product not found');
         }
       } catch (error) {
         console.error('Error fetching product details:', error);
-        // Handle error, show toast, etc.
       }
     };
 
-    const fetchRelatedProducts = async () => {
-      // Assuming you have a function to fetch related products, replace 'getRelatedProducts' with the actual function
-      const relatedProductsArray = await getRelatedProducts(featuredproductId);
-      setRelatedProducts(relatedProductsArray);
+    const fetchOtherFeaturedProducts = async () => {
+      try {
+        const otherProducts = await getFeaturedProducts(featuredProductId);
+        setOtherFeaturedProducts(otherProducts);
+      } catch (error) {
+        console.error('Error fetching other featured products:', error);
+      }
     };
 
     fetchData();
-    fetchRelatedProducts();
-  }, [featuredproductId]);
-
+    fetchOtherFeaturedProducts();
+  }, [featuredProductId]);
   
 
   const handleToast = (message, type) => {
@@ -359,7 +359,7 @@ const TourDetails = () => {
 
       </section>
       
-      {relatedProducts.length > 0 && (
+      {otherFeaturedProducts.length > 0 && (
         <section className="salr related-products-section">
           <h2 className='gradient__text'>Other Technology Users Email List Includes</h2>
           <div className="related-products-table contact-table">
@@ -367,23 +367,23 @@ const TourDetails = () => {
               <div className="contact-cell title">Product</div>
               <div className="contact-cell title">Users</div>
             </div>
-            {relatedProducts.map((relatedProduct) => (
-              <div className="contact-row" key={relatedProduct.id}>
+            {otherFeaturedProducts.map((otherProduct) => (
+              <div className="contact-row" key={otherProduct.id}>
                 <div className="contact-cell">
                   <a
-                    href={`/product/${relatedProduct.id}`}
+                    href={`/product/${otherProduct.id}`}
                     className="related-product-link"
                     onClick={(e) => {
                       e.preventDefault();
-                      console.log(`Navigating to /product/${relatedProduct.id}`);
-                      navigate(`/product/${relatedProduct.id}`);
+                      console.log(`Navigating to /product/${otherProduct.id}`);
+                      navigate(`/product/${otherProduct.id}`);
                       scrollToTop();
                     }}
                   >
-                    {relatedProduct.title}
+                    {otherProduct.title}
                   </a>
                 </div>
-                <div className="contact-cell">{relatedProduct.companyuser}</div>
+                <div className="contact-cell">{otherProduct.companyuser}</div>
               </div>
             ))}
           </div>
