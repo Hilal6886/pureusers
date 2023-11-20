@@ -208,7 +208,7 @@ const TourDetails = () => {
 
 
       <section className="sal user ">
-        <h2 className="titleone"> Companies Currently Using {product.title} </h2>
+        <h2 className="titleone  gradient__text"> Companies Currently Using {product.title} </h2>
         <div className="table-con">
           <div className="desktop">
             <table className="responsive">
@@ -269,7 +269,7 @@ const TourDetails = () => {
             <Col lg="6">
 
               <div className="contact-table">
-                <h4 className=" ">{product.title} Users Mailing List Consists</h4>
+                <h4 className=" gradient__text ">{product.title} Users Mailing List Consists</h4>
                 <div className="contact-row">
                   <div className="contact-cell">
                     <i className="ri-arrow-right-circle-fill icon green"></i> Contact Name
@@ -367,7 +367,7 @@ const TourDetails = () => {
 
       {relatedProducts.length > 0 && (
   <section className=" salr related-products-section">
-    <h2>Other Technology Users Email List Includes </h2>
+    <h2 className=' gradient__text'>Other Technology Users Email List Includes </h2>
     <div className="related-products-table contact-table">
       <div className="contact-row">
         <div className="contact-cell title">Product </div>
