@@ -4,11 +4,8 @@
 
 import React, { useEffect, useState } from 'react';
 import './offer.scss';
-import { MdKingBed } from 'react-icons/md';
-import { MdBathtub } from 'react-icons/md';
-import { FaWifi } from 'react-icons/fa';
-import { MdAirportShuttle } from 'react-icons/md';
-import { MdLocationOn } from 'react-icons/md';
+import { useParams, useNavigate } from 'react-router-dom';
+
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import {
@@ -19,12 +16,13 @@ import {
 import { db } from "../../firebase";
 import { toast } from "react-toastify";
 
-import { getoffer, getAllOffers } from '../../services/offerService';
+import { fetchProducts  } from '../../services/ProductService';
 import { Link } from "react-router-dom";
 
 const Offer = () => {
-  const [offers, setOffers] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { id: productId } = useParams();
   const userData=localStorage.getItem("USER")
   let currentUser=null
   let isAdmin=false
@@ -35,17 +33,28 @@ const Offer = () => {
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
-    getAllOffers().then((offers) => {
-      setOffers(offers);
-    });
+  }, []);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchDataAsync = async () => {
+      try {
+        const result = await fetchProducts();
+        setProducts(result);
+      } catch (error) {
+       
+      }
+    };
+
+    fetchDataAsync();
   }, []);
 
  
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure wanted to delete that offer ?")) {
+    if (window.confirm("Are you sure wanted to delete featured product ?")) {
       try {
         setLoading(true);
-        await deleteDoc(doc(db, "offers", id));
+        await deleteDoc(doc(db, "fatured products", id));
         toast.success("Offer deleted successfully");
         setLoading(false);
       } catch (err) {
@@ -64,47 +73,38 @@ const Offer = () => {
           <p>Access millions of products</p>
         </div>
         <div data-aos="fade-up" className="ghft grid">
-          {offers.map(({ id, imgUrl, stTdeitle, location, price, title }) => {
+        {products.map((featuredproduct) => {
             return (
-              <div data-aos="fade-up"  className="singleoffer" key={id}>
+              <div data-aos="fade-up"  className="singleoffer" key={ featuredproduct.id }>
                 <div data-aos="fade-up" className="destImage">
-                  <img data-aos="fade-up"  src={imgUrl} alt={stTdeitle} />
+                  <img data-aos="fade-up"  src={ featuredproduct.imageUrl} alt={ featuredproduct.title} />
 
                   <span className="discount">20% off</span>
                 </div>
                 <div className="offerBody">
                 
                   <div className="price flex ">
-                  <h6 className='gradient__text'>{title}</h6>
+                  <h6 className='gradient__text'>{ featuredproduct.title}</h6>
                   <span className="status" >Featured</span>
 
                   </div>
                   <div className="amenities flex">
                     <div className="singleAmenities flex">
-                    <h6>{price}</h6>
+                    <h6>{featuredproduct.description}</h6>
                     </div>
                   </div>
                  
-                  <button className="btnn flex">view product</button>
+                  <button
+                    className="buttong"
+                    onClick={() => {
+                      console.log(`Navigating to /featuredproduct/${featuredproduct.id}`);
+                      navigate(`/featuredproduct/${featuredproduct.id}`);
+                    }}
+                  >
+                    View More
+                  </button>
                 </div>
-                {isAdmin && (
-
-                  <div style={{ float: "right" }}>
-
-                  <i className="ri-delete-bin-line"
-                    style={{ margin: "15px", cursor: "pointer",color:"red" }}
-                    size="2x"
-                    onClick={() => handleDelete(id)}
-                  ></i>
-                  <Link to={`/counts/${id}`}>
-                  <i className="ri-edit-box-line"
-                      style={{ cursor: "pointer" }}
-                      size="2x"
-                    ></i>
-                  </Link>
-                </div>
-      
-                )}
+         
                
               </div>
             );
