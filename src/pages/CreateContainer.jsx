@@ -1,199 +1,303 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
+import { collection, addDoc } from 'firebase/firestore';
+import { db, storage } from '../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const CreateContainer= () => {
+  const [products, setProducts] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-import { db, storage } from "../firebase";
-import { useNavigate, useParams } from "react-router-dom";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import {
-  addDoc,
-  collection,
-  getDoc,
-  serverTimestamp,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
-import { toast } from "react-toastify";
+  const handleProductChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedProducts = [...products];
+    updatedProducts[index][name] = value;
+    setProducts(updatedProducts);
+  };
 
-const initialState = {
-  title: "",
- location:"",
- price:"",
-};
+  const handleUserChange = (e, productIndex, userIndex, field) => {
+    const { value } = e.target;
+    const updatedProducts = [...products];
+    updatedProducts[productIndex].users[userIndex][field] = value;
+    setProducts(updatedProducts);
+  };
 
+  const handleImageChange = (e, index) => {
+    const file = e.target.files[0];
+    const updatedImageFiles = [...imageFiles];
+    updatedImageFiles[index] = file;
+    setImageFiles(updatedImageFiles);
+  };
 
-
-const CreateContainer = ({ user, setActive }) => {
-  const [form, setForm] = useState(initialState);
-  const [file, setFile] = useState(null);
-  const [progress, setProgress] = useState(null);
-
-  const { id } = useParams();
-
-  const navigate = useNavigate();
-
-  const { title, location, price, } = form;
-
-  useEffect(() => {
-    const uploadFile = () => {
-      const storageRef = ref(storage, file.name);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          setProgress(progress);
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
-            default:
-              break;
-          }
-        },
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-            toast.info("Image upload to firebase successfully");
-            setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
-          });
-        }
-      );
+  const handleAddProduct = () => {
+    const newProduct = {
+      title: '',
+      description: '',
+      companyuser: '', // Add the companyuser field here
+      users: [], // New array for holding product users
     };
-
-    file && uploadFile();
-  }, [file]);
-
-  useEffect(() => {
-    id && getBlogDetail();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
-
-  const getBlogDetail = async () => {
-    const docRef = doc(db, "offers", id);
-    const snapshot = await getDoc(docRef);
-    if (snapshot.exists()) {
-      setForm({ ...snapshot.data() });
-    }
-    setActive(null);
+    setProducts([...products, newProduct]);
+    setImageFiles([...imageFiles, null]);
   };
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleRemoveProduct = (index) => {
+    const updatedProducts = [...products];
+    updatedProducts.splice(index, 1);
+    setProducts(updatedProducts);
+
+    const updatedImageFiles = [...imageFiles];
+    updatedImageFiles.splice(index, 1);
+    setImageFiles(updatedImageFiles);
   };
 
- 
+  const handleAddUser = (productIndex) => {
+    const updatedProducts = [...products];
+    updatedProducts[productIndex].users.push({
+      companyName: '',
+      companyWebsite: '',
+      country: '',
+      revenue: '',
+    });
+    setProducts(updatedProducts);
+  };
 
-  
+  const handleRemoveUser = (productIndex, userIndex) => {
+    const updatedProducts = [...products];
+    updatedProducts[productIndex].users.splice(userIndex, 1);
+    setProducts(updatedProducts);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if ( title && location && price) {
-      if (!id) {
-        try {
-          await addDoc(collection(db, "offers"), {
-            ...form,
-            timestamp: serverTimestamp(),
-            author: user.displayName,
-            userId: user.uid,
-          });
-          toast.success("Offer created successfully");
-        } catch (err) {
-          console.log(err);
-        }
-      } else {
-        try {
-          await updateDoc(doc(db, "offers", id), {
-            ...form,
-            timestamp: serverTimestamp(),
-            author: user.displayName,
-            userId: user.uid,
-          });
-          toast.success("Offer updated successfully");
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    } else {
-      return toast.error("All fields are mandatory to fill");
-    }
 
-    navigate("/offers");
+    try {
+      setIsSubmitting(true);
+
+      const productDocs = [];
+
+      for (let i = 0; i < products.length; i++) {
+        const product = products[i];
+        const imageFile = imageFiles[i];
+
+        if (!product.title || !product.description || !product.companyuser) {
+          toast.error('All fields are mandatory to fill');
+          setIsSubmitting(false);
+          return;
+        }
+
+        let imageUrl = null;
+        if (imageFile) {
+          const storageRef = ref(storage, `featured product_images/${imageFile.name}`);
+          const uploadTask = uploadBytesResumable(storageRef, imageFile);
+          const snapshot = await uploadTask;
+
+          imageUrl = await getDownloadURL(snapshot.ref);
+        }
+
+        const productDocRef = await addDoc(collection(db, 'fatured products'), {
+          title: product.title,
+          companyuser: product.companyuser,
+          description: product.description,
+          imageUrl: imageUrl,
+          users: product.users,
+        });
+
+        productDocs.push(productDocRef);
+      }
+
+      toast.success('Products saved successfully');
+
+      setProducts([]);
+      setImageFiles([]);
+    } catch (error) {
+      toast.error('Error adding products');
+      console.error('Error adding products: ', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="container-fluid mb-4">
       <div className="containert">
         <div className="col-12">
-          <div className="text-center heading py-2">
-            {id ? "Update Offer" : "Create offer"}
-          </div>
+          <div className="text-center heading py-2">Add Featured Products</div>
         </div>
         <div className="row h-100 justify-content-center align-items-center">
           <div className="col-10 col-md-8 col-lg-6">
-            <form className=" ghy row blog-form" onSubmit={handleSubmit}>
-              <div className="col-12 py-3">
-                <input
-                  type="text"
-                  className="form-control input-text-box"
-                  placeholder="Title"
-                  name="title"
-                  value={title}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-              <input
-                  type="text"
-                  className="form-control input-text-box"
-                  placeholder="Enter location"
-                  name="location"
-                  value={location}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-              <input
-                  type="text"
-                  className="form-control input-text-box"
-                  placeholder="Enter Price"
-                  name="price"
-                  value={price}
-                  onChange={handleChange}
-                />
-              </div>
-              
-              
-             
-             
-              <div className="mb-3">
-                <input
-                  type="file"
-                  className="form-control"
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-              </div>
-              <div className="col-12 py-3 text-center">
-                <button
-                  className="btn btn-add"
-                  type="submit"
-                  disabled={progress !== null && progress < 100}
-                >
-                  {id ? "Update" : "Submit"}
-                </button>
-              </div>
-            </form>
-          </div>
+            <form className="ghy row blog-form" onSubmit={handleSubmit}>
+           
+
+{products.map((product, index) => (
+  <div key={index} className="product-container">
+    <div>
+      <label htmlFor={`title-${index}`}>Product Name:</label>
+      <input
+        type="text"
+        id={`title-${index}`}
+        name="title"
+        className="form-control input-text-box"
+        value={product.title}
+        onChange={(e) => handleProductChange(e, index)}
+        required
+      />
+    </div>
+    <div>
+      <label htmlFor={`companyuser-${index}`}>Companies using this product:</label>
+      <input
+        type="text"
+        id={`companyuser-${index}`}
+        name="companyuser"
+        className="form-control input-text-box"
+        value={product.companyuser}
+        onChange={(e) => handleProductChange(e, index)}
+        required
+      />
+    </div>
+    <div>
+      <label htmlFor={`description-${index}`}> Product Description:</label>
+      <textarea
+        id={`description-${index}`}
+        name="description"
+        className="form-control description-box"
+        value={product.description}
+        onChange={(e) => handleProductChange(e, index)}
+        required
+      ></textarea>
+    </div>
+
+    <div>
+      <label htmlFor={`image-${index}`}>Product Image:</label>
+      <input
+        type="file"
+        id={`image-${index}`}
+        name="image"
+        className="form-control-file"
+        onChange={(e) => handleImageChange(e, index)}
+      />
+    </div>
+
+    <h3>Product Users</h3>
+    {product.users.map((user, userIndex) => (
+      <div key={userIndex}>
+        <div>
+          <label>Company Name:</label>
+          <input
+            type="text"
+            value={user.companyName}
+            className="form-control input-text-box"
+            onChange={(e) =>
+              handleUserChange(
+                e,
+                index,
+                userIndex,
+                'companyName'
+              )
+            }
+            required
+          />
+        </div>
+        <div>
+          <label>Company Website:</label>
+          <input
+            type="text"
+            value={user.companyWebsite}
+            className="form-control input-text-box"
+            onChange={(e) =>
+              handleUserChange(
+                e,
+                index,
+                userIndex,
+                'companyWebsite'
+              )
+            }
+            required
+          />
+        </div>
+        <div>
+          <label>Country:</label>
+          <input
+            type="text"
+            value={user.country}
+            className="form-control input-text-box"
+            onChange={(e) =>
+              handleUserChange(e, index, userIndex, 'country')
+            }
+            required
+          />
+        </div>
+        <div>
+          <label>Industry:</label>
+          <input
+            type="text"
+            value={user.revenue}
+            className="form-control input-text-box"
+            onChange={(e) =>
+              handleUserChange(e, index, userIndex, 'revenue')
+            }
+            required
+          />
+        </div>
+
+        <div>
+          <button
+            type="button"
+            className="btn btn-remove"
+            onClick={() => handleRemoveUser(index, userIndex)}
+          >
+            Remove User
+          </button>
         </div>
       </div>
+    ))}
+    <div>
+      <button
+        type="button"
+        className="btn btn-add"
+        onClick={() => handleAddUser(index)}
+      >
+        Add User
+      </button>
     </div>
-  );
-};                                                       
+
+    <div>
+      <button
+        type="button"
+        className="btn btn-remove"
+        onClick={() => handleRemoveProduct(index)}
+      >
+        Remove Product
+      </button>
+    </div>
+  </div>
+))}
+<div className="col-12 py-3">
+  <button
+    type="button"
+    className="btn btn-add"
+    onClick={handleAddProduct}
+  >
+    Add Product
+  </button>
+</div>
+<div className="col-12 py-3">
+  <button
+    type="submit"
+    className="btn btn-add"
+    disabled={isSubmitting}
+  >
+    {isSubmitting ? 'Submitting...' : 'Submit'}
+  </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<ToastContainer />
+</div>
+);
+};
 
 export default CreateContainer;
