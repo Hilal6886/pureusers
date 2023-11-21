@@ -143,3 +143,20 @@ font-size: 1rem;
     align-items: center;
   }
 }
+/* Media Query for Larger Screens */
+@media screen and (min-width: 1200px) {
+  .gpt3__header {
+    padding: 60px 40px;
+  }
+}
+
+/* Media Query for Even Smaller Screens */
+@media screen and (max-width: 480px) {
+  .custom-heading {
+    font-size: 2rem;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 10px;
+  }
+}
