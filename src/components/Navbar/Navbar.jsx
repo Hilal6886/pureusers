@@ -125,7 +125,7 @@ const Navbar = ({ user }) => {
 
 
                                     border: 'none', outline: 'none', WebkitAppearance: 'none', MozAppearance: 'none',
-                                    appearance: 'none', backgroundColor: 'transparent', background: '#031B34',
+                                    appearance: 'none', backgroundColor: 'transparent', background: '#2c3e50',
                                     fontSize: '1rem', color: ' white', fontWeight: '500'
                                 }} value={selectedOption} onChange={handleOptionChange}>
 

@@ -1,233 +1,202 @@
+// Import necessary packages
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { doc, addDoc, collection, updateDoc, getDoc } from 'firebase/firestore';
+import { useParams, useNavigate } from 'react-router-dom';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './featuredproduct.css';
 
-const Featuredproduct = () => {
-  const {featuredproductId } = useParams();
-  const [products, setProducts] = useState([]);
+const UpdateFeaturedProduct = () => {
+  const { featuredproductId } = useParams();
+  const [product, setProduct] = useState({
+    title: '',
+    description: '',
+    companyuser: 0,
+    users: [],
+  });
+  const navigate = useNavigate();
 
-  const handleProductChange = (e, index) => {
+  const handleProductChange = (e) => {
     const { name, value } = e.target;
-    const updatedProducts = [...products];
-    updatedProducts[index] = {
-      ...updatedProducts[index],
+  
+    // Remove commas from the value if it's the "companyuser" field
+    const sanitizedValue = name === 'companyuser' ? value.replace(/,/g, '') : value;
+  
+    setProduct({
+      ...product,
+      [name]: sanitizedValue,
+    });
+  };
+  
+
+  const handleUserChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedUsers = [...product.users];
+    updatedUsers[index] = {
+      ...updatedUsers[index],
       [name]: value,
     };
-    setProducts(updatedProducts);
-  };
-
-  const handleUserChange = (e, productIndex, userIndex, field) => {
-    const { value } = e.target;
-    const updatedProducts = [...products];
-    updatedProducts[productIndex].users[userIndex][field] = value;
-    setProducts(updatedProducts);
-  };
-
-  const handleRemoveUser = (productIndex, userIndex) => {
-    const updatedProducts = [...products];
-    updatedProducts[productIndex].users.splice(userIndex, 1);
-    setProducts(updatedProducts);
-  };
-
-  const handleAddUser = (productIndex) => {
-    const updatedProducts = [...products];
-    updatedProducts[productIndex].users.push({
-      companyName: '',
-      companyWebsite: '',
-      country: '',
-      revenue: '',
+    setProduct({
+      ...product,
+      users: updatedUsers,
     });
-    setProducts(updatedProducts);
+  };
+
+  const handleRemoveUser = (index) => {
+    const updatedUsers = [...product.users];
+    updatedUsers.splice(index, 1);
+    setProduct({
+      ...product,
+      users: updatedUsers,
+    });
+  };
+
+  const handleAddUser = () => {
+    setProduct({
+      ...product,
+      users: [...product.users, { companyName: '', companyWebsite: '', country: '', revenue: '' }],
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const productDocs = [];
-
-      // Update products and product users
-      for (let i = 0; i < products.length; i++) {
-        const product = products[i];
-
-        if (!product.title || !product.description || !product.companyuser) {
-          toast.error('All fields are mandatory to fill');
-          return;
-        }
-
-        const productDocRef = await addDoc(collection(db, 'featured products'), {
-          title: product.title,
-          description: product.description,
-          companyuser: product.companyuser,
-          users: product.users,
-        });
-
-        productDocs.push(productDocRef);
-      }
-
-      // Update the category with the list of product ids
-      await updateDoc(doc(db, 'featured product', featuredproductId), {
-        products: productDocs.map((doc) => doc.id),
-      });
-
-      toast.success('Category and products saved successfully');
-
-      setProducts([]);
+      const docRef = doc(db, 'fatured products', featuredproductId);
+      await updateDoc(docRef, product);
+      toast.success('Product updated successfully');
     } catch (error) {
-      toast.error('Error adding document');
-      console.error('Error adding document: ', error);
+      console.error('Error updating product:', error);
+      toast.error('Error updating product');
+    }
+  };
+// Featuredproduct.js
+
+// ...
+
+useEffect(() => {
+  console.log('Fetching data for Featured Product ID:', featuredproductId);
+  const fetchData = async () => {
+    try {
+      const docRef = doc(db, 'fatured products', featuredproductId); // Corrected collection name
+      console.log('Firestore Query:', docRef.path);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        console.log('Fetched product data:', data);
+        setProduct(data);
+      } else {
+        console.error(`Document with ID ${featuredproductId} not found`);
+      }
+    } catch (error) {
+      console.error('Error fetching document:', error);
     }
   };
 
-  useEffect(() => {
-    // Fetch data or perform other operations on component mount
-  }, []);
+  fetchData();
+}, [featuredproductId]);
+
+// ...
+
 
   return (
-    <div className="container-fluid mb-4">
-    <div className="container">
-      <div className="col-12">
-        <div className="text-center heading py-2">Edit Category</div>
-      </div>
-      <div className="row h-100 justify-content-center align-items-center">
-        <div className="col-10 col-md-8 col-lg-6">
-          <form className="row ghy" onSubmit={handleSubmit}>
-            {products.length > 0 ? (
-              products.map((featuredproduct, productIndex) => (
-                <div key={featuredproduct.id || productIndex} className="product-container">
-                  <div>
-                    <label htmlFor={`title-${productIndex}`}>Product Name:</label>
-                    <input
-                      type="text"
-                      id={`title-${productIndex}`}
-                      name="title"
-                      className="form-control input-text-box"
-                      value={featuredproduct.title}
-                      onChange={(e) => handleProductChange(e, productIndex)}
-                      required
-                    />
-                  </div>
-                  <div>
-                  <label htmlFor={`companyuser-${productIndex}`}>Companies using this product:</label>
-                  <input
-                    type="number"
-                    id={`companyuser-${productIndex}`}
-                    name="companyuser"
-                    className="form-control input-text-box"
-                    rows="3"
-                    value={featuredproduct.companyuser}
-                    onChange={(e) => handleProductChange(e, productIndex)}
-                    required
-                  />
-                </div>
-                  <div>
-                    <label htmlFor={`description-${productIndex}`}>Description:</label>
-                    <textarea
-                      id={`description-${productIndex}`}
-                      name="description"
-                      className="form-control input-text-area"
-                      rows="3"
-                      value={featuredproduct.description}
-                      onChange={(e) => handleProductChange(e, productIndex)}
-                      required
-                    ></textarea>
-                  </div>
-                  
+    <div className="containery">
+      <h2>Edit/Update Featured Product</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={product.title}
+            onChange={handleProductChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Description:</label>
+          <textarea
+            name="description"
+            value={product.description}
+            onChange={handleProductChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Companies using this product:</label>
+          <input
+            type="text"
+            name="companyuser"
+            value={product.companyuser}
+            onChange={handleProductChange}
+            required
+          />
+        </div>
 
-                  {/* Product Users */}
-                  <h3>Product Users</h3>
-                  {featuredproduct.users.map((user, userIndex) => (
-                    <div key={userIndex}>
-                      <div>
-                        <label>Company Name:</label>
-                        <input
-                          type="text"
-                          value={user.companyName}
-                          className="form-control input-text-box"
-                          onChange={(e) =>
-                            handleUserChange(e, productIndex, userIndex, 'companyName')
-                          }
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label>Company Website:</label>
-                        <input
-                          type="text"
-                          value={user.companyWebsite}
-                          className="form-control input-text-box"
-                          onChange={(e) =>
-                            handleUserChange(e, productIndex, userIndex, 'companyWebsite')
-                          }
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label>Country:</label>
-                        <input
-                          type="text"
-                          value={user.country}
-                          className="form-control input-text-box"
-                          onChange={(e) =>
-                            handleUserChange(e, productIndex, userIndex, 'country')
-                          }
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label>Industry:</label>
-                        <input
-                          type="text"
-                          value={user.revenue}
-                          className="form-control input-text-box"
-                          onChange={(e) =>
-                            handleUserChange(e, productIndex, userIndex, 'revenue')
-                          }
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <button
-                          type="button"
-                          className="btn btn-remove"
-                          onClick={() => handleRemoveUser(productIndex, userIndex)}
-                        >
-                          Remove User
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                  <div>
-                    <button
-                      type="button"
-                      className="btn btn-add"
-                      onClick={() => handleAddUser(productIndex)}
-                    >
-                      Add User
-                    </button>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-12">No products available</div>
-            )}
-            <div className="col-12 text-center">
-            
-              <button type="submit" className="btn btn-primary btn-submit">
-                Update product
+        {/* Users */}
+        <h3>Users</h3>
+        {product.users.map((user, index) => (
+          <div key={index}>
+            <div>
+              <label>Company Name:</label>
+              <input
+                type="text"
+                name="companyName"
+                value={user.companyName}
+                onChange={(e) => handleUserChange(e, index)}
+                required
+              />
+            </div>
+            <div>
+              <label>Company Website:</label>
+              <input
+                type="text"
+                name="companyWebsite"
+                value={user.companyWebsite}
+                onChange={(e) => handleUserChange(e, index)}
+                required
+              />
+            </div>
+            <div>
+              <label>Country:</label>
+              <input
+                type="text"
+                name="country"
+                value={user.country}
+                onChange={(e) => handleUserChange(e, index)}
+                required
+              />
+            </div>
+            <div>
+              <label>Revenue:</label>
+              <input
+                type="text"
+                name="revenue"
+                value={user.revenue}
+                onChange={(e) => handleUserChange(e, index)}
+                required
+              />
+            </div>
+            <div>
+              <button type="button" onClick={() => handleRemoveUser(index)}>
+                Remove User
               </button>
             </div>
-          </form>
+          </div>
+        ))}
+        <div>
+          <button type="button" onClick={handleAddUser}>
+            Add User
+          </button>
         </div>
-      </div>
+
+        <button type="submit">Update Product</button>
+      </form>
+      <ToastContainer />
     </div>
-    <ToastContainer />
-  </div>
   );
 };
 
-export default Featuredproduct;
+export default UpdateFeaturedProduct;

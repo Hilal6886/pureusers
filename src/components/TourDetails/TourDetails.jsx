@@ -200,12 +200,7 @@ const TourDetails = () => {
       </section>
       
 
-      <Row>
-          <Col lg='12'>
-            
-          </Col>
-        </Row>
-
+      
 
       <section className="sal user ">
         <h2 className="titleone  gradient__text"> Companies Currently Using {product.title} </h2>
@@ -236,7 +231,7 @@ const TourDetails = () => {
           </div>
         </div>
       </section>
-      <section>
+    <section>
         <Row>
           <Col lg='12'>
             <div className='thed'>
@@ -255,7 +250,7 @@ const TourDetails = () => {
             </div>
           </Col>
         </Row>
-      </section>
+      </section>  
 
       <section>
         <div className='salr'>

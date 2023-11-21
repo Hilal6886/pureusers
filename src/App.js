@@ -190,7 +190,8 @@ const App = () => {
           <Route path="/table" element={<Table />} />
           <Route path="/products/:id" element={<CategoryProducts />} />
           <Route path="/categories/:categoryId" element={<Category />} />
-          <Route path="/update featured product/:featuredproduct.Id " element={<Featuredproduct/>} />
+          <Route path="/update featured product/:featuredproductId" element={<Featuredproduct />} />
+
         </Routes>
       </AuthProvider>
       <Footer />

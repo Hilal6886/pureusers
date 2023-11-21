@@ -94,7 +94,7 @@ const Table = () => {
         </div>
         <div>
           {Array.from(Array(26), (_, index) => (
-            <button key={index} onClick={() => handleAlphabetClick(String.fromCharCode(65 + index))}>
+            <button className='button1' key={index} onClick={() => handleAlphabetClick(String.fromCharCode(65 + index))}>
               {String.fromCharCode(65 + index)}
             </button>
           ))}

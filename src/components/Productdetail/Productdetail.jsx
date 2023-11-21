@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
+import {  Row, Col } from 'reactstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Booking from '../Booking/Booking';
 import { useNavigate } from 'react-router-dom';
-import { fetchProducts,getFeaturedProducts } from '../../services/ProductService';
+import { fetchProducts} from '../../services/ProductService';
 
 const TourDetails = () => {
   const [featuredproduct, setProduct] = useState(null);
-  const [otherFeaturedProducts, setOtherFeaturedProducts] = useState([]);
+ 
   const { id: featuredProductId } = useParams();
   const navigate = useNavigate();
   const scrollToTop = () => {
@@ -31,17 +31,10 @@ const TourDetails = () => {
       }
     };
 
-    const fetchOtherFeaturedProducts = async () => {
-      try {
-        const otherProducts = await getFeaturedProducts(featuredProductId);
-        setOtherFeaturedProducts(otherProducts);
-      } catch (error) {
-        console.error('Error fetching other featured products:', error);
-      }
-    };
+
 
     fetchData();
-    fetchOtherFeaturedProducts();
+ 
   }, [featuredProductId]);
   
 
@@ -358,37 +351,7 @@ const TourDetails = () => {
         </div>
 
       </section>
-      
-      {otherFeaturedProducts.length > 0 && (
-        <section className="salr related-products-section">
-          <h2 className='gradient__text'>Other Technology Users Email List Includes</h2>
-          <div className="related-products-table contact-table">
-            <div className="contact-row">
-              <div className="contact-cell title">Product</div>
-              <div className="contact-cell title">Users</div>
-            </div>
-            {otherFeaturedProducts.map((otherProduct) => (
-              <div className="contact-row" key={otherProduct.id}>
-                <div className="contact-cell">
-                  <a
-                    href={`/product/${otherProduct.id}`}
-                    className="related-product-link"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      console.log(`Navigating to /product/${otherProduct.id}`);
-                      navigate(`/product/${otherProduct.id}`);
-                      scrollToTop();
-                    }}
-                  >
-                    {otherProduct.title}
-                  </a>
-                </div>
-                <div className="contact-cell">{otherProduct.companyuser}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+  
       {/* Additional sections and JSX go here */}
     </>
   );
