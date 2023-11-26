@@ -40,6 +40,8 @@ import Table from "./pages/Table";
 import CategoryProducts from "./pages/CategoryProducts";
 import Category from "./pages/Category";
 import Featuredproduct from "./pages/Featuredproduct";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 
 
@@ -187,10 +189,12 @@ const App = () => {
           <Route path="/category/:category" element={<CategoryBlog setActive={setActive} />} />
           <Route path="/blogs" element={<Blogs setActive={setActive} />} />
           <Route path="/verify-otp" element={<Varifyotp />} />
-          <Route path="/table" element={<Table />} />
+          <Route path="/categories" element={<Table />} />
           <Route path="/products/:id" element={<CategoryProducts />} />
           <Route path="/categories/:categoryId" element={<Category />} />
           <Route path="/update featured product/:featuredproductId" element={<Featuredproduct />} />
+          <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
 
         </Routes>
       </AuthProvider>

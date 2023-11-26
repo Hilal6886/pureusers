@@ -1,0 +1,28 @@
+/* General styling */
+.privacy-container {
+    margin: 0 auto;
+    padding: 20px;
+   
+    color: #333;
+    margin-top:8rem;
+  }
+  
+  .title {
+    color: black;
+  }
+  
+  .description {
+    color: var(--textcolor);
+    line-height: 1.6;
+    justify-content:center;
+    text-align:center;
+    line-height: 1.6;
+  }
+  
+  .section-title {
+    color: #1a73e8;
+    margin-top: 20px;
+    justify-content:center;
+    text-align:center;
+  }
+  

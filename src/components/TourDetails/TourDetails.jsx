@@ -264,7 +264,7 @@ const TourDetails = () => {
             <Col lg="6">
 
               <div className="contact-table">
-                <h4 className=" gradient__text ">{product.title} Users Mailing List Consists</h4>
+                <h4 className=" gradient__text titletwo">{product.title} Users Mailing List Consists</h4>
                 <div className="contact-row">
                   <div className="contact-cell">
                     <i className="ri-arrow-right-circle-fill icon green"></i> Contact Name

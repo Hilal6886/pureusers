@@ -130,6 +130,26 @@ h4{
    
     
 }
+.fid{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.buttong9{
+  background-color: #6558d3;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.125rem;
+  text-align: center;
+  border: 0;
+  outline: 0;
+
+  padding: 0.625em 0.75em;
+  text-decoration: none;
+      margin-top: 2rem;
+      justify-content: center;
+}
 @media screen and (min-width: 500px) {
     .ttle {
       font-size: 1.5rem;

@@ -217,7 +217,10 @@ const CBlog = ({user, active, }) => {
         <div className="row mx-0">
         
           <div className="col-md-8">
-            <div className="blog-heading text-start py-2 mb-4">Daily Blogs</div>
+          <div className="seIntroy">
+          <h2 className="gradient__text">DAILY BLOGS</h2>
+         
+        </div>
             {blogs.length === 0 && location.pathname !== "/" && (
               <>
                 <h4>
@@ -242,8 +245,11 @@ const CBlog = ({user, active, }) => {
             )}
           </div>
           <div className="col-md-3">
+          <div className="seIntroy">
+          <div className="blog-heading text-start py-2 mb-4">Tags</div>
+        </div>
            
-            <div className="blog-heading text-start py-2 mb-4">Tags</div>
+            
         
             <FeatureBlogs title={"Most Popular"} blogs={blogs} />
             <Category catgBlogsCount={categoryCount} />

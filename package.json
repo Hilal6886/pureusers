@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@formspree/react": "^2.5.1",
     "@pathofdev/react-tag-input": "^1.0.7",
     "@popperjs/core": "^2.11.6",
     "@reduxjs/toolkit": "^1.9.1",

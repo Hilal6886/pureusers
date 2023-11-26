@@ -104,7 +104,7 @@ useEffect(() => {
   return (
     <div className="containery">
       <h2>Edit/Update Featured Product</h2>
-      <form onSubmit={handleSubmit}>
+      <form className='fio' onSubmit={handleSubmit}>
         <div>
           <label>Title:</label>
           <input
@@ -122,7 +122,8 @@ useEffect(() => {
             value={product.description}
             onChange={handleProductChange}
             required
-          />
+            className='form-control description-box'
+          ></textarea>
         </div>
         <div>
           <label>Companies using this product:</label>
@@ -180,19 +181,19 @@ useEffect(() => {
               />
             </div>
             <div>
-              <button type="button" onClick={() => handleRemoveUser(index)}>
+              <button className="button2" onClick={() => handleRemoveUser(index)}>
                 Remove User
               </button>
             </div>
           </div>
         ))}
         <div>
-          <button type="button" onClick={handleAddUser}>
+          <button className="button3" onClick={handleAddUser}>
             Add User
           </button>
         </div>
 
-        <button type="submit">Update Product</button>
+        <button className="button4">Update Product</button>
       </form>
       <ToastContainer />
     </div>

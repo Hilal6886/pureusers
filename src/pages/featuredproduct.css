@@ -13,7 +13,7 @@
     color: #333;
   }
   
-  form {
+  fio {
     display: flex;
     flex-direction: column;
   }
@@ -23,8 +23,8 @@
     font-weight: bold;
   }
   
-  input,
-  textarea {
+  input
+  {
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
@@ -32,7 +32,7 @@
     border-radius: 4px;
   }
   
-  button {
+  .button2 .button3 .button4{
     padding: 10px;
     background-color: #4caf50 important! ;  
     color: #fff;
@@ -40,16 +40,30 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  .button4{
+    background-color: #6558d3;
+    border: 0;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 500;
+    outline: 0;
+    padding: 0.625em 0.75em;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    margin-top:2rem;
+  }
   
-  button:hover {
+  .button4:hover {
     background-color: #45a049;
   }
   
-  button[type="button"] {
+  .button3{
     background-color: #d9534f;
   }
   
-  button[type="button"]:hover {
+  .button3:hover {
     background-color: #c9302c;
   }
   
@@ -59,7 +73,14 @@
   }
   
   /* Style the remove user button */
-  button[type="button"] {
+  .button2 {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+  .button3 {
     background-color: #d9534f;
     color: #fff;
     border: none;
@@ -67,7 +88,7 @@
     cursor: pointer;
   }
   
-  button[type="button"]:hover {
+  .button3:hover {
     background-color: #c9302c;
   }
   

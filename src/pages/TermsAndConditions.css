@@ -1,0 +1,52 @@
+:root {
+    --font-family: 'Manrope', sans-serif;
+    --primarycolor: hsl(26, 93%, 50%);
+    --Hovercolor: hsl(26, 90%, 42%);
+    --secondary-color: #faa935;
+    --heading-color: #0b2727;
+    ---whitecolor: hsl(0, 0%,100%);
+    --blackcolor: hsl(0, 0%, 18%);
+    --textcolor: hsl(240, 1%, 48%);
+    --whitecolorDeam: hsl(0, 0%, 93%);
+    --greyBg: hsl(0, 0%, 96%);
+    --greytext: rgb(190, 190, 190);
+    --inputcolor: hsl(330, 12%, 97%);
+    --bodyColor: hsl(0, 100%, 98%);
+    --cardBg: rgb(225, 225, 235);
+    --gradient-text: linear-gradient(89.97deg, #AE67FA 1.84%,  #89E894 102.67%);
+  }/* General styling */
+
+.terms-container {
+   
+    margin: 0 auto;
+    padding: 20px;
+   
+    color: #333;
+    margin-top:8rem;
+  }
+  
+  .title {
+    color: black;
+  }
+  
+  .description {
+    color: var(--textcolor);
+    line-height: 1.6;
+    justify-content:center;
+    text-align:center;
+  }
+  
+  .section-title {
+    color: #1a73e8;
+    margin-top: 20px;
+    justify-content:center;
+    text-align:center;
+  }
+  
+  /* Responsive styling */
+  @media only screen and (max-width: 600px) {
+    .terms-container {
+      padding: 10px;
+    }
+  }
+  

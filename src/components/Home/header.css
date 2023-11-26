@@ -16,12 +16,7 @@
   --cardBg: rgb(225, 225, 235);
   --gradient-text: linear-gradient(89.97deg, #AE67FA 1.84%,  #89E894 102.67%);
 }/* General Styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 /* Header Section */
 .gpt3__header {
@@ -65,7 +60,6 @@ input[type="text"] {
   border-radius: 12px;
   border: 1.5px solid lightgrey;
 
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 
 }
 
@@ -123,6 +117,9 @@ font-size: 1rem;
 .carousel-root {
   width: 100%;
 }
+.carousel .thumbs-wrapper {
+  display: none !important;
+}
 
 /* Media Query for Responsiveness */
 @media screen and (max-width: 768px) {
@@ -148,6 +145,16 @@ font-size: 1rem;
   .gpt3__header {
     padding: 60px 40px;
   }
+  .gpt3__header-image {
+    flex: 1;
+    max-width: 900px;
+    border-radius: 5rem;
+  }
+  .custom-heading {
+    font-size: 3rem;
+    margin-top: -2rem;
+  }
+  
 }
 
 /* Media Query for Even Smaller Screens */

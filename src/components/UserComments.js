@@ -1,37 +1,35 @@
+// UserComments.js
+
 import React from "react";
-import useAuth from "./custom-hooks/useAuth";
-import userAvatar from '../assets/images/avatar.png'
+import userAvatar from '../assets/images/avatar.png';
+import './UserComments.css'; // Import the external CSS file
 
 const UserComments = ({ name, body, createdAt, msg }) => {
-  const {currentUser} =useAuth()
+  const commentDate = createdAt instanceof Date ? createdAt : (createdAt ? createdAt.toDate() : null);
+  const formattedDate = commentDate ? commentDate.toDateString() : "";
+
   return (
-    <div>
-      <div className="row">
-        <div className="col-lg-12">
-          <div className="comments-list">
-            <div className="media">
-              {msg ? (
-                <h4 className="mt-5">{msg}</h4>
-              ) : (
-                <>
-                  <div className="media-left">
-                    <img
-                     src={ userAvatar} alt='user profile'
-                      className="rounded-circle"
-                    />
-                  </div>
-                  <div className="media-body">
-                    <h3 className="text-start media-heading user_name">
-                      {name} <small>{createdAt.toDate().toDateString()}</small>
-                    </h3>
-                    <p className="text-start">{body}</p>
-                  </div>
-                </>
-              )}
-            </div>
+    <div className={`user-comments-container ${msg ? 'user-comments-msg' : ''}`}>
+      {msg ? (
+        <h4 className="text-lg font-semibold text-gray-600">{msg}</h4>
+      ) : (
+        <>
+          <div className="user-avatar">
+            <img
+              src={userAvatar}
+              alt="user profile"
+              className="rounded-full h-12 w-12"
+            />
           </div>
-        </div>
-      </div>
+          <div className="user-details ml-3">
+            <h3 className="user-name">
+              {name}
+              <small className="date">{formattedDate}</small>
+            </h3>
+            <p className="comment-body">{body}</p>
+          </div>
+        </>
+      )}
     </div>
   );
 };

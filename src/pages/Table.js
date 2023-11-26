@@ -103,7 +103,7 @@ const Table = () => {
           <thead>
             <tr>
               <th>Category Name</th>
-              <th>Actions</th>
+        
             </tr>
             <tbody>
               {searchFilteredCategories.map((category) => (

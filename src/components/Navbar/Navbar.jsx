@@ -96,7 +96,7 @@ const Navbar = ({ user }) => {
 
                         <li className="NavItem">
                           
-                            <Link to="/table" className="navLink">CATEGORIES</Link>
+                            <Link to="/categories" className="navLink">CATEGORIES</Link>
                         </li>
 
 
@@ -130,9 +130,9 @@ const Navbar = ({ user }) => {
                                 }} value={selectedOption} onChange={handleOptionChange}>
 
                                     <option value="/" >ADMIN</option>
-                                    <option value="/create">Add Blog</option>
-                                    <option value="/tou">Add categories</option>
-                                    <option value="/count">Add Offers</option>
+                                    <option value="/create">Blog</option>
+                                    <option value="/tou">Categories</option>
+                                    <option value="/count">Featured</option>
 
 
                                 </select>

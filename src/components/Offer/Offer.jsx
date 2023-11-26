@@ -70,7 +70,7 @@ const Offer = () => {
       <div data-aos="fade-up" className="secContainer">
         <div className="seIntro">
           <h2 data-aos="fade-up" className="secTtle gradient__text">
-            OUR FEATURED PRODUCTS
+            FEATURED PRODUCTS
           </h2>
           <p>Access millions of products</p>
         </div>
@@ -127,7 +127,13 @@ const Offer = () => {
             );
           })}
         </div>
+        <div className='fid'>
+        <Link to="/categories">
+        <button className="buttong9"> View All Categories</button>
+        </Link>
+        </div>
       </div>
+     
     </section>
   );
 };

@@ -2,6 +2,7 @@
 import React from 'react';
 import gpt3Logo from './ddr.png';
 import './footer.css';
+import {  Link } from 'react-router-dom';
 
 const Footer = () => (
   <footer className="gpt3__footer section__padding">
@@ -12,24 +13,26 @@ const Footer = () => (
           At our company, we offer a cutting-edge Data Insights Platform that empowers businesses with comprehensive and real-time information.
         </p>
         <ul className="social-icons">
-          <li><a href="#" aria-label="Facebook"><i className="fab fa-facebook"></i></a></li>
-          <li><a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a></li>
-          <li><a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=100093720302841" aria-label="Facebook"><i className="fab fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/Naz75730eerAhme" aria-label="Twitter"><i className="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/nazeer-ahmed-318843278" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a></li>
         </ul>
       </div>
       <div className="gpt3__footer-links">
         <div className="footer-links-section">
           <h4>Links</h4>
-          <p>Home</p>
-          <p>Categories</p>
-          <p>Blog</p>
-          <p>Contact</p>
+          <Link to="/home" ><p>Home</p></Link>
+          <Link to="/categories"><p>CATEGORIES</p></Link>
+          <Link to="/CBlog"> <p>BLOGS</p></Link>
+          <Link to="/contact-us" ><p>CONTACT</p></Link>
+       
         </div>
         <div className="footer-links-section">
           <h4>Company</h4>
-          <p>Terms & Conditions</p>
-          <p>Privacy Policy</p>
-          <p>Contact</p>
+          <Link to="/TermsAndConditions" ><p>Terms & Conditions</p></Link>
+          <Link to="/PrivacyPolicy" ><p>Privacy Policy</p></Link>
+         
+          
         </div>
         <div className="footer-links-section">
           <h4>Get in touch</h4>
